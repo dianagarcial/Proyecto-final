@@ -1,0 +1,6 @@
+
+ <?php 
+
+include ("../bd/conexion.php");
+ 
+$sql="SELECT ASIGNATURA.codigo as codigoAs,  ACTIVIDAD.fechaLimite as fechalim ,RUBRICA.fecha as fechaen,GRUPO.codigo as codGru, ASIGNATURA.nombre as asig, CALIFICACION.estado as estado, EVALUACION.codigo_PI as codPI, (SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as nombreP, (SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as apellidoP FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNACION ON ASIGNACION.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ASIGNACION.codigoasig=ASIGNATURA.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN RUBRICA ON GRUPO.codigo=RUBRICA.codigo_grp JOIN CALIFICACION ON RUBRICA.codigo=CALIFICACION.codigo_rub WHERE DIRECTORPROGRAMA.correo_usuario='juan.carlos@uao.edu.co';";
