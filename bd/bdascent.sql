@@ -1,26 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2021 a las 15:51:50
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.3.31
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `bdascent`
---
-
+CREATE DATABASE BDASC;
+USE BDASC;
 -- --------------------------------------------------------
 
 --
@@ -31,36 +10,21 @@ CREATE TABLE `actividad` (
   `codigo` int(11) NOT NULL,
   `fechaLimite` date NOT NULL,
   `medioEvaluacion` varchar(40) NOT NULL,
-  `codigo_asig` int(11) NOT NULL
+  `codigo_asig` int(11) NOT NULL,
+   `codigoprogra` int(11) NOT NULL,
+  `codigoasig` int(11) NOT NULL,
+  `codigoperiodo` varchar(10) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `actividad`
 --
 
-INSERT INTO `actividad` (`codigo`, `fechaLimite`, `medioEvaluacion`, `codigo_asig`) VALUES
-(1, '2022-06-06', 'Parcial1', 552203);
+INSERT INTO `actividad` (`codigo`, `fechaLimite`, `medioEvaluacion`, `codigoprogra`, `codigoasig`, `codigoperiodo`) VALUES
+(1, '2022-06-06', 'Parcial1', 552203, 1, '2022-01');
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `asignacion`
---
-
-CREATE TABLE `asignacion` (
-  `codigoprogra` int(11) NOT NULL,
-  `codigoasig` int(11) NOT NULL,
-  `codigoperiodo` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `asignacion`
---
-
-INSERT INTO `asignacion` (`codigoprogra`, `codigoasig`, `codigoperiodo`) VALUES
-(1, 552203, '2022-01');
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `asignatura`
@@ -354,17 +318,9 @@ INSERT INTO `usuario` (`correo`, `contrasena`, `nombre`, `apellido`, `foto`, `ti
 ALTER TABLE `actividad`
   ADD PRIMARY KEY (`codigo`),
   ADD KEY `codigoACTASI_fk` (`codigo_asig`);
-
---
--- Indices de la tabla `asignacion`
---
-ALTER TABLE `asignacion`
-  ADD PRIMARY KEY (`codigoprogra`,`codigoasig`,`codigoperiodo`),
-  ADD KEY `codigoACIONASG_fk` (`codigoasig`),
   ADD KEY `codigoPERASG_fk` (`codigoperiodo`);
+  ADD KEY `codigoPROGRW_fk` (`codigoprogra`);
 
---
--- Indices de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
   ADD PRIMARY KEY (`codigo`);
@@ -478,14 +434,10 @@ ALTER TABLE `rubrica`
 --
 ALTER TABLE `actividad`
   ADD CONSTRAINT `codigoACTASI_fk` FOREIGN KEY (`codigo_asig`) REFERENCES `asignatura` (`codigo`);
-
---
--- Filtros para la tabla `asignacion`
---
-ALTER TABLE `asignacion`
-  ADD CONSTRAINT `codigoACIONASG_fk` FOREIGN KEY (`codigoasig`) REFERENCES `asignatura` (`codigo`),
   ADD CONSTRAINT `codigoACIONpro_fk` FOREIGN KEY (`codigoprogra`) REFERENCES `programaacademico` (`codigo`),
   ADD CONSTRAINT `codigoPERASG_fk` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigo`);
+
+
 
 --
 -- Filtros para la tabla `calificacion`
