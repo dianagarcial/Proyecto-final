@@ -1,0 +1,273 @@
+﻿:root {
+    --color-gris: #F5F3F4;
+    --color-blanco: #E5E5E5;
+    --color-rojo: #BA181B;
+    --color-rojo-vino: rgba(164, 22, 26, 0.63);
+}
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+.contenedor {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.fondo-uni {
+    width: 50%;
+    height: 100vh;
+    background-size: cover;
+    background-size: 100%;
+    background-image: url("imagenes/Fondo.png");
+    background-repeat: no-repeat;
+}
+
+.loginPage {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login {
+    height: auto;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login img {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+#tituloLogin {
+    font-family: Montserrat;
+    font-size: 28px;
+    font-style: bold;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.usuario {
+    background: var(--color-gris);
+    border: 1px solid #B1A7A6;
+    box-sizing: border-box;
+    box-shadow: 0px 6px 12px 6px rgba(81, 81, 81, 0.07);
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.contrasena {
+    background: var(--color-gris);
+    border: 1px solid #B1A7A6;
+    box-sizing: border-box;
+    box-shadow: 0px 6px 12px 6px rgba(81, 81, 81, 0.07);
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+#usuario {
+    font-size: 1em;
+    margin-left: 4px;
+    background-color: transparent;
+    border: none;
+    width: 90%;
+    outline: none;
+}
+
+#contrasena{
+    font-size: 1em;
+    margin-left: 4px;
+    background-color: transparent;
+    border: none;
+    width: 90%;
+    outline: none;
+}
+
+#ingresar {
+
+    background-color: var(--color-rojo);
+    color: white;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border: 1px solid #B1A7A6;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 15px -2px rgba(164, 22, 26, 0.63);
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 900px) {
+
+    .fondo-uni{
+        display: none;
+    }
+
+    .contenedor {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+
+    .loginPage{
+        width: 80%;
+        height: 70%;
+    }
+
+    .form-login {
+        width: 450px;
+        height: auto;
+    }
+
+}
+
+
+
+
+/*#fondologin {
+position: absolute;
+width: 50%;
+height: 100%;
+left: 0px;
+top: 0px;
+}
+#uaologin {
+position: absolute;
+width: 132.06px;
+height: 125px;
+right: 27%;
+top: 14%;
+}
+#abetlogin {
+position: absolute;
+width: 100.99px;
+height: 98.21px;
+right: 19%;
+top: 15%;
+}
+#tituloLogin {
+position: absolute;
+width: 431px;
+height: 114px;
+right: 15%;
+top: 28%;
+font-family: Montserrat;
+font-style: normal;
+font-weight: 600;
+font-size: 36px;
+line-height: 44px;
+text-align: center;
+}
+#linealogin {
+position: absolute;
+width: 120.88px;
+height: 0px;
+right: 23%;
+top: 20%;
+border: 2px solid #B1A7A6;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+transform: rotate(90deg);
+}
+#usuario {
+position: absolute;
+width: 457px;
+height: 56px;
+right: 14%;
+top: 43.3%;
+font-family: Open Sans;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 38px;
+display: flex;
+align-items: center;
+letter-spacing: -0.04em;
+background: #F5F3F4;
+border: 1px solid #B1A7A6;
+box-sizing: border-box;
+box-shadow: 0px 6px 12px 6px rgba(81, 81, 81, 0.07);
+border-radius: 30px;
+padding: 20px;
+}
+#contrasena {
+position: absolute;
+width: 457px;
+height: 56px;
+right: 14%;
+top: 51%;
+font-family: Open Sans;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 38px;
+display: flex;
+align-items: center;
+letter-spacing: -0.04em;
+background: #F5F3F4;
+border: 1px solid #B1A7A6;
+box-sizing: border-box;
+box-shadow: 0px 6px 12px 6px rgba(81, 81, 81, 0.07);
+border-radius: 30px;
+padding: 20px;
+}
+#recuperar {
+position: absolute;
+width: 293px;
+height: 26px;
+right: 22%;
+top: 63.2%;
+font-family: Open Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 0%;
+/* or 0px */
+
+/*display: flex;
+align-items: center;
+text-align: center;
+text-decoration-line: underline;
+color: #B1A7A6;
+}
+#acceder {
+position: absolute;
+width: 124px;
+height: 62px;
+right: 15%;
+top: 61%;
+background: #BA181B;
+border: 1px solid #B1A7A6;
+box-sizing: border-box;
+box-shadow: 0px 3px 15px -2px rgba(164, 22, 26, 0.63);
+border-radius: 30px;
+font-family: Open Sans;
+font-style: normal;
+font-weight: bold;
+font-size: 26px;
+line-height: 0%;
+display: flex;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+padding: 12px;
+}*/

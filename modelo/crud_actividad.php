@@ -67,6 +67,27 @@ require_once('conexion.php');
 
 			return $listaActividadGen;
 		}
+
+		public function mostrarPro(){
+			$db=Db::conectar();
+			$listaActividadPro=[];
+			$select=$db->query('(SELECT ASIGNATURA.codigo as codigoAs, ACTIVIDAD.fechaLimite as fechalim ,RUBRICA.fecha as fechaen, GRUPO.codigo as codGru, ASIGNATURA.nombre as asig,CALIFICACION.estado as estado, EVALUACION.codigo_PI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN RUBRICA ON GRUPO.codigo=RUBRICA.codigo_grp JOIN CALIFICACION ON RUBRICA.codigo=CALIFICACION.codigo_rub WHERE PROFESOR.correo_usuario="jose.luis@uao.edu.co") UNION (SELECT ASIGNATURA.codigo as codigoAs, ACTIVIDAD.fechaLimite as fechalim,"-",GRUPO.codigo as codGru, ASIGNATURA.nombre as asig, "Pendiente",EVALUACION.codigo_PI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN RUBRICA ON GRUPO.codigo=RUBRICA.codigo_grp JOIN CALIFICACION ON RUBRICA.codigo=CALIFICACION.codigo_rub WHERE PROFESOR.correo_usuario="jose.luis@uao.edu.co")');
+ 
+			foreach($select->fetchAll() as $AD){
+				$myAD= new ActividadPro();
+				$myAD->setCodAsig($AD['codigoAs']);
+				$myAD->setPi($AD['codPI']);
+				$myAD->setGrupo($AD['codGru']);
+				$myAD->setNomAsig($AD['asig']);
+				$myAD->setEstado($AD['estado']);
+				$myAD->setFentrega($AD['fechaen']);
+				$myAD->setFlimite($AD['fechalim']);
+				$listaActividadPro[]=$myAD;
+			}
+
+			return $listaActividadPro;
+		}
+		
  
 		/*
 		// método para eliminar un libro, recibe como parámetro el id del libro
