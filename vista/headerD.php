@@ -48,7 +48,7 @@
                            
                         </ul>
 
-                        <li><a href="registroactfut.php">Registro Actividades</a></li>
+                        <li><a href="ini.php">Registro Actividades</a></li>
                 </ul>
                 </div>
             

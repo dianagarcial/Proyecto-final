@@ -18,7 +18,7 @@
 
 </head>
 <?php require "headerD.php" ?>
-<?php include("../controlador/index.php") ?>
+
 <div id="contenido">
       
         <div class= formatorow1>
@@ -132,7 +132,7 @@
 
         </div>
         <div class=formatorow4>
-            <button class="cancelar" onclick="window.location.href='/vista/registroactfut.html'">Cancelar</button>
+            <button class="cancelar" onclick="window.location.href='/Proyecto-final/vista/ini.php'">Cancelar</button>
 
             <button class="enviarRevision" onclick="window.location.href='/vista/registroactfut-c.html'">Registrar</button>
             

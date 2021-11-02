@@ -62,10 +62,10 @@ $listaActividadDir = $crud->mostrar();
                                     <tbody id="cuerpoTabla">
                                     <?php foreach ($listaActividadDir as $activid) {?>
 		                        	<tr>
-                                        <td><?php echo $activid->getCodAsig() ?></td>
+                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getGrupo() ?></td>
 				                        <td><?php echo $activid->getNomAsig() ?></td>
 				                        <td><?php echo $activid->getGrupo() ?> </td>
-                                        <td><?php echo $activid->getDocente() ?> </td>
+                                        <td><?php echo $activid->getDocente()." ".$activid->getDocenteA() ?> </td>
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>

@@ -5,6 +5,7 @@
 		private $grupo;
 		private $nomAsig;
 		private $docente;
+		private $docenteA;
 		private $estado;
 		private $fentrega;
 		
@@ -51,6 +52,13 @@
 			$this->docente = $docente;
 		}
 
+		public function getDocenteA(){
+			return $this->docenteA;
+		}
+ 
+		public function setDocenteA($docenteA){
+			$this->docenteA = $docenteA;
+		}
 		public function getEstado(){
 			return $this->estado;
 		}
