@@ -9,3 +9,4 @@ $result=mysqli_query($conexion,$sql);
 $result1=mysqli_query($conexion,$sql1);
 $result2=mysqli_query($conexion,$sql2);
 $result3=mysqli_query($conexion,$sql3);
+

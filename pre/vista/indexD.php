@@ -1,13 +1,4 @@
 
-<?php
-//incluye la clase Libro y CrudLibro
-require('crud_actividad.php');
-require('actividadDir.php');
-$crud=new CrudActividad();
-$activid= new ActividadDir();
-//obtiene todos los libros con el método mostrar de la clase crud
-$listaActividadDir = $crud->mostrar();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,17 +53,25 @@ $listaActividadDir = $crud->mostrar();
                                 
 
                                     <tbody id="cuerpoTabla">
-                                    <?php foreach ($listaActividadDir as $activid) {?>
-		                        	<tr>
-                                        <td><?php echo $activid->getCodAsig() ?></td>
-				                        <td><?php echo $activid->getNomAsig() ?></td>
-				                        <td><?php echo $activid->getGrupo() ?> </td>
-                                        <td><?php echo $activid->getDocente() ?> </td>
-                                        <td><?php echo $activid->getEstado() ?> </td>
-                                        <td><?php echo $activid->getPi() ?> </td>
-                                        <td><?php echo $activid->getFentrega() ?> </td>
+                                    <?php 
+                                    include("../controlador/index.php");
+                                    
+                                    
+                                    while($mostrar=mysqli_fetch_array($result)){ 
+                                        ?>
                                         
-                                        <td class="cell100 column7"><a href="revisiondocente-rec.html" id="vermas1">Ver más</a></td>
+                                    
+                                    <tr>
+                                    
+                                        <th><?php echo $mostrar['codigoAs']."-".$mostrar['codPI']."-".$mostrar['codGru'];?></th>
+                                        <th><?php echo $mostrar['asig']; ?></th>
+                                        <th><?php echo $mostrar['codGru']; ?></th>
+                                        <th><?php echo $mostrar['nombreP']." ".$mostrar['apellidoP']; ?></th>
+                                        <th><?php echo $mostrar['estado']; ?></th>
+                                        <th><?php echo $mostrar['codPI']; ?></th>
+                                        <th><?php echo $mostrar['fechaen']; ?></th>
+                                        
+                                        <th class="cell100 column7"><a href="revisiondocente-rec.html" id="vermas1">Ver más</a></td>
                                     </tr>
                                     <?php 
                                     }

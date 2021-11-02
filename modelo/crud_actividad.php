@@ -42,7 +42,7 @@ require_once('conexion.php');
 				$myAD->setDocente($AD['nombreP']);
 				$myAD->setEstado($AD['estado']);
 				$myAD->setFentrega($AD['fechaen']);
-				$listaActividadDir[]=$AD;
+				$listaActividadDir[]=$myAD;
 			}
 
 			return $listaActividadDir;
