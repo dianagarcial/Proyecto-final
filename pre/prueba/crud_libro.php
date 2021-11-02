@@ -35,7 +35,7 @@ require_once('conexion.php');
 			}
 			return $listaLibros;
 		}
- /*
+
 		// método para eliminar un libro, recibe como parámetro el id del libro
 		public function eliminar($id){
 			$db=Db::conectar();
@@ -69,6 +69,6 @@ require_once('conexion.php');
 			$actualizar->bindValue('anio',$libro->getAnio_edicion());
 			$actualizar->execute();
 		}
-        */
+        
 	}
 ?>
