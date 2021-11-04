@@ -117,39 +117,7 @@ $listaActividadDir = $crud->mostrar();
             </div>
         </div>
         <br>
-        <h2>Gestión documental</h2>
-        <div class="limiter" id="contenedor">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver1">
-                    <table id=tablefiltro>
-                              
-                        
-                            <td id="lfiltro2">
-                                <img src="imagenes/recibidos.png"
-                                href="#"/><br><br>Recibidos</td>
-                            <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
-
-                            <td id="lfiltro2">
-                                <img src="imagenes/revision.png"
-                                    href="#"/><br><br>Pendiente</td>
-                            <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
-                            <td id="lfiltro2">
-                                <img src="imagenes/check.png"
-                                href="#"/><br><br>Aprobados</td>
-                            <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
-                            <td id="lfiltro2">
-                                <img src="imagenes/clear.png"
-                                href="#"/><br><br>Rechazados</td>
-                                            
-                        
-                                          
-                    
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+        
     <br>
     <br>
 
