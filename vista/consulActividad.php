@@ -51,7 +51,6 @@
                                     <tbody>
                                         <tr class="row100 body">
                                             <td class="cell100 column2">131313-1.1-1</td>
-                                            <td class="cell100 column3">Elementos Biomédicos</td>
                                             <td class="cell100 column4">1</td>
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column6">Aprobada</td>
@@ -63,7 +62,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">131313-3.1-1</td>
-                                            <td class="cell100 column3">Elementos Biomédicos</td>
                                             <td class="cell100 column4">1</td>
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column6">Rechazada</td>
@@ -75,7 +73,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">131313-1.1-52</td>
-                                            <td class="cell100 column3">Elementos Biomédicos</td>
                                             <td class="cell100 column4">52</td>
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column5">Aprobada</td>
@@ -86,7 +83,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">131313-3.1-52</td>
-                                            <td class="cell100 column3">Elementos Biomédicos</td>
                                             <td class="cell100 column4">1</td>
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column6">Recibida</td>
@@ -97,7 +93,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">121212-2.1-2</td>
-                                            <td class="cell100 column3">Química Biomédica</td>
                                             <td class="cell100 column4">52</td>
                                             <td class="cell100 column6">Luz Estela Martinez Florez</td>
                                             <td class="cell100 column5">Aprobada</td>
@@ -107,7 +102,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">121212-2.1-2</td>
-                                            <td class="cell100 column3">Química Biomédica</td>
                                             <td class="cell100 column4">2</td>
                                             <td class="cell100 column6">Hernando Aguilar Montaño</td>
                                             <td class="cell100 column5">Aprobada</td>
@@ -117,7 +111,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">121212-2.1-2</td>
-                                            <td class="cell100 column3">Química Biomédica</td>
                                             <td class="cell100 column4">52</td>
                                             <td class="cell100 column6">Luz Estela Martinez Florez</td>
                                             <td class="cell100 column5">Aprobada</td>
@@ -127,7 +120,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">121212-2.1-51</td>
-                                            <td class="cell100 column3">Química Biomédica</td>
                                             <td class="cell100 column4">2</td>
                                             <td class="cell100 column6">Hernando Aguilar Montaño</td>
                                             <td class="cell100 column5">Aprobada</td>
@@ -137,7 +129,6 @@
 
                                         <tr class="row100 body">
                                             <td class="cell100 column2">121212-3.1-52</td>
-                                            <td class="cell100 column3">Química Biomédica</td>
                                             <td class="cell100 column4">52</td>
                                             <td class="cell100 column6">Luz Estela Martinez Florez</td>
                                             <td class="cell100 column5">Rechazada</td>
