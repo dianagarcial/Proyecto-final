@@ -4,7 +4,7 @@
 include("../modelo/crud_actividad.php");
 require("../controlador/actividadDir.php");
 $crud=new CrudActividad();
-$activid= new ActividadDir();
+$activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 $listaActividadDir = $crud->mostrar();
 ?>
