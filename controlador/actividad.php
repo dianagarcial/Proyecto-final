@@ -20,6 +20,9 @@
 		private $pi;
 		private $so;
 
+		private $nomProf;
+		private $apeProf;
+
 		private $codrubrica;
 		private $archirubrica;
 		private $nomrubrica;
@@ -67,39 +70,7 @@
 		public function setMedioEv($medioEv){
 			$this->medioEv = $medioEv;
 		}
-		public function getCodAsig(){
-		return $this->codAsig;
-		}
- 
-		public function setCodAsig($codAsig){
-			$this->codAsig = $codAsig;
-		}
- 
-		public function getPi(){
-			return $this->pi;
-		}
- 
-		public function setPi($pi){
-			$this->pi = $pi;
-		}
 
-		
-		public function getGrupo(){
-			return $this->grupo;
-		}
- 
-		public function setGrupo($grupo){
-			$this->grupo = $grupo;
-		}
- 
-		public function getNomAsig(){
-		return $this->nomAsig;
-		}
- 
-		public function setNomAsig($nomAsig){
-			$this->nomAsig = $nomAsig;
-		}
-		
 		public function getEstado(){
 			return $this->estado;
 		}
@@ -114,13 +85,193 @@
 		public function setFentrega($fentrega){
 			$this->fentrega = $fentrega;
 		}
-		
-        public function getFlimite(){
+
+
+
+
+		public function getGrupo(){
+			return $this->grupo;
+		}
+ 
+		public function setGrupo($grupo){
+			$this->grupo = $grupo;
+		}
+
+		public function getNumGrupo(){
+			return $this->numGrupo;
+		}
+		public function setNumGrupo($numGrupo){
+			$this->numGrupo = $numGrupo;
+		}
+
+
+
+
+
+
+		public function getCodProgAcademico(){
+			return $this->codProgAcademico;
+			}
+	 
+		public function setCodProgAcademico($codProgAcademico){
+			$this->codProgAcademico = $codProgAcademico;
+		}
+
+		public function getNomProgAcademico(){
+			return $this->nomProgAcademico;
+			}
+	 
+		public function setNomProgAcademico($nomProgAcademico){
+			$this->nomProgAcademico = $nomProgAcademico;
+		}
+
+
+
+
+
+		public function getCodAsig(){
+		return $this->codAsig;
+		}
+ 
+		public function setCodAsig($codAsig){
+			$this->codAsig = $codAsig;
+		}
+
+		public function getNomAsig(){
+			return $this->nomAsig;
+			}
+	 
+		public function setNomAsig($nomAsig){
+			$this->nomAsig = $nomAsig;
+		}
+
+
+
+
+		public function getPeriodo(){
+			return $this->periodo;
+		}
+ 
+		public function setPeriodo($periodo){
+			$this->periodo = $periodo;
+		}
+
+		public function getFlimite(){
 			return $this->flimite;
 		}
  
 		public function setFlimite($flimite){
 			$this->flimite = $flimite;
 		}
+
+
+
+
+
+ 
+		public function getPi(){
+			return $this->pi;
+		}
+ 
+		public function setPi($pi){
+			$this->pi = $pi;
+		}
+
+		public function getSo(){
+			return $this->so;
+		}
+ 
+		public function setSo($so){
+			$this->so = $so;
+		}
+
+
+
+
+
+		public function getNomProf(){
+			return $this->nomProf;
+		}
+ 
+		public function setNomProf($nomProf){
+			$this->nomProf = $nomProf;
+		}
+
+		public function getApeProf(){
+			return $this->apeProf;
+		}
+ 
+		public function setApeProf($apeProf){
+			$this->apeProf = $apeProf;
+		}
+
+		
+		
+
+
+
+		public function getCodrubrica(){
+			return $this->codrubrica;
+		}
+ 
+		public function setCodrubrica($codrubrica){
+			$this->codrubrica = $codrubrica;
+		}
+
+		public function getArchirubrica(){
+			return $this->codrubrica;
+		}
+ 
+		public function setArchirubrica($codrubrica){
+			$this->codrubrica = $codrubrica;
+		}
+		
+		public function getNomrubrica(){
+			return $this->nomrubrica;
+		}
+ 
+		public function setNomrubrica($nomrubrica){
+			$this->nomrubrica = $nomrubrica;
+		}
+
+		public function getFecharubrica(){
+			return $this->fecharubrica;
+		}
+ 
+		public function setFecharubrica($fecharubrica){
+			$this->fecharubrica = $fecharubrica;
+		}
+
+		public function getComenrubrica(){
+			return $this->comenrubrica;
+		}
+ 
+		public function setComenrubrica($comenrubrica){
+			$this->comenrubrica = $comenrubrica;
+		}
+
+		public function getCalirubrica(){
+			return $this->calirubrica;
+		}
+ 
+		public function setCalirubrica($calirubrica){
+			$this->calirubrica = $calirubrica;
+		}
+		public function getCalicommentrubrica(){
+			return $this->calicommentrubrica;
+		}
+ 
+		public function setCalicommentrubrica($calicommentrubrica){
+			$this->calicommentrubrica = $calicommentrubrica;
+		}
+
+
+
+
+
+
+
+
+
 	}
 ?>

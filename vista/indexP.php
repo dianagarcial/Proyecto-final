@@ -28,6 +28,7 @@ $listaActividadPro = $crud->mostrarPro();
        
 
         <h1>Vista general de la documentación</h1>
+        <h1>Documentos entregados</h1>
         
 
 
@@ -59,17 +60,72 @@ $listaActividadPro = $crud->mostrarPro();
                                     <tbody id="cuerpoTabla">
                                     <?php foreach ($listaActividadPro as $activid) {?>
 		                        	<tr>
-                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getGrupo() ?></td>
+                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
 				                        <td><?php echo $activid->getNomAsig() ?></td>
-				                        <td><?php echo $activid->getGrupo() ?> </td>
+				                        <td><?php echo $activid->getNumGrupo() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
                                         <td><?php echo $activid->getFlimite() ?> </td>
-                                        <td><a href="regisActividad.php?id=<?php echo $activid->getId()?>&accion=a">Ver más</a> </td>
+                                        <td><a id="vermas1" href="revisionprof.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
 				
+                                    </tr>
+                                    <?php 
+                                    }
+                                    ?>
+                               
                                         
-                                        <td class="cell100 column7"><a href="revisiondocente-rec.html" id="vermas1">Ver más</a></td>
+                                        
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <h1>Documentos no entregados</h1>
+
+        <div class="limiter" id="contenedor">
+            <div class="container-table100" id="tablaboton">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+
+
+                        <div class="wrap-table100-nextcols js-pscroll">
+                            <div class="table100-nextcols">
+                                <table id="tablaini">
+                                   
+                                    <tr>
+
+                                        <th>Documento</th>
+                                        <th>Asignatura</th>
+                                        <th>Grupo</th>
+                                        <th>PI</th>
+                                        <th>Estado</th>
+                                        <th>Fecha de entrega</th>
+                                        <th>Fecha límite</th>
+
+                                    </tr>
+
+                                
+                                    </thead>
+
+                                    <tbody id="cuerpoTabla">
+                                    <?php foreach ($listaActividadPro as $activid) {?>
+		                        	<tr>
+                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
+				                        <td><?php echo $activid->getNomAsig() ?></td>
+				                        <td><?php echo $activid->getNumGrupo() ?> </td>
+                                        <td><?php echo $activid->getPi() ?> </td>
+                                        <td><?php echo $activid->getEstado() ?> </td>
+                                        <td><?php echo $activid->getFentrega() ?> </td>
+                                        <td><?php echo $activid->getFlimite() ?> </td>
+                                        <td><a id="vermas1" href="revisionprof.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
+				
                                     </tr>
                                     <?php 
                                     }
