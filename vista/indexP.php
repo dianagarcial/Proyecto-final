@@ -5,7 +5,8 @@ require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
-$listaActividadPro = $crud->mostrarPro();
+$listaActividadPro = $crud->mostrarProEnv();
+$listaActividadNEPro = $crud->mostrarProNEnv();
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,7 @@ $listaActividadPro = $crud->mostrarPro();
        
 
         <h1>Vista general de la documentación</h1>
-        <h1>Documentos entregados</h1>
+        <h1>Actividades entregadas</h1>
         
 
 
@@ -44,7 +45,7 @@ $listaActividadPro = $crud->mostrarPro();
                                    
                                     <tr>
 
-                                        <th>Documento</th>
+                                        <th>Actividades</th>
                                         <th>Asignatura</th>
                                         <th>Grupo</th>
                                         <th>PI</th>
@@ -87,7 +88,7 @@ $listaActividadPro = $crud->mostrarPro();
         </div>
         <br>
 
-        <h1>Documentos no entregados</h1>
+        <h1>Actividades no entregadas</h1>
 
         <div class="limiter" id="contenedor">
             <div class="container-table100" id="tablaboton">
@@ -101,7 +102,7 @@ $listaActividadPro = $crud->mostrarPro();
                                    
                                     <tr>
 
-                                        <th>Documento</th>
+                                        <th>Actividades</th>
                                         <th>Asignatura</th>
                                         <th>Grupo</th>
                                         <th>PI</th>
@@ -115,7 +116,7 @@ $listaActividadPro = $crud->mostrarPro();
                                     </thead>
 
                                     <tbody id="cuerpoTabla">
-                                    <?php foreach ($listaActividadPro as $activid) {?>
+                                    <?php foreach ($listaActividadNEPro as $activid) {?>
 		                        	<tr>
                                         <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
 				                        <td><?php echo $activid->getNomAsig() ?></td>
@@ -124,7 +125,7 @@ $listaActividadPro = $crud->mostrarPro();
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
                                         <td><?php echo $activid->getFlimite() ?> </td>
-                                        <td><a id="vermas1" href="revisionprof.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
+                                        <td><a id="vermas1" href="inicioRegisRub.php?id=<?php echo $activid->getId()?>&accion=aN ">Ver más</a> </td>
 				
                                     </tr>
                                     <?php 

@@ -29,5 +29,7 @@ $lactividad= new Actividad();
 	// si la variable accion enviada por GET es == 'a', envía a la página actualizar.php 
 	}elseif($_GET['accion']=='a'){
 		header('Location: revisionprof.php');
+	}elseif($_GET['accion']=='aN'){
+		header('Location: inicioRegisRub.php');
 	}
 ?>

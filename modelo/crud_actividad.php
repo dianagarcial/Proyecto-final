@@ -69,17 +69,49 @@ require_once('conexion.php');
 			return $listaActividadGen;
 		}
 		*/
-		public function mostrarPro(){
+		public function mostrarProEnv(){
 			$db=Db::conectar();
 			$listaActividadPro=[];
 			$select=$db->query("SELECT ASIGNATURA.NOMBRE as asigN, ASIGNATURA.CODIGO as asigC, ACTIVIDAD.codigo as id,\n"
-								. "GRUPO.codigo_Grup as grupo,ACTIVIDAD.CODPI as pi,IFNULL(ACTIVIDAD.ESTADO, 'No Entregado') as estado,\n"
+								. "GRUPO.codigo_Grup as grupo,ACTIVIDAD.CODPI as pi,RUBRICA.CALIFICACION as estado,\n"
+								. "IFNULL(ACTIVIDAD.FECHAENTREGA, '-') as fentrega, PERIODO.fechaFin as fechalim FROM ACTIVIDAD JOIN PERIODO\n"
+								. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN GRUPO\n"
+								. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"
+								. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR\n"
+    							. "ON GRUPO.correo_pr=PROFESOR.usuario JOIN RUBRICA\n"
+								. "ON ACTIVIDAD.codigo=RUBRICA.codigo_act \n"
+    							. "WHERE PROFESOR.usuario='jose.luis' AND ACTIVIDAD.ESTADO='Entregado';");
+								
+
+			
+			foreach($select->fetchAll() as $AD){
+				$myAD= new Actividad();
+				$myAD->setid($AD['id']);
+				$myAD->setCodAsig($AD['asigC']);
+				$myAD->setPi($AD['pi']);
+				$myAD->setNumGrupo($AD['grupo']);
+				$myAD->setNomAsig($AD['asigN']);
+				$myAD->setEstado($AD['estado']);
+				$myAD->setFentrega($AD['fentrega']);
+				$myAD->setFlimite($AD['fechalim']);
+				$listaActividadPro[]=$myAD;
+			}
+
+			return $listaActividadPro;
+		}
+
+
+		public function mostrarProNEnv(){
+			$db=Db::conectar();
+			$listaActividadPro=[];
+			$select=$db->query("SELECT ASIGNATURA.NOMBRE as asigN, ASIGNATURA.CODIGO as asigC, ACTIVIDAD.codigo as id,\n"
+								. "GRUPO.codigo_Grup as grupo,ACTIVIDAD.CODPI as pi,IFNULL(ACTIVIDAD.ESTADO, 'Pendiente') as estado,\n"
 								. "IFNULL(ACTIVIDAD.FECHAENTREGA, '-') as fentrega, PERIODO.fechaFin as fechalim FROM ACTIVIDAD JOIN PERIODO\n"
 								. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN GRUPO\n"
 								. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"
 								. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR\n"
     							. "ON GRUPO.correo_pr=PROFESOR.usuario\n"
-    							. "WHERE PROFESOR.usuario='jose.luis';");
+    							. "WHERE PROFESOR.usuario='jose.luis'AND ACTIVIDAD.ESTADO IS NULL;");
 								
 
 			
@@ -132,6 +164,38 @@ require_once('conexion.php');
 			$myObAct->setCodAsig($obAct['codAsig']);
 			$myObAct->setCalirubrica($obAct['caliRub']);
 			$myObAct->setCalicommentrubrica($obAct['comDir']);
+
+			return $myObAct;
+		}
+
+
+		public function obtenerIngrActividad($id){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT ACTIVIDAD.CODIGO as id, PROGRAMAACADEMICO.nombre as prog ,ASIGNATURA.nombre as asig,GRUPO.codigo_Grup as grupo,\n"
+					. "PERIODO.codigo as periodo,\n"
+					. "SO.codigo as so, PI.codigo as pi, ACTIVIDAD.medioEvaluacion as medio FROM ACTIVIDAD JOIN PERIODO\n"
+					. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN PI\n"
+					. "ON PI.codigo=ACTIVIDAD.codPI JOIN SO\n"
+					. "ON SO.codigo=PI.codigo_SO JOIN GRUPO\n"
+					. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"
+					. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROGRAMAACADEMICO\n"
+					. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.COD_programa JOIN PROFESOR\n"
+					. "ON GRUPO.correo_pr=PROFESOR.usuario \n"
+					. "WHERE PROFESOR.usuario='jose.luis' AND ACTIVIDAD.codigo=:id");
+							
+			$select->bindValue('id',$id);
+			$select->execute();
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setId($obAct['id']);
+			$myObAct->setNomProgAcademico($obAct['prog']);
+			$myObAct->setNomAsig($obAct['asig']);
+			$myObAct->setNumGrupo($obAct['grupo']);
+			$myObAct->setPeriodo($obAct['periodo']);
+			$myObAct->setSo($obAct['so']);
+			$myObAct->setPi($obAct['pi']);
+			$myObAct->setMedioEv($obAct['medio']);
+			
 
 			return $myObAct;
 		}
