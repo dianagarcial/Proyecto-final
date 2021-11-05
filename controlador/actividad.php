@@ -1,86 +1,126 @@
 <?php
 	class Actividad{
-		private $programa;
-		private $asignatura;
-		private $periodo;
-		private $director;
-		private $metodo;
-		private $stOut1;
-		private $piOut1;
-		private $stOut2;
-		private $piOut2;
+		private $id;
+		private $medioEvaluacion;
+		private $estado;
+		private $fentrega;
 
-	}
+		private $grupo;
+		private $numGrupo;
+
+		private $codProgAcademico;
+		private $nomProgAcademico;
+
+		private $codAsig;
+		private $nomAsig;
+
+		private $periodo;
+		private $flimite;
+
+		private $pi;
+		private $so;
+
+		private $codrubrica;
+		private $archirubrica;
+		private $nomrubrica;
+		private $fecharubrica;
+		private $comenrubrica;
+		private $calirubrica;
+		private $calicommentrubrica;
+
+		private $codevidencia1;
+		private $nomevidencia1;
+		private $archevidencia1;
+		private $nivelevidencia1;		
+		private $comevidencia1;
+		
+		private $codevidencia2;
+		private $nomevidencia2;
+		private $archevidencia2;
+		private $nivelevidencia2;		
+		private $comevidencia2;
+
+		private $codevidencia3;
+		private $nomevidencia3;
+		private $archevidencia3;
+		private $nivelevidencia3;		
+		private $comevidencia3;
+
+		//FALTAN LOS GET Y SET DE TODO ESTO LOS VOY AGREGANDO CUANDO LOS UTILIZO       
+
+		
  
 		function __construct(){}
  
-		public function getPrograma(){
-		return $this->programa;
+		public function getId(){
+		return $this->id;
+		}
+	
+		public function setId($id){
+			$this->id = $id;
+		}
+
+		public function getMedioEv(){
+			return $this->medioEv;
 		}
  
-		public function setPrograma($programa){
-			$this->programa = $programa;
+		public function setMedioEv($medioEv){
+			$this->medioEv = $medioEv;
+		}
+		public function getCodAsig(){
+		return $this->codAsig;
 		}
  
-		public function getAsignatura(){
-			return $this->asignatura;
+		public function setCodAsig($codAsig){
+			$this->codAsig = $codAsig;
 		}
  
-		public function setAsignatura($asignatura){
-			$this->asignatura = $asignatura;
+		public function getPi(){
+			return $this->pi;
+		}
+ 
+		public function setPi($pi){
+			$this->pi = $pi;
 		}
 
 		
-		public function getPeriodo(){
-			return $this->periodo;
+		public function getGrupo(){
+			return $this->grupo;
 		}
  
-		public function setPeriodo($periodo){
-			$this->periodo = $periodo;
+		public function setGrupo($grupo){
+			$this->grupo = $grupo;
 		}
  
-		public function getDirector(){
-		return $this->director
+		public function getNomAsig(){
+		return $this->nomAsig;
 		}
  
-		public function setDirector($director){
-			$this->director = $director;
+		public function setNomAsig($nomAsig){
+			$this->nomAsig = $nomAsig;
 		}
-		public function getMetodo(){
-			return $this->metodo;
-		}
- 
-		public function setMetodo($metodo){
-			$this->metodo = $metodo;
-		}
-
-		public function getStOut1(){
-			return $this->stOut1;
+		
+		public function getEstado(){
+			return $this->estado;
 		}
  
-		public function setStOut1($stOut1){
-			$this->stOut1 = $stOut1;
+		public function setEstado($estado){
+			$this->estado = $estado;
 		}
-		public function getPiOut1(){
-			return $this->piOut1;
-		}
- 
-		public function setPiOut1($piOut1){
-			$this->piOut1 = $piOut1;
-		}
-		public function getStOut2(){
-			return $this->stOut2;
+		public function getFentrega(){
+			return $this->fentrega;
 		}
  
-		public function setStOut2($stOut2){
-			$this->stOut2 = $stOut2;
+		public function setFentrega($fentrega){
+			$this->fentrega = $fentrega;
 		}
-		public function getPiOut2(){
-			return $this->piOut2;
+		
+        public function getFlimite(){
+			return $this->flimite;
 		}
  
-		public function setPiOut2($piOut2){
-			$this->piOut2 = $piOut2;
+		public function setFlimite($flimite){
+			$this->flimite = $flimite;
 		}
 	}
 ?>

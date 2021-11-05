@@ -32,9 +32,9 @@ require_once('conexion.php');
 			$db=Db::conectar();
 			$listaActividadDir=[];
 			$select=$db->query('(SELECT ASIGNATURA.codigo as codigoAs, (SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as nombreP, (SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as apellidoP, ACTIVIDAD.fechaLimite as fechalim ,RUBRICA.fecha as fechaen, GRUPO.codigo as codGru, ASIGNATURA.nombre as asig,CALIFICACION.estado as estado, EVALUACION.codigo_PI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN RUBRICA ON GRUPO.codigo=RUBRICA.codigo_grp JOIN CALIFICACION ON RUBRICA.codigo=CALIFICACION.codigo_rub WHERE DIRECTORPROGRAMA.correo_usuario="juan.carlos@uao.edu.co") UNION (SELECT ASIGNATURA.codigo as codigoAs, (SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as nombreP, (SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as apellidoP, ACTIVIDAD.fechaLimite as fechalim,"-",GRUPO.codigo as codGru, ASIGNATURA.nombre as asig, "Pendiente",EVALUACION.codigo_PI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN RUBRICA ON GRUPO.codigo=RUBRICA.codigo_grp JOIN CALIFICACION ON RUBRICA.codigo=CALIFICACION.codigo_rub WHERE DIRECTORPROGRAMA.correo_usuario ="juan.carlos@uao.edu.co")');
- 
+			
 			foreach($select->fetchAll() as $AD){
-				$myAD= new ActividadDir();
+				$myAD= new Actividad();
 				$myAD->setCodAsig($AD['codigoAs']);
 				$myAD->setPi($AD['codPI']);
 				$myAD->setGrupo($AD['codGru']);
@@ -71,16 +71,26 @@ require_once('conexion.php');
 		public function mostrarPro(){
 			$db=Db::conectar();
 			$listaActividadPro=[];
-			$select=$db->query('(SELECT ASIGNATURA.codigo as codigoAs, ACTIVIDAD.fechaLimite as fechalim ,RUBRICA.fecha as fechaen, GRUPO.codigo as codGru, ASIGNATURA.nombre as asig,CALIFICACION.estado as estado, EVALUACION.codigo_PI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN RUBRICA ON GRUPO.codigo=RUBRICA.codigo_grp JOIN CALIFICACION ON RUBRICA.codigo=CALIFICACION.codigo_rub WHERE PROFESOR.correo_usuario="jose.luis@uao.edu.co") UNION (SELECT ASIGNATURA.codigo as codigoAs, ACTIVIDAD.fechaLimite as fechalim,"-",GRUPO.codigo as codGru, ASIGNATURA.nombre as asig, "Pendiente",EVALUACION.codigo_PI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN RUBRICA ON GRUPO.codigo=RUBRICA.codigo_grp JOIN CALIFICACION ON RUBRICA.codigo=CALIFICACION.codigo_rub WHERE PROFESOR.correo_usuario="jose.luis@uao.edu.co")');
- 
+			$select=$db->query("SELECT ASIGNATURA.NOMBRE as asigN, ASIGNATURA.CODIGO as asigC, ACTIVIDAD.codigo as id,\n"
+								. "ACTIVIDAD.CODIGOGRUPO as grupo,ACTIVIDAD.CODPI as pi,IFNULL(ACTIVIDAD.ESTADO, \"No Entregado\") as estado,\n"
+								. "IFNULL(ACTIVIDAD.FECHAENTREGA, '-') as fentrega, PERIODO.fechaFin as fechalim FROM ACTIVIDAD JOIN PERIODO\n"
+								. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN GRUPO\n"
+								. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"
+								. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROGRAMAACADEMICO\n"
+								. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.cod_programa JOIN DIRECTORPROGRAMA\n"
+								. "ON DIRECTORPROGRAMA.codigo_prog=PROGRAMAACADEMICO.codigo\n"
+								. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos';");
+
+			
 			foreach($select->fetchAll() as $AD){
-				$myAD= new ActividadPro();
-				$myAD->setCodAsig($AD['codigoAs']);
-				$myAD->setPi($AD['codPI']);
-				$myAD->setGrupo($AD['codGru']);
-				$myAD->setNomAsig($AD['asig']);
+				$myAD= new Actividad();
+				$myAD->setid($AD['id']);
+				$myAD->setCodAsig($AD['asigC']);
+				$myAD->setPi($AD['pi']);
+				$myAD->setGrupo($AD['grupo']);
+				$myAD->setNomAsig($AD['asigN']);
 				$myAD->setEstado($AD['estado']);
-				$myAD->setFentrega($AD['fechaen']);
+				$myAD->setFentrega($AD['fentrega']);
 				$myAD->setFlimite($AD['fechalim']);
 				$listaActividadPro[]=$myAD;
 			}

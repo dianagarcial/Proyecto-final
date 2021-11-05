@@ -1,9 +1,9 @@
 <?php
 //incluye la clase Libro y CrudLibro
 include("../modelo/crud_actividad.php");
-require("../controlador/actividadPro.php");
+require("../controlador/actividad.php");
 $crud=new CrudActividad();
-$activid= new ActividadPro();
+$activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 $listaActividadPro = $crud->mostrarPro();
 ?>
@@ -44,18 +44,12 @@ $listaActividadPro = $crud->mostrarPro();
                                     <tr>
 
                                         <th>Documento</th>
-
                                         <th>Asignatura</th>
                                         <th>Grupo</th>
                                         <th>PI</th>
                                         <th>Estado</th>
-
                                         <th>Fecha de entrega</th>
                                         <th>Fecha límite</th>
-
-                                        
-
-                                        
 
                                     </tr>
 
@@ -72,6 +66,8 @@ $listaActividadPro = $crud->mostrarPro();
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
                                         <td><?php echo $activid->getFlimite() ?> </td>
+                                        <td><a href="regisActividad.php?id=<?php echo $activid->getId()?>&accion=a">Ver más</a> </td>
+				
                                         
                                         <td class="cell100 column7"><a href="revisiondocente-rec.html" id="vermas1">Ver más</a></td>
                                     </tr>
