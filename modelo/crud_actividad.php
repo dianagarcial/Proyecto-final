@@ -119,7 +119,7 @@ require_once('conexion.php');
 			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR\n"
 			. "ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
 			. "PERIODO.fechaFin as fechalim, GRUPO.codigo_Grup as codGru,\n"
-			. "ASIGNATURA.nombre as asig,ACTIVIDAD.codPI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "ASIGNATURA.nombre as asig,ACTIVIDAD.codPI as codPI,IFNULL(ACTIVIDAD.ESTADO, 'Pendiente') as estado FROM USUARIO JOIN DIRECTORPROGRAMA \n"
 			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
 			. "ON DIRECTORPROGRAMA.CODIGO_PROG= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA\n"
 			. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.cod_programa JOIN GRUPO \n"

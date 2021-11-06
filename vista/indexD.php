@@ -6,7 +6,7 @@ $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 $listaActividadDir = $crud->mostrarDirEnv();
-//$listaActividadNEDir= $crud->mostrarDirNEnv();
+$listaActividadNEDir= $crud->mostrarDirNEnv();
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,6 +31,7 @@ $listaActividadDir = $crud->mostrarDirEnv();
        
 
         <h1>Vista general de la documentación</h1>
+        <h1>Actividades entregadas</h1>
         
 
 
@@ -86,7 +87,7 @@ $listaActividadDir = $crud->mostrarDirEnv();
                 </div>
             </div>
         </div>
-        <br>
+        <h1>Actividades no entregadas</h1>
 
         
         <div class="limiter" id="contenedor">
@@ -108,14 +109,14 @@ $listaActividadDir = $crud->mostrarDirEnv();
                                         <th>Docente</th>
                                         <th>Estado</th>
                                         <th>PI</th>
-                                        <th>Fecha entrega</th>
+                                        <th>Fecha limite</th>
 
 
                                     </tr>
                                 </thead>
 
                                     <tbody id="cuerpoTabla">
-                                    <?php foreach ($listaActividadDir as $activid) {?>
+                                    <?php foreach ($listaActividadNEDir as $activid) {?>
 		                        	<tr>
                                         <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
 				                        <td><?php echo $activid->getNomAsig() ?></td>
@@ -123,8 +124,8 @@ $listaActividadDir = $crud->mostrarDirEnv();
                                         <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
-                                        <td><?php echo $activid->getFentrega() ?> </td>
-                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=aD ">Ver más</a> </td>
+                                        <td><?php echo $activid->getFlimite() ?> </td>
+                                        <td><a id="vermas1" href="#">Notificar</a> </td>
                                     </tr>
                                     <?php 
                                     }

@@ -371,7 +371,7 @@ h4#info{
     color: #000000;
     display: table-row;}
 
-    button.enviarRevision {
+    a.enviarRevision {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
         background: #BA181B;
         border: 1px solid #B1A7A6;
@@ -396,7 +396,7 @@ h4#info{
         
         
     }
-    button.enviarRevision:hover {
+    a.enviarRevision:hover {
             background-color: white; /* Green */
             color: #BA181B
         }

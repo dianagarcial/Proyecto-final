@@ -86,7 +86,7 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
                 </div>
             </div>
         </div>
-        <br>
+        
 
         <h1>Actividades no entregadas</h1>
 
