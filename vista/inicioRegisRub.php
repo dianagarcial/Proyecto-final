@@ -91,10 +91,7 @@ $activid=$crud->obtenerIngrActividad($_GET['id']);
         <div class=formatorow4>
         <button class="cancelar"  onclick="window.location.href='indexP.php'">Cancelar</button>
 
-            
-        
-        <button class="enviarRevision" onclick="window.location.href='registrarRUB.php?id=<?php echo $activid->getId()?>&accion=ar'">Registrar</button>
-            
+        <button class="enviarRevision"> <a id="vermas1"  href="registrarRUB.php?id=<?php echo $activid->getId()?>&accion=ar ">Registrar</a></button>
         </div>
 
     </div>

@@ -1,3 +1,14 @@
+<?php
+//incluye la clase Libro y CrudLibro
+include("../modelo/Marin-crud_actividad.php");
+require("../controlador/actividad.php");
+$crud=new CrudActividad();
+$activid= new Actividad();
+//obtiene todos los libros con el método mostrar de la clase crud
+
+$activid=$crud->ConsultarRegistrar($_GET['id']);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +25,9 @@
     <link href="css/footer.css" rel="stylesheet" />
     <script src="/controlador/funcionarchivo.js"></script>
 
+
+
+    
 </head>
 <?php require "headerP.php" ?>
         
@@ -26,7 +40,7 @@
         
 
      
-    
+
 
     
         <div class= formatorow1>
@@ -40,22 +54,24 @@
                                    
                     <div class=columinfo1>
                         <h5 id="infoletra">*Nombre del documento</h5>
-                        <label class="labelestado" id="nomdoc">Rub 131313-1.1-1<label> 
+                        <label class="labelestado" id="nomdoc">Rub <?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>
+                            
+                         <label> 
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Asignatura</h5> 
-                        <label class="labelestado" id="asignatu">Elementos Biomédicos</label>
+                        <label class="labelestado" id="asignatu"> <?php echo $activid->getNomAsig() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Grupo</h5> 
-                        <label class="labelestado" id="periodo">1</label>
+                        <label class="labelestado" id="periodo"><?php echo $activid->getNumGrupo() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Periodo</h5> 
-                        <label class="labelestado" id="periodo">2021-03</label>
+                        <label class="labelestado" id="periodo"><?php echo $activid->getPeriodo() ?></label>
                     </div>
 
                     
@@ -64,17 +80,17 @@
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Student Outcomes</h5> 
-                        <label class="labelestado" id="sot">1</label>
+                        <label class="labelestado" id="sot"><?php echo $activid->getSo() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Performance indicators</h5> 
-                        <label class="labelestado" id="pi">1.1</label>
+                        <label class="labelestado" id="pi"><?php echo $activid->getPi() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">Método de calificación</h5> 
-                        <label class="labelestado" id="actasociada">Parcial corte 1</label>
+                        <label class="labelestado" id="actasociada"><?php echo $activid->getMedioEv() ?></label>
                     </div>
 
                     <div class=columinfo1>
@@ -116,7 +132,7 @@
             </div>
 
         
-            
+         
 
 
 

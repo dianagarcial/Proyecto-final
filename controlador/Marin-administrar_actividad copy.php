@@ -28,6 +28,8 @@ $lactividad= new Actividad();
 		//header('Location: index.php');		
 	// si la variable accion enviada por GET es == 'a', envía a la página actualizar.php 
 	}
+}elseif($_GET['accion']=='IR'){
+	header('Location: RegistrarRUB.php');
 
 	
 ?>
