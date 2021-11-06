@@ -33,7 +33,10 @@ $lactividad= new Actividad();
 		header('Location: inicioRegisRub.php');
 	}elseif($_GET['accion']=='aD'){
 		header('Location: revisionDirector.php');
-	}
+	
+}elseif($_GET['accion']=='ar'){
+	header('Location: registrarRUB.php');
+}
 
 	
 ?>
