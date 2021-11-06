@@ -253,7 +253,7 @@ require_once('conexion.php');
 		public function obtenerIngrActividad($id){
 			$db=Db::conectar();
 			$select=$db->prepare("SELECT ACTIVIDAD.CODIGO as id, PROGRAMAACADEMICO.nombre as prog ,ASIGNATURA.nombre as asig,GRUPO.codigo_Grup as grupo,\n"
-					. "PERIODO.codigo as periodo,\n"
+					. "PERIODO.codigo as periodo,(SELECT USUARIO.nombre FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario) as DirectorNomb,(SELECT USUARIO.apellido FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario) as DirectorApellido, \n"
 					. "SO.codigo as so, PI.codigo as pi, ACTIVIDAD.medioEvaluacion as medio FROM ACTIVIDAD JOIN PERIODO\n"
 					. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN PI\n"
 					. "ON PI.codigo=ACTIVIDAD.codPI JOIN SO\n"
@@ -270,6 +270,8 @@ require_once('conexion.php');
 			$myObAct= new Actividad();
 			$myObAct->setId($obAct['id']);
 			$myObAct->setNomProgAcademico($obAct['prog']);
+			$myObAct->setNomProf($obAct['DirectorNomb']);
+			$myObAct->setApeProf($obAct['DirectorApellido']);
 			$myObAct->setNomAsig($obAct['asig']);
 			$myObAct->setNumGrupo($obAct['grupo']);
 			$myObAct->setPeriodo($obAct['periodo']);
