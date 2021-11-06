@@ -58,6 +58,11 @@ $activid=$crud->obtenerIngrActividad($_GET['id']);
                     </div>
 
                     <div class=columinfo1>
+                        <h5 id="infoletra">Director</h5> 
+                        <h5 class="infoletraRe" id=periodoRA><?php echo $activid-> getNomProf()." ".$activid-> getApeProf()?> </h5> 
+                    </div>
+
+                    <div class=columinfo1>
                         <h5 id="infoletra">Student Outcome</h5> 
                         <h5 class="infoletraRe" id=SORA>SO <?php echo $activid-> getSo()?></h5> 
                     </div>
