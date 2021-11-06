@@ -1,3 +1,16 @@
+<?php
+
+//incluye la clase Libro y CrudLibro
+include("../modelo/JP-cud_actividad.php");
+require("../controlador/actividadDir.php");
+$crud=new JP-cud_actividad();
+$activid= new Actividad();
+//obtiene todos los libros con el método mostrar de la clase crud
+$listaAsignatura = $crud->mostrarASIG();
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +52,11 @@
                                     <tr>
 
                                         <th>Documento</th>
-                                        <th>Docente</th>
+                                        <th>Grupo</th>
                                         <th>Fecha entrega</th>
                                         <th>Estado</th>
                                         <th>Fecha Aprobación</th>
-                                        <th>Ver más</th>  
+                                         
 
                                     </tr>
 
@@ -55,7 +68,7 @@
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column6">Aprobada</td>
                                             <td class="cell100 column7">19-10-2021</td>
-                                            <td class="cell100 column9"><a href="revisionDirector-ap.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column9"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                             
 
                                         </tr>
@@ -66,7 +79,7 @@
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column6">Rechazada</td>
                                             <td class="cell100 column8">15-10-2021</td>
-                                            <td class="cell100 column9"><a href="#" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column9"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                             
 
                                         </tr>
@@ -77,7 +90,7 @@
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column5">Aprobada</td>
                                             <td class="cell100 column6">13-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisiondocente.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                         </tr>
 
 
@@ -87,7 +100,7 @@
                                             <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
                                             <td class="cell100 column6">Recibida</td>
                                             <td class="cell100 column8">13-10-2021</td>
-                                            <td class="cell100 column9"><a href="revisionactividad.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column9"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                             
                                         </tr>
 
@@ -97,7 +110,7 @@
                                             <td class="cell100 column6">Luz Estela Martinez Florez</td>
                                             <td class="cell100 column5">Aprobada</td>
                                             <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisiondocente.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                         </tr>
 
                                         <tr class="row100 body">
@@ -106,7 +119,7 @@
                                             <td class="cell100 column6">Hernando Aguilar Montaño</td>
                                             <td class="cell100 column5">Aprobada</td>
                                             <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisiondocente.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                         </tr>
 
                                         <tr class="row100 body">
@@ -115,7 +128,7 @@
                                             <td class="cell100 column6">Luz Estela Martinez Florez</td>
                                             <td class="cell100 column5">Aprobada</td>
                                             <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisiondocente.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                         </tr>
 
                                         <tr class="row100 body">
@@ -124,7 +137,7 @@
                                             <td class="cell100 column6">Hernando Aguilar Montaño</td>
                                             <td class="cell100 column5">Aprobada</td>
                                             <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisiondocente.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                         </tr>
 
                                         <tr class="row100 body">
@@ -133,7 +146,7 @@
                                             <td class="cell100 column6">Luz Estela Martinez Florez</td>
                                             <td class="cell100 column5">Rechazada</td>
                                             <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisiondocente.html" id="vermas1">Ver más</a></td>
+                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
                                         </tr>
 
                                          
