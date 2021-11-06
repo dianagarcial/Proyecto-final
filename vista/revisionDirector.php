@@ -163,7 +163,7 @@
                                 <option value="rechazado">Rechazado</option>                           
                         </select>
                 
-                <textarea class=estilotextarea2 cols="60" rows="8"></textarea>
+                <input type= 'textarea' class=estilotextarea2 cols="60" rows="8" name='comentario' value='<?php echo $activid->getComentario() ?>'>
             </div>
         
             

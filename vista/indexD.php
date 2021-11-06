@@ -70,7 +70,7 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
-                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=aD ">Ver más</a> </td>
+                                        <td><a id="vermas1" href="consulActividad.php?id=<?php echo $activid->getId()?>&accion=aD ">Ver más</a> </td>
                                     </tr>
                                     <?php 
                                     }
