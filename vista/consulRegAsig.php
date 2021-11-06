@@ -1,9 +1,9 @@
 <?php
 //incluye la clase Libro y CrudLibro
 include("../modelo/crud_actividad.php");
-require("../controlador/actividadGeneral.php");
+require("../controlador/actividad.php");
 $crud=new CrudActividad();
-$activid= new ActividadGeneral();
+$activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 $listaActividadGen = $crud->mostraract();
 ?>
@@ -72,7 +72,7 @@ $listaActividadGen = $crud->mostraract();
 		                        	<tr>
                                         
 				                        <td><?php echo $activid->getNomAsig() ?></td>
-				                        <td><?php echo $activid->getDocente()." ".$activid->getDocenteA() ?> </td>
+				                        <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
                                         <td><?php echo $activid->getGrupo() ?> </td>
                                         <td><?php echo $activid->getSo() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>

@@ -1,7 +1,7 @@
       <div id="imghead">
         <label for="abrir-cerrar">   
                 <img id="menu" alt="Imagen no disponible" src="imagenes/menu.png" /> </label>
-                <a href="#"><img id="logo" alt="Imagen no disponible" src="imagenes/Logos.png" /></a>
+                <a href="indexD.php"><img id="logo" alt="Imagen no disponible" src="imagenes/Logos.png" /></a>
                 <h3 id="hola" class="hola">Hola, Juan Carlos</h3>
                 <a href="#"><img id="notif" alt="Imagen no disponible" src="imagenes/notifications.png" /></a>
                 <a href="#"><img id="perfil" alt="Imagen no disponible" src="imagenes/Perfil.png" /></a>
@@ -17,10 +17,10 @@
                     
                 
             <div id="sidebar" class="sidebar">
-                <li><a href="index.html" id="portal">Portal de gestión documental</a></li>
+                <li><a href="indexD.php" id="portal">Portal de gestión documental</a></li>
                 <ul class="menu" id="menus">
                     
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="indexD.php">Inicio</a></li>
                     <li><a href="#">Periodo académico</a></li>
                     <li><a href="#">Asignaturas</a></li>
                     <li class="submenuSO">
@@ -48,7 +48,7 @@
                            
                         </ul>
 
-                        <li><a href="ini.php">Registro Actividades</a></li>
+                        <li><a href="consulRegAsig.php">Registro Actividades</a></li>
                 </ul>
                 </div>
             

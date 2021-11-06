@@ -49,17 +49,27 @@ require_once('conexion.php');
 
 			return $listaActividadDir;
 		}
-
+		*/
 		public function mostraract(){
 			$db=Db::conectar();
 			$listaActividadGen=[];
-			$select=$db->query('SELECT ASIGNATURA.nombre as asig, (SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as nombreP, (SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.correo= PROFESOR.correo_usuario) as apellidoP, GRUPO.codigo as codGru,PI.codigo as picod, PI.codigo_SO as socod FROM USUARIO JOIN DIRECTORPROGRAMA ON USUARIO.correo= DIRECTORPROGRAMA.correo_usuario JOIN PROGRAMAACADEMICO ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ACTIVIDAD ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA ON ACTIVIDAD.codigo_asig=ASIGNATURA.codigo JOIN EVALUACION ON EVALUACION.codigo_act= ACTIVIDAD.codigo JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR ON GRUPO.correo_pr=PROFESOR.correo_usuario JOIN PI ON EVALUACION.codigo_PI=PI.codigo WHERE DIRECTORPROGRAMA.correo_usuario="juan.carlos@uao.edu.co"');
+			$select=$db->query("SELECT ASIGNATURA.nombre as asig,\n"
+			. "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP, \n"
+			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
+			. "GRUPO.codigo as codGru,PI.codigo as picod, PI.codigo_SO as socod FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
+			. "ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA \n"
+			. "ON ASIGNATURA.cod_programa= PROGRAMAACADEMICO.codigo JOIN GRUPO\n"
+			. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN ACTIVIDAD \n"
+			. "ON ACTIVIDAD.codigoGrupo=GRUPO.codigo JOIN PI \n"
+			. "ON ACTIVIDAD.codPi=PI.codigo \n"
+			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos';");
  
 			foreach($select->fetchAll() as $AD){
-				$myAD= new ActividadGeneral();
+				$myAD= new Actividad();
 				$myAD->setNomAsig($AD['asig']);
-				$myAD->setDocente($AD['nombreP']);
-				$myAD->setDocenteA($AD['apellidoP']);
+				$myAD->setNomProf($AD['nombreP']);
+				$myAD->setApeProf($AD['apellidoP']);
 				$myAD->setGrupo($AD['codGru']);
 				$myAD->setSo($AD['picod']);
 				$myAD->setPi($AD['socod']);
@@ -68,7 +78,7 @@ require_once('conexion.php');
 
 			return $listaActividadGen;
 		}
-		*/
+		
 
 		public function mostrarDirEnv(){
 			$db=Db::conectar();
