@@ -68,7 +68,7 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
                                         
-                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
+                                        <td><a id="vermas1" href="revisionprof.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
 				
                                     </tr>
                                     <?php 
