@@ -308,6 +308,8 @@ require_once('conexion.php');
 			return $myObAct;
 		}
 
+		
+
 		/*
 
 		public function obtenerpiselctabla($pi, $asig){

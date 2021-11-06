@@ -1,3 +1,13 @@
+<?php
+
+include("../modelo/JP-cud_actividad.php");
+require("../controlador/actividad.php");
+$crud=new CrudActividad();
+$activid= new Actividad();
+
+$activid=$crud->obtenerActividadDir($_GET['id']);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,66 +26,7 @@
     <script type="modules" src="/controlador/mysql.js"></script>
     
 
-</head>
-
-<div id="imghead">
-    <label for="abrir-cerrar">   
-        <img id="menu" alt="Imagen no disponible" src="imagenes/menu.png" /> </label>
-        <a href="#"><img id="logo" alt="Imagen no disponible" src="imagenes/Logos.png" /></a>
-        <h3 id="hola" class="hola">Hola, Juan Carlos</h3>
-        <a href="#"><img id="notif" alt="Imagen no disponible" src="imagenes/notifications.png" /></a>
-        <a href="#"><img id="perfil" alt="Imagen no disponible" src="imagenes/Perfil.png" /></a>
-    </div>
-
-<body>
-
-           
-    <div class="conte">
-            
-        <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
-         
-                
-            
-        <div id="sidebar" class="sidebar">
-            <li><a href="index.html" id="portal">Portal de gestión documental</a></li>
-            <ul class="menu" id="menus">
-                
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Periodo académico</a></li>
-                <li><a href="#">Asignaturas</a></li>
-                <li class="submenuSO">
-                    <a href="#"><span class="icon-rocket"></span>Student Outcomes(SO)<span class="caret icon-arrow-down6"></span></a>
-                    <ul class="children">
-                        <li><a href="so1.html">SO1<span class="icon-dot"></span></a></li>
-                        <li><a href="so2.html">SO2 <span class="icon-dot"></span></a></li>
-                        <li><a href="so3.html">SO3 <span class="icon-dot"></span></a></li>
-                        <li><a href="#">SO4 <span class="icon-dot"></span></a></li>
-                        <li><a href="#">SO5 <span class="icon-dot"></span></a></li>
-                        <li><a href="#">SO6 <span class="icon-dot"></span></a></li>
-                        <li><a href="#">SO7 <span class="icon-dot"></span></a></li>
-                        
-                    </ul>
-                </li>
-        
-        
-                <li class="submenuSO">
-                    <a href="#"><span class="icon-rocket"></span>Gestión documental<span class="caret icon-arrow-down6"></span></a>
-                    <ul class="children">
-                        <li><a href="#">Recibidos<span class="icon-dot"></span></a></li>
-                        <li><a href="#">Pendientes<span class="icon-dot"></span></a></li>
-                        <li><a href="#">Aprobados<span class="icon-dot"></span></a></li>
-                        <li><a href="#">Rechazados<span class="icon-dot"></span></a></li>
-                       
-                    </ul>
-
-                    <li><a href="registroactfut.html">Registro Actividades</a></li>
-            </ul>
-            </div>
-        
-        
-
-        
-
+<?php require "headerD.php" ?>
 
 <div id="contenido">
        
@@ -92,10 +43,10 @@
                 <h4 id="tituloDes" >131313-1.1-1</h4></div>
                 <img id="archivo" alt="Imagen no disponible" src="imagenes/folder_open.png" />
                 <div id="archcar">
-            <h4 id="tituloDes">Rub 131313-1.1-1.xls</h4>
-            <h4 id="tituloDes">EA 131313-1.1-1.pdf</h4>
-            <h4 id="tituloDes">EM 131313-1.1-1.pdf</h4>
-            <h4 id="tituloDes">EB 131313-1.1-1.pdf</h4>
+                <h4 id="tituloDes"><?php echo "RUB ".$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4>
+                <h4 id="tituloDes"><?php echo "EA ".$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4>
+               <h4 id="tituloDes"><?php echo "EM ".$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4>
+                <h4 id="tituloDes"><?php echo "EB ".$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4>
             </div>
 
             <button id="descarga">Descargar</button>
@@ -126,14 +77,17 @@
                            
                 </div>
                 <div class=columinfo2>
-                    <h5 class="infoletraw" id=programaRD>Ingeniería Biomédica</h5>
-                    <h5 class="infoletraw" id=asignaturaRD>Elementos Biomédicos</h5> 
-                    <h5 class="infoletraw" id=grupoRD>1</h5> 
-                    <h5 class="infoletraw" id=periodoRD>2021-03</h5>
-                    <h5 class="infoletraw" id=docenteRD>Jose Luis Hernandez Zambrano</h5>
-                    <h5 class="infoletraw" id=soRD>SO 1</h5>
-                    <h5 class="infoletraw" id=piRD>PI 1.1</h5>
-                    <h5 class="infoletraw" id="actasociada">Parcial corte 1</h5>    
+                   
+                    
+                        <h5 class="infoletraw" id=programaRD><?php echo $activid-> getNomProgAcademico()?></h5>
+                        <h5 class="infoletraw" id=asignaturaRD><?php echo $activid-> getNomAsig()?></h5> 
+                        <h5 class="infoletraw" id=grupoRD><?php echo $activid-> getNumGrupo()?></h5> 
+                        <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5>  
+                        <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5> 
+                        <h5 class="infoletraw" id=docenteRD><?php echo $activid-> getNomProf()." ".$activid-> getApeProf()?></h5> 
+                        <h5 class="infoletraw" id=soRD><?php echo $activid-> getSo() ?></h5> 
+                        <h5 class="infoletraw" id=piRD><?php echo $activid-> getPi() ?></h5>
+                        <h5 class="infoletraw" id=metCali><?php echo $activid-> getMedioEv() ?></h5>
                     
                                
                 </div>
@@ -157,13 +111,13 @@
                 </div>
                
                 <div class="estado2">
-                            <select id="selectEstado">
+                            <select id="selectEstado" name="calif">
                                 <option value="enviado">Sin calificación</option>
                                 <option value="aprobado">Aprobado</option>
                                 <option value="rechazado">Rechazado</option>                           
                         </select>
                 
-                <input type= 'textarea' class=estilotextarea2 cols="60" rows="8" name='comentario' value='<?php echo $activid->getComentario() ?>'>
+                <input type= 'textarea' class=estilotextarea2 cols="60" rows="8" name='comentario'>
             </div>
         
             

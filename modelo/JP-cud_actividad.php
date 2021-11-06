@@ -41,6 +41,83 @@ require_once('conexion.php');
 			return $listaAsignatura;
 		}
 
+
+		public function obtenerActividadDir($id){
+            $db=Db::conectar();
+            $select=$db->prepare("SELECT ACTIVIDAD.codigo as id, PROGRAMAACADEMICO.nombre as Programa,ASIGNATURA.nombre as Asignatura,ASIGNATURA.codigo as codigoAsg, Grupo.Codigo_Grup as grupo,\n"
+
+            . "PERIODO.codigo as Periodo,(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorNomb,\n"
+
+            . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorApellido, \n"
+
+            . "SO.codigo as So,PI.codigo as PI,ACTIVIDAD.medioEvaluacion as metodo FROM ACTIVIDAD JOIN PERIODO\n"
+
+            . "ON ACTIVIDAD.codPeriodo=Periodo.codigo JOIN PI\n"
+
+            . "ON ACTIVIDAD.codPI=PI.codigo join SO\n"
+
+            . "on PI.codigo_SO=SO.codigo join GRUPO\n"
+
+            . "ON ACTIVIDAD.codigoGrupo=grupo.CODIGO join Asignatura\n"
+
+            . "on GRUPO.codigo_asgs=ASIGNATURA.codigo join PROFESOR\n"
+
+            . "on GRUPO.correo_pr=PROFESOR.usuario join USUARIO\n"
+
+            . "ON PROFESOR.usuario=USUARIO.nomUSuario join PROGRAMAACADEMICO\n"
+
+            . "ON ASIGNATURA.COD_programa=PROGRAMAACADEMICO.codigo \n"
+
+            . "where PROFESOR.usuario='jose.luis' AND ACTIVIDAD.codigo=:id;");
+
+			$select->bindValue('id',$id);
+            $select->execute();
+            $obAct=$select->fetch();
+            $myObAct= new Actividad();
+            $myObAct->setId($obAct['id']);
+            $myObAct->setNomProgAcademico($obAct['Programa']);
+            $myObAct->setNomAsig($obAct['Asignatura']);
+            $myObAct->setNumGrupo($obAct['grupo']);
+            $myObAct->setPeriodo($obAct['Periodo']);
+            $myObAct->setNomProf($obAct['ProfesorNomb']);
+            $myObAct->setApeProf($obAct['ProfesorApellido']);
+            $myObAct->setSo($obAct['So']);
+            $myObAct->setPi($obAct['PI']);
+            $myObAct->setCodAsig($obAct['codigoAsg']);
+            $myObAct->setMedioEv($obAct['metodo']);
+
+            return $myObAct;
+        }
+
+		public function actualizar($activid){
+			$db=Db::conectar();
+			$actualizar=$db->prepare('UPDATE RUBRICA \n"
+
+			. "SET calificacion=:calif,\n"
+		
+			. "comentarioDir=\n"
+		
+			. "CASE\n"
+		
+			. "WHEN comentarioDir IS NULL THEN\n"
+		
+			. "comentarioDir\n"
+		
+			. "ELSE\n"
+		
+			. "comentarioDIr=: comentario\n"
+		
+			. "END\n"
+		
+			. "WHERE codigo_act =:id;');
+
+			
+			$actualizar->bindValue('id',$activid->getId());
+			$actualizar->bindValue('calif',$activid->getCalirubrica());
+			$actualizar->bindValue('comentario',$activid->getCalicommentrubrica());
+			$actualizar->execute();
+		}
+
 	}
 
     ?>
