@@ -215,7 +215,7 @@ require_once('conexion.php');
 		public function obtenerActividad($id){
 			$db=Db::conectar();
 			$select=$db->prepare("SELECT ACTIVIDAD.CODIGO as id, PROGRAMAACADEMICO.nombre as prog ,ASIGNATURA.nombre as asig,GRUPO.codigo_Grup as grupo,\n"
-					. "PERIODO.codigo as periodo, USUARIO.nombre as nombre, USUARIO.apellido as apellido,\n"
+					. "PERIODO.codigo as periodo,\n"
 					. "SO.codigo as so, PI.codigo as pi, ASIGNATURA.codigo as  codAsig, RUBRICA.calificacion as caliRub,\n"
 					. "RUBRICA.comentarioDir as comDir FROM ACTIVIDAD JOIN PERIODO\n"
 					. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN PI\n"
@@ -238,8 +238,6 @@ require_once('conexion.php');
 			$myObAct->setNomAsig($obAct['asig']);
 			$myObAct->setNumGrupo($obAct['grupo']);
 			$myObAct->setPeriodo($obAct['periodo']);
-			$myObAct->setNomProf($obAct['nombre']);
-			$myObAct->setApeProf($obAct['apellido']);
 			$myObAct->setSo($obAct['so']);
 			$myObAct->setPi($obAct['pi']);
 			$myObAct->setCodAsig($obAct['codAsig']);

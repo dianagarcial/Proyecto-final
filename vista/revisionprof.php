@@ -65,7 +65,6 @@ $activid=$crud->obtenerActividad($_GET['id']);
                         <h5 class="infoletra">Asignatura</h5>
                         <h5 class="infoletra">Grupo</h5> 
                         <h5 class="infoletra">Periodo</h5>
-                        <h5 class="infoletra">Docente</h5>
                         <h5 class="infoletra">Student Outcome</h5>
                         <h5 class="infoletra">Performance indicator</h5>  
                          
@@ -75,8 +74,7 @@ $activid=$crud->obtenerActividad($_GET['id']);
                         <h5 class="infoletraw" id=programaRD><?php echo $activid-> getNomProgAcademico()?></h5>
                         <h5 class="infoletraw" id=asignaturaRD><?php echo $activid-> getNomAsig()?></h5> 
                         <h5 class="infoletraw" id=grupoRD><?php echo $activid-> getNumGrupo()?></h5> 
-                        <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5> 
-                        <h5 class="infoletraw" id=docenteRD><?php echo $activid-> getNomProf()." ".$activid-> getApeProf()?></h5> 
+                        <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5>  
                         <h5 class="infoletraw" id=soRD><?php echo $activid-> getSo() ?></h5> 
                         <h5 class="infoletraw" id=piRD><?php echo $activid-> getPi() ?></h5>    
                         
