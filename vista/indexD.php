@@ -1,12 +1,12 @@
-
 <?php
 //incluye la clase Libro y CrudLibro
 include("../modelo/crud_actividad.php");
-require("../controlador/actividadDir.php");
+require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
-$listaActividadDir = $crud->mostrar();
+$listaActividadDir = $crud->mostrarDirEnv();
+//$listaActividadNEDir= $crud->mostrarDirNEnv();
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,15 +62,14 @@ $listaActividadDir = $crud->mostrar();
                                     <tbody id="cuerpoTabla">
                                     <?php foreach ($listaActividadDir as $activid) {?>
 		                        	<tr>
-                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getGrupo() ?></td>
+                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
 				                        <td><?php echo $activid->getNomAsig() ?></td>
-				                        <td><?php echo $activid->getGrupo() ?> </td>
-                                        <td><?php echo $activid->getDocente()." ".$activid->getDocenteA() ?> </td>
+				                        <td><?php echo $activid->getNumGrupo() ?> </td>
+                                        <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
-                                        
-                                        <td class="cell100 column7"><a href="revisiondocente-rec.html" id="vermas1">Ver más</a></td>
+                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=aD ">Ver más</a> </td>
                                     </tr>
                                     <?php 
                                     }
@@ -88,6 +87,62 @@ $listaActividadDir = $crud->mostrar();
             </div>
         </div>
         <br>
+
+        
+        <div class="limiter" id="contenedor">
+            <div class="container-table100" id="tablaboton">
+                <div class="wrap-table100">
+                    <div class="table100 ver1">
+
+
+                        <div class="wrap-table100-nextcols js-pscroll">
+                            <div class="table100-nextcols">
+                                <table id="tablaini">
+                                   <thead>
+                                    <tr>
+                                      
+                                      
+                                        <th>Documento</th>
+                                        <th>Asignatura</th>
+                                        <th>Grupo</th>
+                                        <th>Docente</th>
+                                        <th>Estado</th>
+                                        <th>PI</th>
+                                        <th>Fecha entrega</th>
+
+
+                                    </tr>
+                                </thead>
+
+                                    <tbody id="cuerpoTabla">
+                                    <?php foreach ($listaActividadDir as $activid) {?>
+		                        	<tr>
+                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
+				                        <td><?php echo $activid->getNomAsig() ?></td>
+				                        <td><?php echo $activid->getNumGrupo() ?> </td>
+                                        <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
+                                        <td><?php echo $activid->getEstado() ?> </td>
+                                        <td><?php echo $activid->getPi() ?> </td>
+                                        <td><?php echo $activid->getFentrega() ?> </td>
+                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=aD ">Ver más</a> </td>
+                                    </tr>
+                                    <?php 
+                                    }
+                                    ?>
+                               
+                                        
+                                        
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
         
         <h2>Todos los filtros</h2>
         <div class="limiter" id="contenedor">

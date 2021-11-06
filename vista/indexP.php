@@ -51,7 +51,7 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
                                         <th>PI</th>
                                         <th>Estado</th>
                                         <th>Fecha de entrega</th>
-                                        <th>Fecha límite</th>
+                                        
 
                                     </tr>
 
@@ -67,8 +67,8 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
-                                        <td><?php echo $activid->getFlimite() ?> </td>
-                                        <td><a id="vermas1" href="revisionprof.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
+                                        
+                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
 				
                                     </tr>
                                     <?php 
@@ -107,7 +107,7 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
                                         <th>Grupo</th>
                                         <th>PI</th>
                                         <th>Estado</th>
-                                        <th>Fecha de entrega</th>
+                                        
                                         <th>Fecha límite</th>
 
                                     </tr>
@@ -123,7 +123,7 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
 				                        <td><?php echo $activid->getNumGrupo() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getEstado() ?> </td>
-                                        <td><?php echo $activid->getFentrega() ?> </td>
+                                        
                                         <td><?php echo $activid->getFlimite() ?> </td>
                                         <td><a id="vermas1" href="inicioRegisRub.php?id=<?php echo $activid->getId()?>&accion=aN ">Ver más</a> </td>
 				

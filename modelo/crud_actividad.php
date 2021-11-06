@@ -69,6 +69,86 @@ require_once('conexion.php');
 			return $listaActividadGen;
 		}
 		*/
+
+		public function mostrarDirEnv(){
+			$db=Db::conectar();
+			$listaActividadDir=[];
+			$select=$db->query("SELECT ACTIVIDAD.codigo as id, ASIGNATURA.codigo as codigoAs, \n"
+			. "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR \n"
+			. "ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP, \n"
+			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR\n"
+			. "ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
+			. "ACTIVIDAD.fechaEntrega as fechaen, GRUPO.codigo_Grup as codGru,\n"
+			. "ASIGNATURA.nombre as asig,RUBRICA.CALIFICACION as estado, \n"
+			. "ACTIVIDAD.codPI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
+			. "ON DIRECTORPROGRAMA.CODIGO_PROG= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA\n"
+			. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.cod_programa JOIN GRUPO \n"
+			. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR \n"
+			. "ON GRUPO.correo_pr=PROFESOR.usuario JOIN ACTIVIDAD\n"
+			. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN RUBRICA\n"
+			. "ON ACTIVIDAD.codigo=RUBRICA.codigo_act \n"
+			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos' AND ACTIVIDAD.ESTADO='Entregado';");
+								
+
+			
+			foreach($select->fetchAll() as $AD){
+				$myAD= new Actividad();
+				$myAD->setid($AD['id']);
+				$myAD->setCodAsig($AD['codigoAs']);
+				$myAD->setNomProf($AD['nombreP']);
+				$myAD->setApeProf($AD['apellidoP']);
+				$myAD->setFentrega($AD['fechaen']);
+				$myAD->setNumGrupo($AD['codGru']);
+				$myAD->setNomAsig($AD['asig']);
+				$myAD->setEstado($AD['estado']);
+				$myAD->setPi($AD['codPI']);
+				
+				$listaActividadDir[]=$myAD;
+			}
+
+			return $listaActividadDir;
+		}
+
+		public function mostrarDirNEnv(){
+			$db=Db::conectar();
+			$listaActividadDir=[];
+			$select=$db->query("SELECT ACTIVIDAD.codigo as id,ASIGNATURA.codigo as codigoAs, \n"
+			. "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR \n"
+			. "ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP, \n"
+			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR\n"
+			. "ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
+			. "PERIODO.fechaFin as fechalim, GRUPO.codigo_Grup as codGru,\n"
+			. "ASIGNATURA.nombre as asig,ACTIVIDAD.codPI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
+			. "ON DIRECTORPROGRAMA.CODIGO_PROG= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA\n"
+			. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.cod_programa JOIN GRUPO \n"
+			. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROFESOR \n"
+			. "ON GRUPO.correo_pr=PROFESOR.usuario JOIN ACTIVIDAD\n"
+			. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN PERIODO\n"
+			. "ON ACTIVIDAD.codPeriodo=PERIODO.codigo\n"
+			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos' AND ACTIVIDAD.ESTADO IS NULL;");
+								
+
+			
+			foreach($select->fetchAll() as $AD){
+				$myAD= new Actividad();
+				$myAD->setid($AD['id']);
+				$myAD->setCodAsig($AD['codigoAs']);
+				$myAD->setNomProf($AD['nombreP']);
+				$myAD->setApeProf($AD['apellidoP']);
+				$myAD->setFlimite($AD['fechalim']);
+				$myAD->setNumGrupo($AD['codGru']);
+				$myAD->setNomAsig($AD['asig']);
+				$myAD->setEstado($AD['estado']);
+				$myAD->setPi($AD['codPI']);
+				
+				$listaActividadDir[]=$myAD;
+			}
+
+			return $listaActividadDir;
+		}
+
 		public function mostrarProEnv(){
 			$db=Db::conectar();
 			$listaActividadPro=[];
@@ -93,7 +173,7 @@ require_once('conexion.php');
 				$myAD->setNomAsig($AD['asigN']);
 				$myAD->setEstado($AD['estado']);
 				$myAD->setFentrega($AD['fentrega']);
-				$myAD->setFlimite($AD['fechalim']);
+				
 				$listaActividadPro[]=$myAD;
 			}
 
@@ -103,7 +183,7 @@ require_once('conexion.php');
 
 		public function mostrarProNEnv(){
 			$db=Db::conectar();
-			$listaActividadPro=[];
+			$listaActividadDir=[];
 			$select=$db->query("SELECT ASIGNATURA.NOMBRE as asigN, ASIGNATURA.CODIGO as asigC, ACTIVIDAD.codigo as id,\n"
 								. "GRUPO.codigo_Grup as grupo,ACTIVIDAD.CODPI as pi,IFNULL(ACTIVIDAD.ESTADO, 'Pendiente') as estado,\n"
 								. "IFNULL(ACTIVIDAD.FECHAENTREGA, '-') as fentrega, PERIODO.fechaFin as fechalim FROM ACTIVIDAD JOIN PERIODO\n"
@@ -117,18 +197,19 @@ require_once('conexion.php');
 			
 			foreach($select->fetchAll() as $AD){
 				$myAD= new Actividad();
+				$myAD= new Actividad();
 				$myAD->setid($AD['id']);
 				$myAD->setCodAsig($AD['asigC']);
 				$myAD->setPi($AD['pi']);
 				$myAD->setNumGrupo($AD['grupo']);
 				$myAD->setNomAsig($AD['asigN']);
+				
 				$myAD->setEstado($AD['estado']);
-				$myAD->setFentrega($AD['fentrega']);
 				$myAD->setFlimite($AD['fechalim']);
-				$listaActividadPro[]=$myAD;
+				$listaActividadDir[]=$myAD;
 			}
 
-			return $listaActividadPro;
+			return $listaActividadDir;
 		}
 		
 		public function obtenerActividad($id){
@@ -199,6 +280,45 @@ require_once('conexion.php');
 
 			return $myObAct;
 		}
+
+		public function obtenerpiselc($pi){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT nombre, codigo as pi FROM PI \n"
+								. "WHERE PI.codigo=:pi;");
+							
+			$select->bindValue('pi',$pi);
+			$select->execute();
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setPi($obAct['pi']);
+			$myObAct->setNomPi($obAct['nombre']);
+			
+			
+
+			return $myObAct;
+		}
+
+		/*
+
+		public function obtenerpiselctabla($pi, $asig){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT nombre, codigo as pi FROM PI \n"
+								. "WHERE PI.codigo=:pi;");
+							
+			$select->bindValue('pi',$pi);
+			$select->bindValue('asig',$asig);
+			$select->execute();
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setPi($obAct['pi']);
+			$myObAct->setNomPi($obAct['nombre']);
+			
+			
+
+			return $myObAct;
+		}
+
+		
  
 		/*
 		// método para eliminar un libro, recibe como parámetro el id del libro

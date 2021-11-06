@@ -18,7 +18,10 @@
 		private $flimite;
 
 		private $pi;
+		private $nompi;
 		private $so;
+		private $nomSo;
+		private $descSo;
 
 		private $nomProf;
 		private $apeProf;
@@ -176,6 +179,15 @@
 		public function setPi($pi){
 			$this->pi = $pi;
 		}
+
+		public function getNomPi(){
+			return $this->nomPi;
+		}
+ 
+		public function setNomPi($nomPi){
+			$this->nomPi = $nomPi;
+		}
+
 
 		public function getSo(){
 			return $this->so;

@@ -31,5 +31,9 @@ $lactividad= new Actividad();
 		header('Location: revisionprof.php');
 	}elseif($_GET['accion']=='aN'){
 		header('Location: inicioRegisRub.php');
+	}elseif($_GET['accion']=='aD'){
+		header('Location: revisionDirector.php');
 	}
+
+	
 ?>
