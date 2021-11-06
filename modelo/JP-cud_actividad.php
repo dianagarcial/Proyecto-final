@@ -10,7 +10,7 @@ require_once('conexion.php');
 		public function mostrarASIG($asig){
 			$db=Db::conectar();
 			$listaAsignatura=[];
-			$select=$db->query(" SELECT GRUPO.codigo_asgs as asignatura, RUBRICA.codigo_act as documento, \n"
+			$select=$db->prepare("SELECT GRUPO.codigo_asgs as asignatura, RUBRICA.codigo_act as documento, \n"
 
 									. "ACTIVIDAD.codigoGrupo as grupo, IFNULL(ACTIVIDAD.fechaEntrega,\'-\') as fechaEntrega, \n"
 								

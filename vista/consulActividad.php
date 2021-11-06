@@ -1,12 +1,11 @@
 <?php
 
-//incluye la clase Libro y CrudLibro
 include("../modelo/JP-cud_actividad.php");
-require("../controlador/actividadDir.php");
-$crud=new JP-cud_actividad();
+require("../controlador/actividad.php");
+$crud=new CrudActividad();
 $activid= new Actividad();
-//obtiene todos los libros con el método mostrar de la clase crud
-$listaAsignatura = $crud->mostrarASIG();
+
+$listaAsignatura = $crud->mostrarASIG($_GET['asig']);
 
 ?>
 
