@@ -39,6 +39,7 @@ $lactividad= new Actividad();
 	
 }elseif($_GET['accion']=='ar'){
 	header('Location: registrarRUB.php');
+	
 }
 
 	

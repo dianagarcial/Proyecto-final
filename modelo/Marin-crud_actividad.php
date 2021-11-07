@@ -92,12 +92,30 @@ require_once('conexion.php');
 				$myAD->setApeProf($AD['ProfesorApellido']);
 				$myAD->setFentrega($AD['FechaEntrega']);
 				$myAD->setGrupo($AD['codigoGrupo']);
-				$myAD->setSo($AD['Pi']);
-				$myAD->setPi($AD['So']);
+				$myAD->setSo($AD['So']);
+				$myAD->setPi($AD['Pi']);
 				$listaActividadGen[]=$myAD;
 			}
 
 			return $listaActividadGen;
 		}
+
+
+		public function ConsultarSO(){
+			$db=Db::conectar();
+			$listaSO=[];
+			$select=$db->query("SELECT codigo as So from so;");
+
+			foreach($select->fetchAll() as $AD){
+			$myAD= new Actividad();
+			$myAD->setSo($AD['So']);
+			$listaSO[]=$myAD;
+		}
+
+		return $listaSO;
 	}
+
+
+
+} //No borrar
     ?>

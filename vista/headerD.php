@@ -43,7 +43,7 @@
                         <ul class="children">
                             <li><a href="#">Recibidos<span class="icon-dot"></span></a></li>
                             <li><a href="#">Pendientes<span class="icon-dot"></span></a></li>
-                            <li><a href="#">Aprobados<span class="icon-dot"></span></a></li>
+                            <li><a href="consultarAprobado.php">Aprobados<span class="icon-dot"></span></a></li>
                             <li><a href="#">Rechazados<span class="icon-dot"></span></a></li>
                            
                         </ul>
