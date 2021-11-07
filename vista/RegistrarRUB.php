@@ -51,27 +51,27 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
 
         <div class= formatorow2>
             
-                                   
+        <form action='administrar_actividad.php' method='post'>                 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Nombre del documento</h5>
-                        <label class="labelestado" id="nomdoc">Rub <?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>
+                        <label class="labelestado" id="nomdoc" name="documento">Rub <?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>
                             
                          <label> 
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Asignatura</h5> 
-                        <label class="labelestado" id="asignatu"> <?php echo $activid->getNomAsig() ?></label>
+                        <label class="labelestado" id="asignatu" name="asig"> <?php echo $activid->getNomAsig() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Grupo</h5> 
-                        <label class="labelestado" id="periodo"><?php echo $activid->getNumGrupo() ?></label>
+                        <label class="labelestado" id="grupo" name="grupo"><?php echo $activid->getNumGrupo() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Periodo</h5> 
-                        <label class="labelestado" id="periodo"><?php echo $activid->getPeriodo() ?></label>
+                        <label class="labelestado" id="periodo" name="periodo"><?php echo $activid->getPeriodo() ?></label>
                     </div>
 
                     
@@ -80,22 +80,22 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Student Outcomes</h5> 
-                        <label class="labelestado" id="sot"><?php echo $activid->getSo() ?></label>
+                        <label class="labelestado" id="sot" name="so"><?php echo $activid->getSo() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Performance indicators</h5> 
-                        <label class="labelestado" id="pi"><?php echo $activid->getPi() ?></label>
+                        <label class="labelestado" id="pi" name="pi"><?php echo $activid->getPi() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">Método de calificación</h5> 
-                        <label class="labelestado" id="actasociada"><?php echo $activid->getMedioEv() ?></label>
+                        <label class="labelestado" id="actasociada"name="metodo"><?php echo $activid->getMedioEv() ?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">Comentarios</h5> 
-                        <textarea class="inputestado" id="coment"placeholder="Escribe los comentarios que desees agregar..."></textarea>
+                        <textarea class="inputestado" name="comentario" id="coment"placeholder="Escribe los comentarios que desees agregar..."></textarea>
                     </div>
                     
                     <div class=columinfo1>
@@ -143,6 +143,7 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
             
         </div>
 
+        </form>
     </div>
     <br>
     <br>
