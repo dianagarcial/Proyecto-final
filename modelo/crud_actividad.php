@@ -308,7 +308,47 @@ require_once('conexion.php');
 			return $myObAct;
 		}
 
+		public function selectAsigna(){
+			$db=Db::conectar();
+			$listaActividadDir=[];
+			$select=$db->query("SELECT ASIGNATURA.nombre as asig, ASIGNATURA.codigo as codas\n"
+			. "FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
+			. "ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA \n"
+			. "ON ASIGNATURA.cod_programa= PROGRAMAACADEMICO.codigo \n"
+			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos';");
+								
+
+			
+			foreach($select->fetchAll() as $AD){
+				$myAD= new Actividad();
+				$myAD->setNomAsig($AD['asig']);
+				$myAD->setCodAsig($AD['codas']);				
+				$listaActividadDir[]=$myAD;
+			}
+
+			return $listaActividadDir;
+		}
 		
+		public function obtenerProgramaDirec(){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT PROGRAMAACADEMICO.nombre as asig, ASIGNATURA.codigo as codas\n"
+			. "FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
+			. "ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA \n"
+			. "ON ASIGNATURA.cod_programa= PROGRAMAACADEMICO.codigo \n"
+			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos';");
+							
+			
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setPi($obAct['pi']);
+			$myObAct->setNomPi($obAct['nombre']);
+			
+			
+
+			return $myObAct;
+		}
 
 		/*
 

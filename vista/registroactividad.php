@@ -5,8 +5,8 @@ require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
-$listaActividadPro = $crud->mostrarProEnv();
-$listaActividadNEPro = $crud->mostrarProNEnv();
+$listaActividadPro = $crud->selectAsigna();
+//$listaActividadNEPro = $crud->mostrarProNEnv();
 ?>
 
 <!DOCTYPE html>
@@ -131,16 +131,12 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
 
                         <?php foreach ($listaActividadPro as $activid) {?>
 		                        	
-				        <?php echo $activid->getNomAsig() ?>
-				                      
-                                  <td><a id="vermas1" href="revisionprof.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
-				
-                                    </tr>
-                                    <?php
-                                    }
-                                    ?> 
-                            <option value="bioelem">Elementos Biomédicos</option>
-                            <option value="bioquim">Química Biomédica</option>
+				        		                      
+                        <option value= <?php echo $activid->getCodAsig()?>><?php echo $activid->getNomAsig()?></option>
+                            
+                        <?php
+                        }
+                        ?> 
                             
                         </select>
                     </div>
