@@ -7,7 +7,7 @@
         <link href="css/Estilos.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-        <script src="/controlador/login.js"> </script> <!--eliminar -->
+        <!--<script src="/controlador/login.js"> </script> eliminar -->
         <title>Login</title>
     </head>
     <body class="bg-light">
@@ -21,6 +21,7 @@
                     <div class="form-login">
                         <img id="fondologin" alt="Logo de universidad y abet" src="imagenes/Logos.png" />
                         <h3 id="tituloLogin">Portal de gestión documental</h3>
+                        <form action="../modelo/C_login.php" method="post" id="form">
                         <div class="usuario">
                             <svg width="18" height="18" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 14C17.6834 14 20.6667 11.0167 20.6667 7.33333C20.6667 3.65 17.6834 0.666668 14 0.666668C10.3167 0.666668 7.33335 3.65 7.33335 7.33333C7.33335 11.0167 10.3167 14 14 14ZM14 17.3333C9.55002 17.3333 0.666687 19.5667 0.666687 24V27.3333H27.3334V24C27.3334 19.5667 18.45 17.3333 14 17.3333Z" fill="#B1A7A6"/>
@@ -35,7 +36,7 @@
     
                             <input id="contrasena"type="password" class="form-control" placeholder="Contraseña"  name="clave">
                         </div>
-                        <button id="ingresar" type="button" class="btnLogin" onclick="login()" id="acceder">Ingresar</button> 
+                        <button id="ingresar" type="submit" class="btnLogin" onclick="login()" id="acceder">Ingresar</button> 
                         
                     </div>
             </div>
