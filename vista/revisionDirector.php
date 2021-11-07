@@ -110,7 +110,7 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
              <label id="labelestado">Estado* </label>
              <label id="labelestado">Comentarios </label>
                 </div>
-               <form action='../controlador/JP-administrar_actividad.php?id=<?php echo $_GET['id'];?>' method='POST'>
+               <form action='../controlador/JP-administrar_actividad.php' method='POST'>
                <label name="id"><?php echo $activid-> getId()?></label>
                 <div class="estado2">
                             <select id="selectEstado" name="calif">
