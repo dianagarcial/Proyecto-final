@@ -83,12 +83,15 @@ $listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['id']);
 
                                         <th>Asignatura</th>
 
+                                        <th>Grupo</th>
+
+                                        <th>Profesor</th>
+
                                         <th>Estado</th>
 
+                                        <th>PI</th>
+
                                         <th>Fecha</th>
-
-                                        <th>Tipo</th>
-
                                         
 
                                     </tr>
@@ -106,7 +109,7 @@ $listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['id']);
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
                                 
-                                        <td><a id="vermas1" href="filtro-SOD.php?id=<?php echo $activid->getId()?>&accion=Revi ">Ver más</a> </td>
+                                        <td><a id="vermas1" href="RevisionDirector.php?id=<?php echo $activid->getId()?>&accion=Revi">Ver más</a> </td>
                                     </tr>
                                     <?php 
                                     }
