@@ -6,6 +6,7 @@ $crud=new CrudActividad();
 $activid= new Actividad();
 
 $activid=$crud->obtenerActividadDir($_GET['id']);
+
 ?>
 
 <!DOCTYPE html>
@@ -109,7 +110,8 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
              <label id="labelestado">Estado* </label>
              <label id="labelestado">Comentarios </label>
                 </div>
-               
+               <form action='../controlador/JP-administrar_actividad.php?id=<?php echo $_GET['id'];?>' method='POST'>
+               <label name="id"><?php echo $activid-> getId()?></label>
                 <div class="estado2">
                             <select id="selectEstado" name="calif">
                                 <option value="enviado">Sin calificación</option>
@@ -117,7 +119,13 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
                                 <option value="rechazado">Rechazado</option>                           
                         </select>
                 
-                <input type= 'textarea' class=estilotextarea2 cols="60" rows="8" name='comentario'>
+                <textarea class=estilotextarea2 cols="60" rows="8" name="comentario"> </textarea>
+
+                <input type='hidden' name='actualizar' value='actualizar'>
+	
+	            <input type='submit' value='Guardar'>
+
+                </form>
             </div>
         
             
@@ -126,9 +134,9 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
 
         </div>
         <div class=formatorow4>
-            <button class="cancelar" id="cancelarRevi" onclick="window.location.href='/vista/index-direc-asigna.html'">Cancelar</button>
+            <button class="cancelar" id="cancelarRevi" onclick="window.location.href='indexD.php'">Cancelar</button>
 
-            <button class="enviarRevision" onclick="window.location.href='/vista/index-director-a.html'">Enviar revisión</button>
+            <button class="enviarRevision" href="indexD.php?id=<?php echo $activid->getId()?>&accion=ar">Enviar revisión</button>
             
         </div>
 

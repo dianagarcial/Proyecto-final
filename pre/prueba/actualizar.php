@@ -27,7 +27,7 @@
 			<td>Fecha Edición:</td>
 			<td><input type='text' name='edicion' value='<?php echo $libro->getAnio_edicion() ?>'></td>
 		</tr>
-		<input type='hidden' name='actualizar' value'actualizar'>
+		<input type='hidden' name='actualizar' value='actualizar'>
 	</table>
 	<input type='submit' value='Guardar'>
 	<a href="index.php">Volver</a>
