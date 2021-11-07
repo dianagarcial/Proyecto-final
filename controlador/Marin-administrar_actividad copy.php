@@ -33,7 +33,10 @@ $lactividad= new Actividad();
 
 }elseif($_GET['accion']=='aprobadoF'){
 	header('Location: revisionDirector.php');
+}elseif($_GET['accion']=='SO'){
+	header('Location: filtro-SOD.php');
 }
+
 
 
 	
