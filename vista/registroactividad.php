@@ -5,8 +5,9 @@ require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
-$listaActividadPro = $crud->selectAsigna();
-//$listaActividadNEPro = $crud->mostrarProNEnv();
+$progDi = $crud->obtenerProgramaDirec();
+$listaActividad = $crud->selectAsigna();
+
 ?>
 
 <!DOCTYPE html>
@@ -104,32 +105,53 @@ $listaActividadPro = $crud->selectAsigna();
 
         </div>
 
+        <form action='administrar_actividades.php' method='post'>
         <div class= formatorow2>
             
                                    
                     <div class=columinfo1>
                         <h5 id="infoletra">Programa</h5>
-                        <?php 
-		$sql="SELECT carrera as car FROM directorprograma WHERE correo='juan.marnn@uao.edu.co'";
-		
-      
-		$result=mysqli_query($conexion,$sql);
-        foreach($result as $ncarrera){
-           
-
-            echo "<label class='labelestado'>".$ncarrera["car"]."</label>";
-
-        }
-	 ?>
+             
+                        <?php foreach ($progDi as $activid) {?>
+                                                      
+                        <label class='labelestado' name='programaInsertar'><?php echo $activid->getNomProgAcademico()?></label>
+                                                    
+                        <?php
+                        }
+                        ?> 
 
                        
                     </div>
 
                     <div class=columinfo1>
-                        <h5 id="infoletra">*Asignatura</h5> 
-                        <select class="labelestado" id="asignatu">
+                        <h5 id="infoletra">Director</h5> 
+                        
+                        <?php foreach ($progDi as $activid) {?>
+                                                      
+                        <label class='labelestado' name='directorInsertar'><?php echo $activid->getNomDi()." ".$activid->getApeDi()?></label>
+                                                    
+                        <?php
+                        }
+                        ?> 
 
-                        <?php foreach ($listaActividadPro as $activid) {?>
+
+                    
+                      
+
+                        
+                    </div>
+                        
+
+                    <div class=columinfo1>
+                        <h5 id="infoletra">Periodo</h5> 
+                        <label class="labelestado" id="periodo" name='periodoInsertar'>2022 -3</label>
+                    </div>
+
+                    <div class=columinfo1>
+                        <h5 id="infoletra">*Asignatura</h5> 
+                        <select class="labelestado" id="asignatu" name="asiginsertar">
+
+                        <?php foreach ($listaActividad as $activid) {?>
 		                        	
 				        		                      
                         <option value= <?php echo $activid->getCodAsig()?>><?php echo $activid->getNomAsig()?></option>
@@ -141,35 +163,12 @@ $listaActividadPro = $crud->selectAsigna();
                         </select>
                     </div>
 
-                    <div class=columinfo1>
-                        <h5 id="infoletra">Periodo</h5> 
-                        <label class="labelestado" id="periodo">2021-3</label>
-                    </div>
-
-                    <div class=columinfo1>
-                        <h5 id="infoletra">Director</h5> 
-                        
-                        <?php 
-		                $sql="SELECT nombre , apellido  FROM directorprograma WHERE correo='juan.marnn@uao.edu.co'";
-		
-      
-		$result=mysqli_query($conexion,$sql);
-        foreach($result as $nNombre){
-           
-
-            echo "<label class='labelestado'>".$nNombre["nombre"]." ".$nNombre["apellido"]."</label>";
-
-        }
-	 ?>
+                    
 
                     
-                        </select>
-
-                        
-                    </div>
                     <div class=columinfo1>
                         <h5 id="infoletra">*Método de calificación</h5> 
-                        <input  class="labelestado" > </input>
+                        <input  class="labelestado" type='text' name='metodoInsertar'> </input>
                     </div>
 
                     <div class="columinfo1">
@@ -197,7 +196,7 @@ $listaActividadPro = $crud->selectAsigna();
                         <div class="columinfo1">
                         
                             <h5 id="infoletra">Student Outcomes</h5> 
-                                <select class="labelestado" id= "SOs1" name="SO">
+                                <select class="labelestado" id= "SOs1" name="SO1">
                                     <option value=''> </option>
                                     <option value='RAE-1'>SO-1: Problemas complejos de ingeniería</option>
                                     <option value='RAE-2'>SO-2: Diseño en Ingeniería</option>
@@ -211,7 +210,7 @@ $listaActividadPro = $crud->selectAsigna();
                             
                             <div class="columinfo1">
                                 <h5 id="infoletra">Perfomance Indicator</h5> 
-                                <select class="labelestado" id="PIs1" name= "PI">
+                                <select class="labelestado" id="PIs1" name= "PI1">
                                     <option value=''> </option>
                                 </select>
 
@@ -226,14 +225,18 @@ $listaActividadPro = $crud->selectAsigna();
 
 
         </div>
+         
         <div class=formatorow4>
             <button class="cancelar" onclick="window.location.href='/vista/registroactfut.html'">Cancelar</button>
 
             <button class="enviarRevision" onclick="window.location.href='/vista/registroactfut-c.html'">Registrar</button>
-            
+            <input type='hidden' name='insertar' value='insertar'>
+            <input type='submit' value='Guardar'>
         </div>
+        
 
     </div>
+    </form>
     <br>
     <br>
     <br>

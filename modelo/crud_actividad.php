@@ -5,7 +5,7 @@ require_once('conexion.php');
 	class CrudActividad{
 		// constructor de la clase
 		public function __construct(){}
-		/*
+		
 		// método para insertar, recibe como parámetro un objeto de tipo libro
 		public function insertar($actividad){
 			$db=Db::conectar();
@@ -18,7 +18,7 @@ require_once('conexion.php');
 			//$selectasig=$db->query('SELECT ASIGNATURA.codigo FROM ACTIVIDAD JOIN ASIGNATURA ON ACTIVIDAD.codigoprogra= ASIGNATURA.codigo WHERE ASIGNATURA.nombre='.$asignatura.')';
 			//$selectperiodo=$db->query('SELECT PERIODO.fechaFin FROM ACTIVIDAD JOIN PERIODO ON ACTIVIDAD.codigoperiodo= PERIODO.codigo WHERE PERIODO.codigo='.$periodo.')';
 
-			$insert=$db->prepare('INSERT INTO actividad values(NULL,:fechaLim,:medio,:codigo_asig,:codigoprogra,:codigoperiodo)');
+			$insert=$db->prepare('INSERT INTO actividad values(NULL,:medio,:codigoGrupo,:codPeriodo,:codPi, NULL, NULL)');
 			$insert->bindValue('nombre',$libro->getNombre());
 			$insert->bindValue('autor',$libro->getAutor());
 			$insert->bindValue('anio_edicion',$libro->getAnio_edicion());
@@ -26,7 +26,44 @@ require_once('conexion.php');
 			
 			$insert2=$db->prepare('INSERT INTO calificacion values(:codigo_act,:codigoPI)');
 		}
-		
+
+		public function obtenerCodGRU($id){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT ACTIVIDAD.CODIGO as id, PROGRAMAACADEMICO.nombre as prog ,ASIGNATURA.nombre as asig,GRUPO.codigo_Grup as grupo,\n"
+					. "PERIODO.codigo as periodo,\n"
+					. "SO.codigo as so, PI.codigo as pi, ASIGNATURA.codigo as  codAsig, RUBRICA.calificacion as caliRub,\n"
+					. "RUBRICA.comentarioDir as comDir FROM ACTIVIDAD JOIN PERIODO\n"
+					. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN PI\n"
+					. "ON PI.codigo=ACTIVIDAD.codPI JOIN SO\n"
+					. "ON SO.codigo=PI.codigo_SO JOIN GRUPO\n"
+					. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"
+					. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROGRAMAACADEMICO\n"
+					. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.COD_programa JOIN PROFESOR\n"
+					. "ON GRUPO.correo_pr=PROFESOR.usuario JOIN USUARIO\n"
+					. "ON USUARIO.nomUsuario=PROFESOR.usuario JOIN RUBRICA\n"
+					. "ON ACTIVIDAD.codigo=RUBRICA.codigo_act \n"
+					. "WHERE PROFESOR.usuario='jose.luis' AND ACTIVIDAD.codigo=:id");
+							
+			$select->bindValue('id',$id);
+			$select->execute();
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setId($obAct['id']);
+			$myObAct->setNomProgAcademico($obAct['prog']);
+			$myObAct->setNomAsig($obAct['asig']);
+			$myObAct->setNumGrupo($obAct['grupo']);
+			$myObAct->setPeriodo($obAct['periodo']);
+			$myObAct->setSo($obAct['so']);
+			$myObAct->setPi($obAct['pi']);
+			$myObAct->setCodAsig($obAct['codAsig']);
+			$myObAct->setCalirubrica($obAct['caliRub']);
+			$myObAct->setCalicommentrubrica($obAct['comDir']);
+
+			return $myObAct;
+		}
+
+
+		/*
 		// método para mostrar todos los libros
 
 		public function mostrar(){
@@ -332,22 +369,24 @@ require_once('conexion.php');
 		
 		public function obtenerProgramaDirec(){
 			$db=Db::conectar();
-			$select=$db->prepare("SELECT PROGRAMAACADEMICO.nombre as asig, ASIGNATURA.codigo as codas\n"
-			. "FROM USUARIO JOIN DIRECTORPROGRAMA \n"
-			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
-			. "ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA \n"
-			. "ON ASIGNATURA.cod_programa= PROGRAMAACADEMICO.codigo \n"
+			$progDir=[];
+			$select=$db->query("SELECT PROGRAMAACADEMICO.nombre as prog, PROGRAMAACADEMICO.codigo as codprog, USUARIO.nombre as nomDi, USUARIO.apellido as apeDi \n"
+			. "FROM USUARIO JOIN DIRECTORPROGRAMA\n"
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN programaacademico \n"
+			. "ON DIRECTORPROGRAMA.codigo_prog=programaacademico.codigo\n"
 			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos';");
 							
 			
-			$obAct=$select->fetch();
+			foreach($select->fetchAll() as $AD){
 			$myObAct= new Actividad();
-			$myObAct->setPi($obAct['pi']);
-			$myObAct->setNomPi($obAct['nombre']);
+			$myObAct->setCodProgAcademico($AD['codprog']);
+			$myObAct->setNomProgAcademico($AD['prog']);
+			$myObAct->setNomDi($AD['nomDi']);
+			$myObAct->setApeDi($AD['apeDi']);
 			
-			
-
-			return $myObAct;
+			$progDir[]=$myObAct;
+			}
+			return $progDir;
 		}
 
 		/*

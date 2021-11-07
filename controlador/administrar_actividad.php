@@ -8,12 +8,15 @@ $lactividad= new Actividad();
 
 	// si el elemento insertar no viene nulo llama al crud e inserta un libro
 	if (isset($_POST['insertar'])) {
-		//$libro->setNombre($_POST['nombre']);
-		//$libro->setAutor($_POST['autor']);
-		//$libro->setAnio_edicion($_POST['edicion']);
+		$libro->setNomProgAcademico($_POST['programaInsertar']);
+		$libro->setNomProf($_POST['directorInsertar']);
+		$libro->setPeriodo($_POST['periodoInsertar']);
+		$libro->setSo($_POST['SO']);
+		$libro->setNomPi($_POST['PI']);
+		$libro->setNomAsig($_POST['asiginsertar']);
 		//llama a la función insertar definida en el crud
-		//$crud->insertar($libro);
-		//header('Location: index.php');
+		$crud->insertar($libro);
+		header('Location: index.php');
 	// si el elemento de la vista con nombre actualizar no viene nulo, llama al crud y actualiza el libro
 	}elseif(isset($_POST['actualizar'])){
 		//$libro->setId($_POST['id']);

@@ -26,6 +26,9 @@
 		private $nomProf;
 		private $apeProf;
 
+		private $nomDi;
+		private $apeDi;
+
 		private $codrubrica;
 		private $archirubrica;
 		private $nomrubrica;
@@ -215,6 +218,25 @@
  
 		public function setApeProf($apeProf){
 			$this->apeProf = $apeProf;
+		}
+
+		
+
+
+		public function getNomDi(){
+			return $this->nomDi;
+		}
+ 
+		public function setNomDi($nomDi){
+			$this->nomDi = $nomDi;
+		}
+
+		public function getApeDi(){
+			return $this->apeDi;
+		}
+ 
+		public function setApeDi($apeDi){
+			$this->apeDi = $apeDi;
 		}
 
 		
