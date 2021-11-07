@@ -7,7 +7,7 @@ $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 
 $listarSO=$crud->ConsultarSO();
-$listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['SO']);
+$listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['id']);
 
 
 ?>
@@ -47,7 +47,7 @@ $listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['SO']);
                             <table id=tablefiltro>
                                       
                                  <?php foreach ($listarSO as $activid) {?>
-                                <td id="lfiltro2"><a id="vermas1" href="filtro-SOD.php?SO=<?php echo $activid->getSo()?>&accion=SO">SO<?php echo $activid->getSo() ?> </a><br><br>
+                                <td id="lfiltro2"><a id="vermas1" href="filtro-SOD.php?id=<?php echo $activid->getSo()?>&accion=SO">SO<?php echo $activid->getSo() ?> </a><br><br>
                                 <a href="#">Vista Específica  </a></td>
                                 <td id="lineafiltro2"><img  src="imagenes/lineafiltro.png"/></td>   
                                    
@@ -105,7 +105,7 @@ $listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['SO']);
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
-                                    ///objeto
+                                
                                         <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=Revi ">Ver más</a> </td>
                                     </tr>
                                     <?php 

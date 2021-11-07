@@ -115,14 +115,14 @@ require_once('conexion.php');
 		return $listaSO;
 	}
 
-	public function ConsultarSoEspecifico($SO){
+	public function ConsultarSoEspecifico($id){
 		$db=Db::conectar();
 		$listaSoE=[];
 		$select=$db->prepare("SELECT ACTIVIDAD.CODIGO as codigo,ASIGNATURA.nombre as asig,ASIGNATURA.codigo as codAsig,\n"
 
     . "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP,\n"
 
-    . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP,ACTIVIDAD.fechaEntrega as fechaen,\n"
+    . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP,ACTIVIDAD.fechaEntrega as fechaen\n"
 
     . "GRUPO.codigo as codGru,PI.codigo as picoD,actividad.estado as estado FROM USUARIO JOIN DIRECTORPROGRAMA\n"
 
@@ -138,11 +138,13 @@ require_once('conexion.php');
 
     . "ON ACTIVIDAD.codPi=PI.codigo \n"
 
-    . "\n"
+    . "WHERE pi.codigo_SO=:id;");
 
-    . "WHERE pi.codigo_SO=:SO;");
-	foreach($select->fetchAll() as $AD){
+		$select->bindValue('id',$id);
+	
+	foreach($select->fetchAll() as $id){
 		$myAD= new Actividad();
+		$myObAct->setSO($obAct['id']);
 		$myAD->setid($AD['codigo']);
 		$myAD->setCodAsig($AD['codigoAs']);
 		$myAD->setNomProf($AD['nombreP']);
@@ -151,7 +153,7 @@ require_once('conexion.php');
 		$myAD->setNumGrupo($AD['codGru']);
 		$myAD->setNomAsig($AD['asig']);
 		$myAD->setEstado($AD['estado']);
-		$myAD->setPi($AD['asig']);
+		$myAD->setPi($AD['picoD']);
 		
 		$listaSoE[]=$myAD;
 	}
