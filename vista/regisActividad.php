@@ -36,7 +36,7 @@ $listaActividad = $crud->selectAsigna();
 
         </div>
 
-        <form action='administrar_actividades.php' method='post'>
+        <form action='../controlador/administrar_actividad.php' method='post'>
         <table>
                 <tr>
                     <td>Programa:</td>

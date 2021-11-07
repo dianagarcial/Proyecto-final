@@ -26,14 +26,12 @@ require_once('conexion.php');
 		public function insertar($actividad){
 			$db=Db::conectar();
 			$myObAct= new Actividad();
-			$myObAct->getNomAsig();
-			$grupo= $crud->obtenerCodGRU($myObAct);
-
+		
 			$insert=$db->prepare('INSERT INTO actividad values(NULL,:medio,:codigoGrupo,:codPeriodo,:codPi, NULL, NULL)');
-			$insert->bindValue('medio','parcial');
-			$insert->bindValue('codigoGrupo','2');
-			$insert->bindValue('codPeriodo','2022-1');
-			$insert->bindValue('codPi','1.1');
+			$insert->bindValue('medio',$actividad->getMedioEv());
+			$insert->bindValue('codigoGrupo',$actividad->getGrupo());
+			$insert->bindValue('codPeriodo',$actividad->getPeriodo());
+			$insert->bindValue('codPi',$actividad->getPi());
 			$insert->execute();
 			
 			

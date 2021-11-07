@@ -713,3 +713,19 @@ h1.subv {
     margin-left: 2%;
     margin: 1%;
 }
+a {
+    font-weight: bold;
+    font-family: Open Sans;
+    font-style: normal;
+    text-decoration: none;
+    color: #B1A7A6;
+    cursor: pointer;
+    color: #666666;
+}
+
+a:hover{
+    
+    color: #BA181B;
+       
+
+}

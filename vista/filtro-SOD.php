@@ -6,9 +6,9 @@ $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 
-$listarSO=$crud->ConsultarSO();
-$listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['id']);
 
+$listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['id']);
+$listarSO=$crud->ConsultarSO();
 
 ?>
 <!DOCTYPE html>

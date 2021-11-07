@@ -160,8 +160,8 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
                                 <td id="lineafiltro"><img src="imagenes/linea.png"/></td>
     
                                 <td id="lfiltro">
-                                    <img src="imagenes/SO.png"
-                                        href="filtro-SOD.php"/><br><br>Filtro por <br>Student Outcomes (SO)</td>
+                                    <img src="imagenes/SO.png">
+                                        <a href="filtro-SOD.php?id=1&accion=SO"><br><br>Filtro por <br>Student Outcomes (SO)</a></td>
                                         <td id="lineafiltro"><img  src="imagenes/linea.png"/></td>
                                         <td id="lfiltro">
                                             <img src="imagenes/AS.png"
@@ -176,9 +176,43 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
         
     <br>
     <br>
+    <h2>Gestión documental</h2>
+        <div class="limiter" id="contenedor">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver1">
+                    <table id=tablefiltro>
+                              
+                        
+                            <td id="lfiltro2">
+                                <img src="imagenes/recibidos.png"
+                                href="#"/><br><br>Recibidos</td>
+                            <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
+
+                            <td id="lfiltro2">
+                                <img src="imagenes/revision.png"
+                                    href="#"/><br><br>Pendiente</td>
+                            <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
+                            <td id="lfiltro2">
+                                <img src="imagenes/check.png"
+                                href="#"/><br><br>Aprobados</td>
+                            <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
+                            <td id="lfiltro2">
+                                <img src="imagenes/clear.png"
+                                href="#"/><br><br>Rechazados</td>
+                                            
+                        
+                                          
+                    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
 
     <a href="#" class="btn-flotante"></a>
-
 
 
     <?php require "footer.php" ?>

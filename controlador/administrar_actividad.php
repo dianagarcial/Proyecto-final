@@ -1,6 +1,6 @@
 <?php
 //incluye la clase Libro y CrudLibro
-require_once('crud_actividad.php');
+require_once('../modelo/crud_actividad.php');
 require_once('actividad.php');
 
 $crud= new CrudActividad();
@@ -8,14 +8,14 @@ $lactividad= new Actividad();
 
 	// si el elemento insertar no viene nulo llama al crud e inserta un libro
 	if (isset($_POST['insertar'])) {
-		$libro->setNomProgAcademico($_POST['programaInsertar']);
-		$libro->setNomProf($_POST['directorInsertar']);
-		$libro->setPeriodo($_POST['periodoInsertar']);
-		$libro->setSo($_POST['SO']);
-		$libro->setNomPi($_POST['PI']);
-		$libro->setNomAsig($_POST['asiginsertar']);
+		
+		$lactividad->setMedioEv($_POST['medio']);
+		$lactividad->setGrupo($_POST['codigoG']);
+		$lactividad->setPeriodo($_POST['codigoP']);
+		$lactividad->setPi($_POST['edicion']);
+		
 		//llama a la función insertar definida en el crud
-		$crud->insertar($libro);
+		$crud->insertar($lactividad);
 		header('Location: index.php');
 	// si el elemento de la vista con nombre actualizar no viene nulo, llama al crud y actualiza el libro
 	}elseif(isset($_POST['actualizar'])){
