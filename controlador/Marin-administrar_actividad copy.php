@@ -31,5 +31,10 @@ $lactividad= new Actividad();
 }elseif($_GET['accion']=='IR'){
 	header('Location: RegistrarRUB.php');
 
+}elseif($_GET['accion']=='aprobadoF'){
+	header('Location: revisionDirector.php');
+}
+
+
 	
 ?>

@@ -51,12 +51,12 @@ require_once('conexion.php');
 
 			return $myObAct;
 		}
-	}
+	
 
 	public function ConsultarAprobado(){
 		$db=Db::conectar();
-		
-		$select=$db->prepare"SELECT ASIGNATURA.nombre as Asignatura,(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorNomb,\n"
+		$listaActividadGen=[];
+		$select=$db->query("SELECT ACTIVIDAD.CODIGO as codigo,GRUPO.codigo as codigoGrupo,GRUPO.codigo_Grup numGru,ASIGNATURA.codigo as codAsig, ASIGNATURA.nombre as Asignatura,(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorNomb,\n"
 
 		. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorApellido, \n"
 	
@@ -80,5 +80,24 @@ require_once('conexion.php');
 	
 		. "\n"
 	
-		. "WHERE RUBRICA.calificacion=\'Aprobado\';");
+		. "WHERE RUBRICA.calificacion='Aprobado';");
+
+	foreach($select->fetchAll() as $AD){
+				$myAD= new Actividad();
+				$myAD->setId($AD['codigo']);
+				$myAD->setNomAsig($AD['Asignatura']);
+				$myAD->setCodAsig($AD['codAsig']);
+				$myAD->setNumGrupo($AD['numGru']);
+				$myAD->setNomProf($AD['ProfesorNomb']);
+				$myAD->setApeProf($AD['ProfesorApellido']);
+				$myAD->setFentrega($AD['FechaEntrega']);
+				$myAD->setGrupo($AD['codigoGrupo']);
+				$myAD->setSo($AD['Pi']);
+				$myAD->setPi($AD['So']);
+				$listaActividadGen[]=$myAD;
+			}
+
+			return $listaActividadGen;
+		}
+	}
     ?>

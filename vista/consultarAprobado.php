@@ -1,3 +1,14 @@
+<?php
+//incluye la clase Libro y CrudLibro
+include("../modelo/Marin-crud_actividad.php");
+require("../controlador/actividad.php");
+$crud=new CrudActividad();
+$activid= new Actividad();
+//obtiene todos los libros con el método mostrar de la clase crud
+
+$listaActividadDir=$crud->ConsultarAprobado();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +52,6 @@
                                         <th>Asignatura</th>
                                         <th>Grupo</th>
                                         <th>Docente</th>
-                                        <th>Estado</th>
                                         <th>PI</th>
                                         <th>Fecha entrega</th>
 
@@ -56,10 +66,9 @@
 				                        <td><?php echo $activid->getNomAsig() ?></td>
 				                        <td><?php echo $activid->getNumGrupo() ?> </td>
                                         <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
-                                        <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
-                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=aD ">Ver más</a> </td>
+                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=aprobadoF ">Ver más</a> </td>
                                     </tr>
                                     <?php 
                                     }
