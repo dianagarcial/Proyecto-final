@@ -4,6 +4,8 @@
 mysql_select_db("base_datos", $link); */
 
 require_once('conexion.php');
+$link=Db::conectar();
+
 
 /* El query valida si el usuario ingresado existe en la base de datos. Se utiliza la función htmlentities para evitar inyecciones SQL. */ 
 $myusuario = mysql_query("select nomUsuario from usuario where nomUsuario = '".htmlentities($_POST["usuario"])."'",$link); 
@@ -24,7 +26,7 @@ if($nmyusuario != 0)
       $_SESSION["usuarioactual"] = mysql_result($myclave,0,0); 
       //nombre del usuario logueado. 
       //Direccionamos a nuestra página principal del sistema. 
-      header ("Location: indexP.php"); 
+      header ("Location: ../vista/indexP.php"); 
    }
    else{ 
       //echo"<script>alert('La contrase\u00f1a del usuario no es correcta.'); window.location.href=\"login.php\"</script>"; 
