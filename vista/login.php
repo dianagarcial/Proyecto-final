@@ -36,7 +36,7 @@
     
                             <input id="contrasena"type="password" class="form-control" placeholder="Contraseña"  name="clave">
                         </div>
-                        <button id="ingresar" type="submit" class="btnLogin" onclick="login()" id="acceder">Ingresar</button> 
+                        <button id="ingresar" type="submit" class="btnLogin"  id="acceder">Ingresar</button> 
                         
                     </div>
             </div>
