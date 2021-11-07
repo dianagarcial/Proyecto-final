@@ -47,11 +47,11 @@ $listarSO=$crud->ConsultarSO();
                             <table id=tablefiltro>
                                       
                                  <?php foreach ($listarSO as $activid) {?>
-                                <td id="lfiltro2"><a id="vermas1" href="filtro-SOD.php?id=<?php echo $activid->getSo()?>&accion=SO">SO<?php echo $activid->getSo() ?> </a><br><br>
-                                <a href="#">Vista Específica  </a></td>
-                                <td id="lineafiltro2"><img  src="imagenes/lineafiltro.png"/></td>   
-                                   
-                                                    
+                                <td id="lfiltro2"><a id="botonesSOfiltro" href="filtro-SOD.php?id=<?php echo $activid->getSo()?>&accion=SO">SO<?php echo $activid->getSo() ?> </a><br><br>
+                                <a style="text-decoration: none;color: #666666;" href="#">Vista Específica  </a></td>
+                                    <td id="lineafiltro2"><img  src="imagenes/lineafiltro.png"/></td> 
+                                
+                                
                                 
                                         <?php 
                                     }
