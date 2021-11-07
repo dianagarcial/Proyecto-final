@@ -7,60 +7,38 @@ require_once('conexion.php');
 		public function __construct(){}
 		
 		// método para insertar, recibe como parámetro un objeto de tipo libro
-		public function insertar($actividad){
+		public function obtenerCodGRU($actividad){
 			$db=Db::conectar();
-			
-			//$myAct-= new Actividad();
-			//$programa= $myAct->setId($actividad['programa']);
-			//$asignatura= $myAct->setId($actividad['asignatura']);
-			//$periodo= $myAct->setId($actividad['periodo']);
-			//$selectpro=$db->query('SELECT PROGRAMAACADEMICO.codigo FROM ACTIVIDAD JOIN PROGRAMAACADEMICO ON ACTIVIDAD.codigoprogra= PROGRAMAACADEMICO.codigo WHERE PROGRAMAACADEMICO.nombre='.$programa.')';
-			//$selectasig=$db->query('SELECT ASIGNATURA.codigo FROM ACTIVIDAD JOIN ASIGNATURA ON ACTIVIDAD.codigoprogra= ASIGNATURA.codigo WHERE ASIGNATURA.nombre='.$asignatura.')';
-			//$selectperiodo=$db->query('SELECT PERIODO.fechaFin FROM ACTIVIDAD JOIN PERIODO ON ACTIVIDAD.codigoperiodo= PERIODO.codigo WHERE PERIODO.codigo='.$periodo.')';
-
-			$insert=$db->prepare('INSERT INTO actividad values(NULL,:medio,:codigoGrupo,:codPeriodo,:codPi, NULL, NULL)');
-			$insert->bindValue('nombre',$libro->getNombre());
-			$insert->bindValue('autor',$libro->getAutor());
-			$insert->bindValue('anio_edicion',$libro->getAnio_edicion());
-			$insert->execute();
-			
-			$insert2=$db->prepare('INSERT INTO calificacion values(:codigo_act,:codigoPI)');
-		}
-
-		public function obtenerCodGRU($id){
-			$db=Db::conectar();
-			$select=$db->prepare("SELECT ACTIVIDAD.CODIGO as id, PROGRAMAACADEMICO.nombre as prog ,ASIGNATURA.nombre as asig,GRUPO.codigo_Grup as grupo,\n"
-					. "PERIODO.codigo as periodo,\n"
-					. "SO.codigo as so, PI.codigo as pi, ASIGNATURA.codigo as  codAsig, RUBRICA.calificacion as caliRub,\n"
-					. "RUBRICA.comentarioDir as comDir FROM ACTIVIDAD JOIN PERIODO\n"
-					. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN PI\n"
-					. "ON PI.codigo=ACTIVIDAD.codPI JOIN SO\n"
-					. "ON SO.codigo=PI.codigo_SO JOIN GRUPO\n"
-					. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"
-					. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROGRAMAACADEMICO\n"
-					. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.COD_programa JOIN PROFESOR\n"
-					. "ON GRUPO.correo_pr=PROFESOR.usuario JOIN USUARIO\n"
-					. "ON USUARIO.nomUsuario=PROFESOR.usuario JOIN RUBRICA\n"
-					. "ON ACTIVIDAD.codigo=RUBRICA.codigo_act \n"
-					. "WHERE PROFESOR.usuario='jose.luis' AND ACTIVIDAD.codigo=:id");
+			$select=$db->query("SELECT GRUPO.codigo cod FROM ASIGNATURA JOIN GRUPO\n"
+					. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs \n"
+					. "WHERE ASIGNATURA.nombre=:asig");
 							
-			$select->bindValue('id',$id);
+			$select->bindValue('asig',$asig);
 			$select->execute();
 			$obAct=$select->fetch();
 			$myObAct= new Actividad();
-			$myObAct->setId($obAct['id']);
-			$myObAct->setNomProgAcademico($obAct['prog']);
-			$myObAct->setNomAsig($obAct['asig']);
-			$myObAct->setNumGrupo($obAct['grupo']);
-			$myObAct->setPeriodo($obAct['periodo']);
-			$myObAct->setSo($obAct['so']);
-			$myObAct->setPi($obAct['pi']);
-			$myObAct->setCodAsig($obAct['codAsig']);
-			$myObAct->setCalirubrica($obAct['caliRub']);
-			$myObAct->setCalicommentrubrica($obAct['comDir']);
+			$myObAct->setGrupo($obAct['cod']);	
 
 			return $myObAct;
 		}
+		
+		
+		public function insertar($actividad){
+			$db=Db::conectar();
+			$myObAct= new Actividad();
+			$myObAct->getNomAsig();
+			$grupo= $crud->obtenerCodGRU($myObAct);
+
+			$insert=$db->prepare('INSERT INTO actividad values(NULL,:medio,:codigoGrupo,:codPeriodo,:codPi, NULL, NULL)');
+			$insert->bindValue('medio','parcial');
+			$insert->bindValue('codigoGrupo','2');
+			$insert->bindValue('codPeriodo','2022-1');
+			$insert->bindValue('codPi','1.1');
+			$insert->execute();
+			
+			
+		}
+		
 
 
 		/*

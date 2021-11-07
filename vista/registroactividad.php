@@ -225,14 +225,9 @@ $listaActividad = $crud->selectAsigna();
 
 
         </div>
-         
-        <div class=formatorow4>
-            <button class="cancelar" onclick="window.location.href='/vista/registroactfut.html'">Cancelar</button>
-
-            <button class="enviarRevision" onclick="window.location.href='/vista/registroactfut-c.html'">Registrar</button>
-            <input type='hidden' name='insertar' value='insertar'>
+        <input type='hidden' name='insertar' value='insertar'>
             <input type='submit' value='Guardar'>
-        </div>
+     
         
 
     </div>
@@ -241,8 +236,9 @@ $listaActividad = $crud->selectAsigna();
     <br>
     <br>
     <br>
+   */
    
-
+  
     
 
     

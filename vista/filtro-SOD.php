@@ -106,7 +106,7 @@ $listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['id']);
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
                                 
-                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=Revi ">Ver más</a> </td>
+                                        <td><a id="vermas1" href="filtro-SOD.php?id=<?php echo $activid->getId()?>&accion=Revi ">Ver más</a> </td>
                                     </tr>
                                     <?php 
                                     }
