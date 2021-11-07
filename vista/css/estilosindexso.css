@@ -61,6 +61,10 @@ h1 {
     margin: 2%;
 }
 
+h1.MasGrande {
+    font-size: 40px;
+}
+
 h2 {
     width: 590px;
     height: 40px;

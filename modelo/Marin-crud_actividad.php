@@ -52,4 +52,33 @@ require_once('conexion.php');
 			return $myObAct;
 		}
 	}
+
+	public function ConsultarAprobado(){
+		$db=Db::conectar();
+		
+		$select=$db->prepare"SELECT ASIGNATURA.nombre as Asignatura,(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorNomb,\n"
+
+		. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorApellido, \n"
+	
+		. "ACTIVIDAD.fechaEntrega as FechaEntrega,SO.codigo as So,PI.codigo as Pi,RUBRICA.nombre as nombreDOC,RUBRICA.calificacion as Calificacion,ACTIVIDAD.codigo as CODact FROM ACTIVIDAD JOIN PERIODO\n"
+	
+		. "ON ACTIVIDAD.codPeriodo=Periodo.codigo JOIN PI\n"
+	
+		. "ON ACTIVIDAD.codPI=PI.codigo join SO\n"
+	
+		. "on PI.codigo_SO=SO.codigo join GRUPO\n"
+	
+		. "ON ACTIVIDAD.codigoGrupo=grupo.CODIGO join Asignatura\n"
+	
+		. "on GRUPO.codigo_asgs=ASIGNATURA.codigo join RUBRICA\n"
+	
+		. "on ACTIVIDAD.codigo=RUBRICA.codigo_act join PROFESOR\n"
+	
+		. "on GRUPO.correo_pr=PROFESOR.usuario join USUARIO\n"
+	
+		. "ON PROFESOR.usuario=USUARIO.nomUSuario\n"
+	
+		. "\n"
+	
+		. "WHERE RUBRICA.calificacion=\'Aprobado\';");
     ?>
