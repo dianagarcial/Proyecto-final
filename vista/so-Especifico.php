@@ -38,8 +38,6 @@ $listarSoEspecifico=$crud->ConsultarSoEspecificoSOLO($_GET['id']);
             ?>
 
         
-        
-        
         <h2 class="so" >Los problemas complejos de ingeniería incluyen una o más de las siguientes características: implican problemas técnicos de gran alcance o conflictivos, no tienen una solución obvia, abordan problemas no incluidos en los actuales estándares y códigos, involucran a diversos grupos de interesados, incluyen diferentes partes, componentes o sub-problemas, involucran múltiples disciplinas, o tiene consecuencias significativas en una ámplia variedad de contextos.</h2>
         
       
@@ -77,7 +75,7 @@ $listarSoEspecifico=$crud->ConsultarSoEspecificoSOLO($_GET['id']);
 
                                             <th>Ult. modificación</th>
 
-                                            <th>No. documentos</th>
+                                            <th>Actividades registradas</th>
 
                                             <th>Progreso</th>
 
