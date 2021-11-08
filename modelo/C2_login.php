@@ -10,10 +10,13 @@ $_SESSION['usuario']=$usuario;
 
 require_once('conexion.php');
 $link=Db::conectar();
+$link2=Db::conectar();
 //$consulta = "SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$contraseña'";
 //$resultado = mysql_query($consulta, $link);
 
 $consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$cifrada'");
+
+$consulta2 = $link2-> query("SELECT tipoUsuario FROM usuario WHERE nomUsuario='$usuario'");
 
 //$consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario'");
 
@@ -22,17 +25,18 @@ $filas = $consulta->rowcount();
 if ($filas){
    
 
+    
 
-/*     switch ($tipoU){
+    switch ($consulta2){
         case "Director":
             header("Location: ../vista/indexD.php");
             break;
         case "Profesor":
             header("Location: ../vista/indexP.php");
-            break;
-    } */
+            break; 
+    } 
 
-        header("Location: ../vista/indexD.php");
+        //header("Location: ../vista/indexD.php");
     
 /*     }elseif($tipoU == "Profesor"){
         header("Location: ../vista/indexP.php");
@@ -60,4 +64,5 @@ if ($filas){
 }
 
 mysql_close($link);
+mysql_close($link2);
 ?>
