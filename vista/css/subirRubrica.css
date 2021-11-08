@@ -665,8 +665,8 @@ h4#info{
               }
               
               .file-upload-btn {
-                width: 98%;
-                margin: 2%;
+                width: 100%;
+                margin-top: 2%;
                 color: #fff;
                 background: #BA181B;
                 border: none;
