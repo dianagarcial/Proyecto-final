@@ -37,6 +37,20 @@ require_once('conexion.php');
 			
 			
 		}
+
+		public function insertarEvid($actividad){
+			$db=Db::conectar();
+			$myObAct= new Actividad();
+		
+			$insert=$db->prepare('INSERT INTO EVIDENCIA values(NULL,:codrub,:nombre,:fecha,NULL, :comentarioE,NULL,NULL)');
+			$insert->bindValue('codact',$actividad->getid());
+			$insert->bindValue('nombre',$actividad->getNomrubrica());
+			$insert->bindValue('fecha',$actividad->getFentrega());
+			$insert->bindValue('comentarioE',$actividad->getComenrubrica());
+			$insert->execute();
+			
+			
+		}
 		public function insertar($actividad){
 			$db=Db::conectar();
 			$myObAct= new Actividad();

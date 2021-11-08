@@ -45,7 +45,7 @@ $lactividad= new Actividad();
 		$lactividad->setComenrubrica($_POST['comentario']);
 		
 		//llama a la función insertar definida en el crud
-		$crud->insertarRub($lactividad);
+		$crud->insertarEvid($lactividad);
 		
 		header('Location: ../vista/subirEvid.php');
 }

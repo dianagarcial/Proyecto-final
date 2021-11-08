@@ -42,8 +42,8 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
         <form action='../controlador/administrar_actividad.php'<?php echo $activid-> getId()?> method='POST'>
         <table>
         <div class= formatorow2>
-                    
-                                   
+
+                                  
                     <div class=columinfo1>
                         <h5 id="infoletra">Rúbrica asociada</h5>
                         <label class="labelestado" id="nomdoc" name="nomRub">Rub <?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?><label> 
