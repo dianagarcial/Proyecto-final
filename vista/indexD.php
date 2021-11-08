@@ -164,8 +164,8 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
                                         <a href="filtro-SOD.php?id=1&accion=SO"><br><br>Filtro por <br>Student Outcomes (SO)</a></td>
                                         <td id="lineafiltro"><img  src="imagenes/linea.png"/></td>
                                         <td id="lfiltro">
-                                            <img src="imagenes/AS.png"
-                                            href="#"/><br><br>Filtro por <br>Asignatura</td>
+                                            <img src="imagenes/AS.png">
+                                            <a href="Filtro-AsignaturaD.php?id=1&accion=Asig"> <br><br>Filtro por <br>Asignatura</a></td>
                             
                         </table>
                     </div>
