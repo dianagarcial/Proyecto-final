@@ -136,18 +136,14 @@ $listarG=$crud->obtenerAsi();
                         }
                         ?> 
 
-
-                    
-                      
-
-                        
+                 
                     </div>
                         
 
                     <div class=columinfo1>
-                    <?php $ano='2021-03'?>
+                    
                         <h5 id="infoletra">Periodo</h5> 
-                        <label class="labelestado" name="periodo" value=<?php echo $ano?>><?php echo $ano?></label>
+                        <label class="labelestado" name="periodo" >2021-03</label>
                     </div>
 
                     <div class=columinfo1>
