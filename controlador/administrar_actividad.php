@@ -37,8 +37,18 @@ $lactividad= new Actividad();
 			//llama a la función insertar definida en el crud
 			$crud->insertarRub($lactividad);
 			
-			header('Location: index.php');
-	}
+			header('Location: ../vista/subirEvid.php');
+	}elseif(isset($_POST['insertarE'])) {
+		
+		$lactividad->setNomrubrica($_POST['nomRub']);
+		$lactividad->setFentrega($_POST['nivel']);
+		$lactividad->setComenrubrica($_POST['comentario']);
+		
+		//llama a la función insertar definida en el crud
+		$crud->insertarRub($lactividad);
+		
+		header('Location: ../vista/subirEvid.php');
+}
 	elseif(isset($_POST['actualizar'])){
 		//$libro->setId($_POST['id']);
 		//$libro->setNombre($_POST['nombre']);
