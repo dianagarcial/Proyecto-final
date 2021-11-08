@@ -50,7 +50,7 @@ require_once('conexion.php');
 
             . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorApellido, \n"
 
-            . "SO.codigo as So,PI.codigo as PI,ACTIVIDAD.medioEvaluacion as metodo FROM ACTIVIDAD JOIN PERIODO\n"
+            . "SO.codigo as So,PI.codigo as PI,ACTIVIDAD.medioEvaluacion as metodo, RUBRICA.calificacion as calif, RUBRICA.comentarioDir as comen FROM ACTIVIDAD JOIN RUBRICA ON RUBRICA.codigo_act=ACTIVIDAD.codigo JOIN PERIODO\n"
 
             . "ON ACTIVIDAD.codPeriodo=Periodo.codigo JOIN PI\n"
 
@@ -85,31 +85,14 @@ require_once('conexion.php');
             $myObAct->setPi($obAct['PI']);
             $myObAct->setCodAsig($obAct['codigoAsg']);
             $myObAct->setMedioEv($obAct['metodo']);
-
+			$myObAct->setCalirubrica($obAct['calif']);
+			$myObAct->setCalicommentrubrica($obAct['comen']);
             return $myObAct;
         }
 
 		public function actualizar($activid){
 			$db=Db::conectar();
-			$actualizar=$db->prepare('UPDATE RUBRICA \n"
-
-			. "SET calificacion=:calif,\n"
-		
-			. "comentarioDir=\n"
-		
-			. "CASE\n"
-		
-			. "WHEN comentarioDir IS NULL THEN\n"
-		
-			. "comentarioDir\n"
-		
-			. "ELSE\n"
-		
-			. "comentarioDIr=: comentario\n"
-		
-			. "END\n"
-		
-			. "WHERE codigo_act =:id;');
+			$actualizar=$db->prepare('UPDATE RUBRICA SET calificacion=:calif , comentarioDir=:comentario WHERE codigo_act =:id');
 
 			
 			$actualizar->bindValue('id',$activid->getId());

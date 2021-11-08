@@ -110,22 +110,24 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
              <label id="labelestado">Estado* </label>
              <label id="labelestado">Comentarios </label>
                 </div>
-               <form action='../controlador/JP-administrar_actividad.php' method='POST'>
-               <label name="id"><?php echo $activid-> getId()?></label>
+               <form action='../controlador/JP-administrar_actividad.php'<?php echo $activid-> getId()?> method='POST'>
+               <input type="hidden" name="id" value=<?php echo $activid-> getId()?>>
+               
                 <div class="estado2">
-                            <select id="selectEstado" name="calif">
-                                <option value="enviado">Sin calificación</option>
-                                <option value="aprobado">Aprobado</option>
-                                <option value="rechazado">Rechazado</option>                           
+                            <select id="selectEstado" name="calif" >
+                            <option value='' hidden><?php echo $activid->getCalirubrica()?></option>    
+                            <option value="Sin Calificacion">Sin calificación</option>
+                                <option value="Aprobado">Aprobado</option>
+                                <option value="Rechazado">Rechazado</option>                           
                         </select>
                 
-                <textarea class=estilotextarea2 cols="60" rows="8" name="comentario"> </textarea>
+                <textarea class=estilotextarea2 cols="60" rows="8" name="comentario"><?php echo $activid->getCalicommentrubrica()?></textarea>
 
                 <input type='hidden' name='actualizar' value='actualizar'>
 	
-	            <input type='submit' value='Guardar'>
+	            <input type='submit' class="enviarRevision" value='Guardar'>
 
-                </form>
+                
             </div>
         
             
@@ -133,13 +135,14 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
 
 
         </div>
+        
         <div class=formatorow4>
             <button class="cancelar" id="cancelarRevi" onclick="window.location.href='indexD.php'">Cancelar</button>
 
             <button class="enviarRevision" href="indexD.php?id=<?php echo $activid->getId()?>&accion=ar">Enviar revisión</button>
             
         </div>
-
+        </form>
     </div>
     <br>
     <br>
