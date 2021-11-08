@@ -56,7 +56,7 @@ if (isset($_POST['insertar'])) {
 
         <div class= formatorow2>
             
-        <
+        <br>
                     <div class=columinfo1>
                         <h5 id="infoletra">*Nombre del documento</h5>
                         <label class="labelestado" id="nomdoc" name="documento">Rub <?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>
@@ -152,7 +152,7 @@ if (isset($_POST['insertar'])) {
            
 	</table>
     <a id="vermas1"  value='Guardar' href="subirEvid.php?r=<?php echo $activid->getId()?>&accion=evi ">Ver más</a>
-	<input type='submit' value='Guardar'>
+	<input class="file-upload-btn" type='submit' value='Guardar'>
 	<a href="index.php">Volver</a>
     
 </form>
