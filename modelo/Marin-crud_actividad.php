@@ -186,7 +186,7 @@ require_once('conexion.php');
 public function ConsultarAsignaturaEspecifica($id){
 	$db=Db::conectar();
 	$listaAsiganturaE=[];
-	$select=$db->prepare( "SELECT ASIGNATURA.nombre as asig,ASIGNATURA.codigo as codAsig,ACTIVIDAD.estado as estado,ACTIVIDAD.codigo as id, \n"
+	$select=$db->prepare( "SELECT iFNULL(ACTIVIDAD.fechaEntrega,'-') as fechaen,ASIGNATURA.nombre as asig,ASIGNATURA.codigo as codAsig, iFNULL(ACTIVIDAD.estado,'-') as estado,ACTIVIDAD.codigo as idA, \n"
 
     . "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP,\n"
 
@@ -214,15 +214,14 @@ public function ConsultarAsignaturaEspecifica($id){
 
     . "\n"
 
-    . "WHERE ASIGNATURA.codigo=552203;");
+    . "WHERE ASIGNATURA.codigo=:id;");
 
-
-
-
+	$select->bindValue('id',$id);
+	$select->execute();
 
 foreach($select->fetchAll() as $obAct){
 	$myAD= new Actividad();
-	$myAD->setid($obAct['codigo']);
+	$myAD->setid($obAct['idA']);
 	$myAD->setCodAsig($obAct['codAsig']);
 	$myAD->setNomProf($obAct['nombreP']);
 	$myAD->setApeProf($obAct['apellidoP']);
