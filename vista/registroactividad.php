@@ -143,7 +143,7 @@ $listarG=$crud->obtenerAsi();
                     <div class=columinfo1>
                     
                         <h5 id="infoletra">Periodo</h5> 
-                        <label class="labelestado" name="periodo" >2021-03</label>
+                        <input class="labelestado" name="periodo" type='text' value="2021-3 " disabled></input>
                     </div>
 
                     <div class=columinfo1>
