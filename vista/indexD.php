@@ -194,8 +194,8 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
                                     href="#"/><br><br>Pendiente</td>
                             <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
                             <td id="lfiltro2">
-                                <img src="imagenes/check.png"
-                                href="#"/><br><br>Aprobados</td>
+                                <img src="imagenes/check.png">
+                                <a  href="consultarAprobado.php"><br><br>Aprobados</td></a>
                             <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
                             <td id="lfiltro2">
                                 <img src="imagenes/clear.png"

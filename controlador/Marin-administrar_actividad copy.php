@@ -36,7 +36,9 @@ $lactividad= new Actividad();
 }elseif($_GET['accion']=='id'){
 	header('Location: filtro-SOD.php?id=1&accion=SO');
 }
-
+elseif($_GET['accion']=='id'){
+	header('Location: Filtro-AsignaturaD.php?id=552203&accion=Asignatura');
+}
 
 
 	
