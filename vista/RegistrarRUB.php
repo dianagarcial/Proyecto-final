@@ -127,9 +127,11 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
                             </div>
                         </div>
                             <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Adjuntar archivo</button>
-                            <button class="file-upload-btn" type="button" href="\Proyecto-final\vista\Recursos\SO1.pdf" download="Rúbrica SO1.pdf">Descargar Plantilla De Rúbrica</button>
-                            <a href="\Proyecto-final\vista\Recursos\SO<?php echo $activid->getSo()?>.xlsx" download="Rúbrica SO1.pdf">LOL</a>
+                            <a class="file-upload-btn" href="\Proyecto-final\vista\Recursos\SO<?php echo $activid->getSo()?>.xlsx" download="SO<?php echo $activid->getSo()?>.xlsx">Descargar Plantilla De Rúbrica</a>
+                            <label></label>
                         </div>
+
+                        
                         
                                
                     </div>
