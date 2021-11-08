@@ -1,14 +1,14 @@
 <?php
 //incluye la clase Libro y CrudLibro
 include("../modelo/crud_actividad.php");
-include("../modelo/Marin-crud_actividad.php");
 require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 $progDi = $crud->obtenerProgramaDirec();
 $listaActividad = $crud->selectAsigna();
-$listarSO=$crud->ConsultarSO();
+$listarSO=$crud->ConsultarSO($_POST['asi']);
+$busqGrupo=$crud->busqGrupo();
 ?>
 
 <!DOCTYPE html>
@@ -145,7 +145,7 @@ $listarSO=$crud->ConsultarSO();
 
                     <div class=columinfo1>
                         <h5 id="infoletra">Periodo</h5> 
-                        <label class="labelestado" id="periodo" name='periodoInsertar'>2022 -3</label>
+                        <label class="labelestado" id="periodo" name='periodoInsertar'>2021-03</label>
                     </div>
 
                     <div class=columinfo1>
@@ -164,7 +164,7 @@ $listarSO=$crud->ConsultarSO();
                         </select>
                     </div>
 
-                    
+                    <input type='hidden' name='asi' value='asi'>
 
                     
                     <div class=columinfo1>
@@ -176,14 +176,14 @@ $listarSO=$crud->ConsultarSO();
                         
                         <h5 id="infoletra">*Student Outcomes</h5> 
                             <select class="labelestado" id= "SOs0" name="SO">
-                                <option value=''> </option>
-                                <option value='RAE-1'>SO-1: Problemas complejos de ingeniería</option>
-                                <option value='RAE-2'>SO-2: Diseño en Ingeniería</option>
-                                <option value='RAE-3'>SO-3: Comunicación Efectiva</option>
-                                <option value='RAE-4'>SO-4: Responsabilidades éticas y profesionales</option>
-                                <option value='RAE-5'>SO-5: Trabajo en equipo</option>
-                                <option value='RAE-6'>SO-6: Experimentación</option>
-                                <option value='RAE-7'>SO-7: Autoaprendizaje</option>
+                            <?php foreach ($listarSO as $activid) {?>
+		                        	
+				        		                      
+                                    <option value= <?php echo $activid->getSo()?>>SO <?php echo $activid->getSo()."-".$activid->getNomSo()?></option>
+                                        
+                                    <?php
+                                    }
+                                    ?> 
                             </select>
                         </div> 
                         
@@ -268,31 +268,81 @@ function cambiarSelect(){
         console.log(SOselect);
 
         switch (SOselect) {
-            case 1:
+            case 0:
                 document.getElementById("PIs"+ index).innerHTML = "<option value='1.1'>1.1 Identifica y formula problemas complejos de ingeniería.</option>" + "<option value='1.2'>1.2 Resuelve problemas complejos de ingeniería aplicando principios de ingeniería, ciencias y matemáticas.</option>";
                 break;
 
-            case 2:
+            case 1:
                 document.getElementById("PIs"+ index).innerHTML = "<option value='2.1'>2.1 Aplica un proceso estructurado de diseño en ingeniería para producir alternativas de solución que satisfagan las necesidades de las personas y consideren los atributos de diseño.</option>" + "<option value='1.2'>2.2 Considera en el proceso de diseño en ingeniería aspectos tales como la salud pública, seguridad, bienestar, así como factores globales, culturales, sociales y económicos, entre otros.</option>";
                 break;
 
-            case 3:
+            case 2:
                 document.getElementById("PIs"+ index).innerHTML = "<option value='3.1'>3.1 Produce documentos con una estructura, gramática y claridad apropiadas, para diferentes audiencias.</option>" + "<option value='3.2 '>3.2 Hace presentaciones orales usando una estructura, lenguaje, fluidez y estilo apropiados.</option>";
             break;
 
-            case 4:
+            case 3:
                 document.getElementById("PIs"+ index).innerHTML = "<option value='4.1'>4.1 reconoce su responsabilidad ética y profesional tanto en las soluciones de ingeniería como en su desarrollo personal y profesional.</option>" + "<option value='4.2'>4.2 considera el impacto de las soluciones de ingeniería en el contexto global, económico, ambiental y social.</option>";
             break;
 
-            case 5:
+            case 4:
                 document.getElementById("PIs"+ index).innerHTML = "<option value='5.1'>5.1 Participan en el fortalecimiento del equipo de trabajo aportando ideas y respetando las opiniones de los otros miembros.</option>" + "<option value='5.2'>5.2 Gestionan las actividades al interior del equipo de trabajo para abordar un proyecto.</option>";
             break;
 
-            case 6:
+            case 5:
                 document.getElementById("PIs"+ index).innerHTML = "<option value='6.1'>6.1 Gestionan las actividades al interior del equipo de trabajo para abordar un proyecto.</option>" + "<option value='6.2'>6.2 Analizar e interpretar datos con el fin de obtener conclusiones adecuadas</option>";
             break;
 
-            case 7:
+            case 6:
+                document.getElementById("PIs"+ index).innerHTML = "<option value='7.1'>7.1 Realiza búsquedas de información y emplea adecuadamente la información consultada.</option>" + "<option value='7.2'>7.2</option>";
+            break;
+
+            default:
+                document.getElementById("PIs"+ index).innerHTML = "";
+                break;
+        }
+});
+    
+}
+}
+
+//intento de grupos
+
+indeGrupos();
+function indeGrupos(){
+    for (let index = 0; index < 7; index++) {
+    console.log(index)
+    var select = document.getElementById("SOs"+index);
+    select.addEventListener('change', 
+    function (){
+        var SOselect = document.getElementById("SOs"+ index).selectedIndex;
+        console.log(SOselect);
+
+        switch (SOselect) {
+            case 0:
+                document.getElementById("PIs"+ index).innerHTML = "<option value='1.1'>1.1 Identifica y formula problemas complejos de ingeniería.</option>" + "<option value='1.2'>1.2 Resuelve problemas complejos de ingeniería aplicando principios de ingeniería, ciencias y matemáticas.</option>";
+                break;
+
+            case 1:
+                document.getElementById("PIs"+ index).innerHTML = "<option value='2.1'>2.1 Aplica un proceso estructurado de diseño en ingeniería para producir alternativas de solución que satisfagan las necesidades de las personas y consideren los atributos de diseño.</option>" + "<option value='1.2'>2.2 Considera en el proceso de diseño en ingeniería aspectos tales como la salud pública, seguridad, bienestar, así como factores globales, culturales, sociales y económicos, entre otros.</option>";
+                break;
+
+            case 2:
+                document.getElementById("PIs"+ index).innerHTML = "<option value='3.1'>3.1 Produce documentos con una estructura, gramática y claridad apropiadas, para diferentes audiencias.</option>" + "<option value='3.2 '>3.2 Hace presentaciones orales usando una estructura, lenguaje, fluidez y estilo apropiados.</option>";
+            break;
+
+            case 3:
+                document.getElementById("PIs"+ index).innerHTML = "<option value='4.1'>4.1 reconoce su responsabilidad ética y profesional tanto en las soluciones de ingeniería como en su desarrollo personal y profesional.</option>" + "<option value='4.2'>4.2 considera el impacto de las soluciones de ingeniería en el contexto global, económico, ambiental y social.</option>";
+            break;
+
+            case 4:
+                document.getElementById("PIs"+ index).innerHTML = "<option value='5.1'>5.1 Participan en el fortalecimiento del equipo de trabajo aportando ideas y respetando las opiniones de los otros miembros.</option>" + "<option value='5.2'>5.2 Gestionan las actividades al interior del equipo de trabajo para abordar un proyecto.</option>";
+            break;
+
+            case 5:
+                document.getElementById("PIs"+ index).innerHTML = "<option value='6.1'>6.1 Gestionan las actividades al interior del equipo de trabajo para abordar un proyecto.</option>" + "<option value='6.2'>6.2 Analizar e interpretar datos con el fin de obtener conclusiones adecuadas</option>";
+            break;
+
+            case 6:
                 document.getElementById("PIs"+ index).innerHTML = "<option value='7.1'>7.1 Realiza búsquedas de información y emplea adecuadamente la información consultada.</option>" + "<option value='7.2'>7.2</option>";
             break;
 

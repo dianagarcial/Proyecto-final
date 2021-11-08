@@ -200,6 +200,13 @@
 			$this->so = $so;
 		}
 
+		public function getNomSo(){
+			return $this->nomSo;
+		}
+ 
+		public function setNomSo($nomSo){
+			$this->nomSo = $nomSo;
+		}
 
 
 

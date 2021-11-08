@@ -51,7 +51,7 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
 
         <div class= formatorow2>
             
-        <form action='administrar_actividad.php' method='post'>                 
+        <
                     <div class=columinfo1>
                         <h5 id="infoletra">*Nombre del documento</h5>
                         <label class="labelestado" id="nomdoc" name="documento">Rub <?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>
@@ -92,11 +92,14 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
                         <h5 id="infoletra">Método de calificación</h5> 
                         <label class="labelestado" id="actasociada"name="metodo"><?php echo $activid->getMedioEv() ?></label>
                     </div>
+
+
                     <form action='../controlador/administrar_actividad.php'<?php echo $activid-> getId()?> method='POST'>
-                    <input type="hidden" name="codAct" value=<?php echo $activid-> getId()?>>
-                    <input type="hidden" name="nombre" value= <?php echo 'Rub'.$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>>
-                    <?php $fechaActual = date('d-m-Y');?>
-                    <input type="hidden" name="fecha" value= <?php $fechaActual ?>>
+                    <table>
+                    <input type="hidden" name="codAct" value=<?php echo $activid-> getId()?>></input>
+                    <input type="hidden" name="nombre" value= <?php echo 'Rub'.$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>></input>
+                    <?php $now = date ('Y-m-d');?>
+                    <input type="hidden" name="fecha" value= <?php echo $now ?>></input>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">Comentarios</h5> 
@@ -137,8 +140,12 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
                 </div>
 
             </div>
-
-        
+            <input type='hidden' name='insertarRub' value='insertarRub'>
+           
+	</table>
+	<input type='submit' value='Guardar'>
+	<a href="index.php">Volver</a>
+</form>
          
 
 
@@ -150,7 +157,7 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
             
         </div>
 
-        </form>
+        
     </div>
     <br>
     <br>

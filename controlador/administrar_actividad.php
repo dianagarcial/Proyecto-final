@@ -16,9 +16,30 @@ $lactividad= new Actividad();
 		
 		//llama a la función insertar definida en el crud
 		$crud->insertar($lactividad);
+		
 		header('Location: index.php');
 	// si el elemento de la vista con nombre actualizar no viene nulo, llama al crud y actualiza el libro
-	}elseif(isset($_POST['actualizar'])){
+	}elseif(isset($_POST['asi'])) {
+		
+		$lactividad-> getNomAsig($_POST['asiginsertar']);
+		
+		//llama a la función insertar definida en el crud
+		$crud->busqGrupo($lactividad);
+		$crud->contarGrupo($lactividad);
+		
+	}elseif(isset($_POST['insertarRub'])) {
+		
+			$lactividad->setid($_POST['codAct']);
+			$lactividad->setNomrubrica($_POST['nombre']);
+			$lactividad->setFentrega($_POST['fecha']);
+			$lactividad->setComenrubrica($_POST['comentarioen']);
+			
+			//llama a la función insertar definida en el crud
+			$crud->insertarRub($lactividad);
+			
+			header('Location: index.php');
+	}
+	elseif(isset($_POST['actualizar'])){
 		//$libro->setId($_POST['id']);
 		//$libro->setNombre($_POST['nombre']);
 		//$libro->setAutor($_POST['autor']);

@@ -23,6 +23,20 @@ require_once('conexion.php');
 		}
 		
 		
+
+		public function insertarRub($actividad){
+			$db=Db::conectar();
+			$myObAct= new Actividad();
+		
+			$insert=$db->prepare('INSERT INTO RUBRICA values(NULL,:codact,:nombre,:fecha,NULL, :comentarioE,NULL,NULL)');
+			$insert->bindValue('codact',$actividad->getid());
+			$insert->bindValue('nombre',$actividad->getNomrubrica());
+			$insert->bindValue('fecha',$actividad->getFentrega());
+			$insert->bindValue('comentarioE',$actividad->getComenrubrica());
+			$insert->execute();
+			
+			
+		}
 		public function insertar($actividad){
 			$db=Db::conectar();
 			$myObAct= new Actividad();
@@ -63,6 +77,38 @@ require_once('conexion.php');
 			return $listaActividadDir;
 		}
 		*/
+
+		
+/*
+		public function busqGrupo($asig){
+			$db=Db::conectar();
+			$listaGrupos=[];
+			$select=$db->prepare("SELECT GRUPO.codigo as cod FROM ASIGNATURA JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs WHERE ASIGNATURA.nombre=:asig");
+ 
+			$select->bindValue('asig',$asig);
+			$select->execute();
+			foreach($select->fetchAll() as $AD){
+				$myAD->setGrupo($AD['cod']);
+				
+			}
+			
+			return $listaGrupos[];
+		}
+		*/
+
+		public function contarGrupo($asig){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT COUNT(*) as cod FROM ASIGNATURA JOIN GRUPO ON ASIGNATURA.codigo=GRUPO.codigo_asgs WHERE ASIGNATURA.nombre=:asig");
+ 
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setNumGrupo($obAct['cod']);
+			
+			return $myObAct;
+		}
+
+
+
 		public function mostraract(){
 			$db=Db::conectar();
 			$listaActividadGen=[];
@@ -363,6 +409,22 @@ require_once('conexion.php');
 			$progDir[]=$myObAct;
 			}
 			return $progDir;
+		}
+
+
+		public function ConsultarSO(){
+			$db=Db::conectar();
+			$listaSO=[];
+			$select=$db->query("SELECT codigo as So, nombre as son from so;");
+
+			foreach($select->fetchAll() as $AD){
+			$myAD= new Actividad();
+			$myAD->setSo($AD['So']);
+			$myAD->setNomSo($AD['son']);
+			$listaSO[]=$myAD;
+		}
+
+		return $listaSO;
 		}
 
 		/*
