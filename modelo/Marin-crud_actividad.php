@@ -104,11 +104,12 @@ require_once('conexion.php');
 		public function ConsultarSO(){
 			$db=Db::conectar();
 			$listaSO=[];
-			$select=$db->query("SELECT codigo as So from so;");
+			$select=$db->query("SELECT codigo as So , nombre nom from so;");
 
 			foreach($select->fetchAll() as $AD){
 			$myAD= new Actividad();
 			$myAD->setSo($AD['So']);
+			$myAD->setNomSo($AD['nom']);
 			$listaSO[]=$myAD;
 		}
 
@@ -118,7 +119,7 @@ require_once('conexion.php');
 	public function ConsultarSoEspecifico($id){
 		$db=Db::conectar();
 		$listaSoE=[];
-		$select=$db->prepare("SELECT pi.codigo_SO as id, ACTIVIDAD.CODIGO as codigo,ASIGNATURA.nombre as asig,ASIGNATURA.codigo as codAsig,\n"
+		$select=$db->prepare("SELECT pi.codigo_SO as id, so.NOMBRE as nom,ACTIVIDAD.CODIGO as codigo,ASIGNATURA.nombre as asig,ASIGNATURA.codigo as codAsig,\n"
 
     . "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP,\n"
 
@@ -136,7 +137,7 @@ require_once('conexion.php');
 
     . "ON ACTIVIDAD.codigoGrupo=GRUPO.codigo JOIN PI\n"
 
-    . "ON ACTIVIDAD.codPi=PI.codigo \n"
+    . "ON ACTIVIDAD.codPi=PI.codigo JOIN SO ON SO.codigo=pi.codigo_SO \n"
 
     . "WHERE pi.codigo_SO=:id;");
 
@@ -146,6 +147,7 @@ require_once('conexion.php');
 	foreach($select->fetchAll() as $obAct){
 		$myAD= new Actividad();
 		$myAD->setSO($obAct['id']);
+		$myAD->setNomSO($obAct['nom']);
 		$myAD->setid($obAct['codigo']);
 		$myAD->setCodAsig($obAct['codAsig']);
 		$myAD->setNomProf($obAct['nombreP']);
@@ -162,6 +164,28 @@ require_once('conexion.php');
 	return $listaSoE;
 
 	}
+
+	public function ConsultarSoEspecificoSOLO($id){
+		$db=Db::conectar();
+		$listaSoE=[];
+		$select=$db->prepare("SELECT *  FROM `so` WHERE `codigo`=:id");
+
+		$select->bindValue('id',$id);
+		$select->execute();
+	
+	foreach($select->fetchAll() as $obAct){
+		$myAD= new Actividad();
+		$myAD->setSO($obAct['codigo']);
+		$myAD->setNomSO($obAct['nombre']);
+		
+		
+		$listaSoE[]=$myAD;
+	}
+
+	return $listaSoE;
+
+	}
+
 
 
 	public function ConsultarAsignatura(){

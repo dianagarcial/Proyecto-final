@@ -1,3 +1,14 @@
+<?php
+//incluye la clase Libro y CrudLibro
+include("../modelo/Marin-crud_actividad.php");
+require("../controlador/actividad.php");
+$crud=new CrudActividad();
+$activid= new Actividad();
+//obtiene todos los libros con el método mostrar de la clase crud
+
+$listarSoEspecifico=$crud->ConsultarSoEspecificoSOLO($_GET['id']);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +28,21 @@
 
     <?php require "headerD.php" ?>
     <div id="contenido">
-    <div class= formatorow1>
-        <h1 class="so">SO1.  PROBLEMAS COMPLEJOS DE INGENIERÍA</h1>
+
+        
+        <?php foreach ($listarSoEspecifico as $activid) {?>
+            <h1 class="so">SO-<?php echo $activid->getSo()?>. <?php echo $activid->getNomSo()?></h1>
+                                       
+            <?php 
+            }
+            ?>
+
+        
+        
+        
         <h2 class="so" >Los problemas complejos de ingeniería incluyen una o más de las siguientes características: implican problemas técnicos de gran alcance o conflictivos, no tienen una solución obvia, abordan problemas no incluidos en los actuales estándares y códigos, involucran a diversos grupos de interesados, incluyen diferentes partes, componentes o sub-problemas, involucran múltiples disciplinas, o tiene consecuencias significativas en una ámplia variedad de contextos.</h2>
         
-        </div>
+      
 
         <div class="limiter" id="contenedor">
             <div class="container-table100">

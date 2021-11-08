@@ -38,6 +38,8 @@ $lactividad= new Actividad();
 }
 elseif($_GET['accion']=='id'){
 	header('Location: Filtro-AsignaturaD.php?id=552203&accion=Asignatura');
+}elseif($_GET['accion']=='Se'){
+	header('Location: so-Especifico.php');
 }
 
 
