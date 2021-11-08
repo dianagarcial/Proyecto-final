@@ -84,7 +84,6 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
                         <h5 class="infoletraw" id=asignaturaRD><?php echo $activid-> getNomAsig()?></h5> 
                         <h5 class="infoletraw" id=grupoRD><?php echo $activid-> getNumGrupo()?></h5> 
                         <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5>  
-                        <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5> 
                         <h5 class="infoletraw" id=docenteRD><?php echo $activid-> getNomProf()." ".$activid-> getApeProf()?></h5> 
                         <h5 class="infoletraw" id=soRD><?php echo $activid-> getSo() ?></h5> 
                         <h5 class="infoletraw" id=piRD><?php echo $activid-> getPi() ?></h5>
