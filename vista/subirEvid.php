@@ -5,6 +5,7 @@ require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
+$nomrub=$crud->obtenerActividad($_GET['r']);
 
 $activid=$crud->ConsultarRegistrar($_GET['id']);
 
@@ -39,7 +40,7 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
             <h3 id=subtitle>En este espacio se suben la evidencias de la rúbricas</h3>
 
         </div>
-        <form action='../controlador/administrar_actividad.php'<?php echo $activid-> getId()?> method='POST'>
+        <form action='../controlador/administrar_actividad.php' method='POST'>
         <table>
         <div class= formatorow2>
 

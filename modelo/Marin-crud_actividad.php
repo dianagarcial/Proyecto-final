@@ -238,6 +238,16 @@ return $listaAsiganturaE;
 
 }
 
+public function codRub($rub){
+	$db=Db::conectar();
+	$select=$db->prepare("SELECT RUBRICA.CODIGO as cod FROM RUBRICA WHERE RUBRICA.nombre=:nomRub);
+
+	$obAct=$select->fetch();
+	$myObAct= new Actividad();
+	$myObAct->setNomrubrica($obAct['cod']);
+	
+	return $myObAct;
+}
 
 } //No borrar
     ?>

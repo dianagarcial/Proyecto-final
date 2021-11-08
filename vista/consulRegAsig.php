@@ -32,7 +32,7 @@ $listaActividadGen = $crud->mostraract();
                 <h1 class="subv">Actividades registradas</h1>
             </div>
             <div class="ti2">
-            <a href="regisActividad.php"id="vermas1">¡Registrar aqui!</a>
+            <a href="registroactividad.php?asi=1"id="vermas1">¡Registrar aqui!</a>
         </div>
             
         </div>

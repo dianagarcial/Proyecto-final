@@ -9,7 +9,7 @@ require_once('conexion.php');
 		// método para insertar, recibe como parámetro un objeto de tipo libro
 		public function obtenerCodGRU($actividad){
 			$db=Db::conectar();
-			$select=$db->query("SELECT GRUPO.codigo cod FROM ASIGNATURA JOIN GRUPO\n"
+			$select=$db->prepare("SELECT GRUPO.codigo cod FROM ASIGNATURA JOIN GRUPO\n"
 					. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs \n"
 					. "WHERE ASIGNATURA.nombre=:asig");
 							
@@ -65,7 +65,16 @@ require_once('conexion.php');
 			
 		}
 		
-
+		public function codRub($rub){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT RUBRICA.CODIGO as cod FROM RUBRICA WHERE RUBRICA.nombre=:nomRub");
+ 
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setNomrubrica($obAct['cod']);
+			
+			return $myObAct;
+		}
 
 		/*
 		// método para mostrar todos los libros
@@ -90,10 +99,10 @@ require_once('conexion.php');
 
 			return $listaActividadDir;
 		}
-		*/
+		
 
 		
-/*
+
 		public function busqGrupo($asig){
 			$db=Db::conectar();
 			$listaGrupos=[];
@@ -108,7 +117,7 @@ require_once('conexion.php');
 			
 			return $listaGrupos[];
 		}
-		*/
+*/		
 
 		public function contarGrupo($asig){
 			$db=Db::conectar();
@@ -409,7 +418,7 @@ require_once('conexion.php');
 			$select=$db->query("SELECT PROGRAMAACADEMICO.nombre as prog, PROGRAMAACADEMICO.codigo as codprog, USUARIO.nombre as nomDi, USUARIO.apellido as apeDi \n"
 			. "FROM USUARIO JOIN DIRECTORPROGRAMA\n"
 			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN programaacademico \n"
-			. "ON DIRECTORPROGRAMA.codigo_prog=programaacademico.codigo\n"
+			. "ON DIRECTORPROGRAMA.codigo_prog=programaacademico.codigo \n"
 			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos';");
 							
 			
@@ -424,6 +433,37 @@ require_once('conexion.php');
 			}
 			return $progDir;
 		}
+
+		public function obtenerAsi(){
+			$db=Db::conectar();
+			$progDir=[];
+			$select=$db->query("SELECT GRUPO.codigo as codG, GRUPO.codigo_Grup as nG, GRUPO.codigo_asgs as ca, ASIGNATURA.nombre as na\n"
+
+			. "FROM USUARIO JOIN DIRECTORPROGRAMA\n"
+		
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN programaacademico\n"
+		
+			. "ON DIRECTORPROGRAMA.codigo_prog=programaacademico.codigo JOIN asignatura \n"
+		
+			. "ON ASIGNATURA.COD_PROGRAMA=PROGRAMAACADEMICO.codigo JOIN GRUPO \n"
+		
+			. "ON GRUPO.codigo_asgs=ASIGNATURA.codigo \n"
+		
+			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos';");
+							
+			
+			foreach($select->fetchAll() as $AD){
+			$myObAct= new Actividad();
+			$myObAct->setGrupo($AD['codG']);
+			$myObAct->setCodAsig($AD['ca']);
+			$myObAct->setNomAsig($AD['na']);
+			$myObAct->setNumGrupo($AD['nG']);
+			
+			$progDir[]=$myObAct;
+			}
+			return $progDir;
+		}
+		
 
 
 		public function ConsultarSO(){

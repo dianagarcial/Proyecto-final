@@ -7,8 +7,9 @@ $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 $progDi = $crud->obtenerProgramaDirec();
 $listaActividad = $crud->selectAsigna();
-$listarSO=$crud->ConsultarSO($_POST['asi']);
-$busqGrupo=$crud->busqGrupo();
+$listarSO=$crud->ConsultarSO($_GET['asi']);
+$listarG=$crud->obtenerAsi();
+
 ?>
 
 <!DOCTYPE html>
@@ -106,10 +107,10 @@ $busqGrupo=$crud->busqGrupo();
 
         </div>
 
-        <form action='administrar_actividades.php' method='post'>
+        <form action='../controlador/administrar_actividad.php' method='post'>
         <div class= formatorow2>
             
-                                   
+                    
                     <div class=columinfo1>
                         <h5 id="infoletra">Programa</h5>
              
@@ -144,18 +145,19 @@ $busqGrupo=$crud->busqGrupo();
                         
 
                     <div class=columinfo1>
+                    <?php $ano='2021-03'?>
                         <h5 id="infoletra">Periodo</h5> 
-                        <label class="labelestado" id="periodo" name='periodoInsertar'>2021-03</label>
+                        <label class="labelestado" name="periodo" value=<?php echo $ano?>><?php echo $ano?></label>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Asignatura</h5> 
-                        <select class="labelestado" id="asignatu" name="asiginsertar">
+                        <select class="labelestado" id="asignatu" name="grupo">
 
-                        <?php foreach ($listaActividad as $activid) {?>
+                        <?php foreach ($listarG as $activid) {?>
 		                        	
 				        		                      
-                        <option value= <?php echo $activid->getCodAsig()?>><?php echo $activid->getNomAsig()?></option>
+                        <option value= <?php echo $activid->getGrupo()?>><?php echo $activid->getNomAsig()."-".$activid->getNumGrupo()?></option>
                             
                         <?php
                         }
@@ -163,10 +165,11 @@ $busqGrupo=$crud->busqGrupo();
                             
                         </select>
                     </div>
-
-                    <input type='hidden' name='asi' value='asi'>
-
+                        
+                    <input  type='hidden'name='asi' value='asi'>
                     
+                   
+
                     <div class=columinfo1>
                         <h5 id="infoletra">*Método de calificación</h5> 
                         <input  class="labelestado" type='text' name='metodoInsertar'> </input>
@@ -179,7 +182,7 @@ $busqGrupo=$crud->busqGrupo();
                             <?php foreach ($listarSO as $activid) {?>
 		                        	
 				        		                      
-                                    <option value= <?php echo $activid->getSo()?>>SO <?php echo $activid->getSo()."-".$activid->getNomSo()?></option>
+                                    <option value= <?php echo $activid->getGrupo()?>>SO <?php echo $activid->getSo()."-".$activid->getNomSo()?></option>
                                         
                                     <?php
                                     }
@@ -226,7 +229,7 @@ $busqGrupo=$crud->busqGrupo();
 
 
         </div>
-        <input type='hidden' name='insertar' value='insertar'>
+        <input type='hidden' name='insertarAct' value='insertarAct'>
             <input type='submit' value='Guardar'>
      
         
@@ -237,7 +240,7 @@ $busqGrupo=$crud->busqGrupo();
     <br>
     <br>
     <br>
-   */
+   
    
   
     
@@ -307,53 +310,7 @@ function cambiarSelect(){
 
 //intento de grupos
 
-indeGrupos();
-function indeGrupos(){
-    for (let index = 0; index < 7; index++) {
-    console.log(index)
-    var select = document.getElementById("SOs"+index);
-    select.addEventListener('change', 
-    function (){
-        var SOselect = document.getElementById("SOs"+ index).selectedIndex;
-        console.log(SOselect);
 
-        switch (SOselect) {
-            case 0:
-                document.getElementById("PIs"+ index).innerHTML = "<option value='1.1'>1.1 Identifica y formula problemas complejos de ingeniería.</option>" + "<option value='1.2'>1.2 Resuelve problemas complejos de ingeniería aplicando principios de ingeniería, ciencias y matemáticas.</option>";
-                break;
-
-            case 1:
-                document.getElementById("PIs"+ index).innerHTML = "<option value='2.1'>2.1 Aplica un proceso estructurado de diseño en ingeniería para producir alternativas de solución que satisfagan las necesidades de las personas y consideren los atributos de diseño.</option>" + "<option value='1.2'>2.2 Considera en el proceso de diseño en ingeniería aspectos tales como la salud pública, seguridad, bienestar, así como factores globales, culturales, sociales y económicos, entre otros.</option>";
-                break;
-
-            case 2:
-                document.getElementById("PIs"+ index).innerHTML = "<option value='3.1'>3.1 Produce documentos con una estructura, gramática y claridad apropiadas, para diferentes audiencias.</option>" + "<option value='3.2 '>3.2 Hace presentaciones orales usando una estructura, lenguaje, fluidez y estilo apropiados.</option>";
-            break;
-
-            case 3:
-                document.getElementById("PIs"+ index).innerHTML = "<option value='4.1'>4.1 reconoce su responsabilidad ética y profesional tanto en las soluciones de ingeniería como en su desarrollo personal y profesional.</option>" + "<option value='4.2'>4.2 considera el impacto de las soluciones de ingeniería en el contexto global, económico, ambiental y social.</option>";
-            break;
-
-            case 4:
-                document.getElementById("PIs"+ index).innerHTML = "<option value='5.1'>5.1 Participan en el fortalecimiento del equipo de trabajo aportando ideas y respetando las opiniones de los otros miembros.</option>" + "<option value='5.2'>5.2 Gestionan las actividades al interior del equipo de trabajo para abordar un proyecto.</option>";
-            break;
-
-            case 5:
-                document.getElementById("PIs"+ index).innerHTML = "<option value='6.1'>6.1 Gestionan las actividades al interior del equipo de trabajo para abordar un proyecto.</option>" + "<option value='6.2'>6.2 Analizar e interpretar datos con el fin de obtener conclusiones adecuadas</option>";
-            break;
-
-            case 6:
-                document.getElementById("PIs"+ index).innerHTML = "<option value='7.1'>7.1 Realiza búsquedas de información y emplea adecuadamente la información consultada.</option>" + "<option value='7.2'>7.2</option>";
-            break;
-
-            default:
-                document.getElementById("PIs"+ index).innerHTML = "";
-                break;
-        }
-});
-    
-}
-}
 
         </script>
       

@@ -19,6 +19,17 @@ $lactividad= new Actividad();
 		
 		header('Location: index.php');
 	// si el elemento de la vista con nombre actualizar no viene nulo, llama al crud y actualiza el libro
+	}elseif (isset($_POST['insertarAct'])) {
+		
+		$lactividad->setMedioEv($_POST['metodoInsertar']);
+		$lactividad->setGrupo($_POST['grupo']);
+		$lactividad->setPeriodo($_POST['periodo']);
+		$lactividad->setPi($_POST['PI']);
+		$crud->insertar($lactividad);
+		//llama a la función insertar definida en el crud
+			
+		header('Location: ../vista/consulRegAsig.php');
+	// si el elemento de la vista con nombre actualizar no viene nulo, llama al crud y actualiza el libro
 	}elseif(isset($_POST['asi'])) {
 		
 		$lactividad-> getNomAsig($_POST['asiginsertar']);
