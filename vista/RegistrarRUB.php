@@ -8,6 +8,11 @@ $activid= new Actividad();
 
 $activid=$crud->ConsultarRegistrar($_GET['id']);
 
+if (isset($_POST['insertar'])) {
+    $r=$activid->getId();
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -146,20 +151,16 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
             <input type='hidden' name='insertarRub' value='insertarRub'>
            
 	</table>
+    <a id="vermas1"  value='Guardar' href="subirEvid.php?r=<?php echo $activid->getId()?>&accion=evi ">Ver más</a>
 	<input type='submit' value='Guardar'>
 	<a href="index.php">Volver</a>
+    
 </form>
          
 
 
 
-        </div>
-        <div class=formatorow4>
-            <button class="cancelar" onclick="window.location.href='/vista/revisionactividad.html'">Cancelar</button>
-            <button class="enviarRevision" onclick="window.location.href='/vista/subirEvid-alta.html'">Siguiente > </button>
-            
-        </div>
-
+      
         
     </div>
     <br>

@@ -10,13 +10,13 @@ $_SESSION['usuario']=$usuario;
 
 require_once('conexion.php');
 $link=Db::conectar();
-$link2=Db::conectar();
+
 //$consulta = "SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$contraseña'";
 //$resultado = mysql_query($consulta, $link);
 
 $consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$cifrada'");
 
-$consulta2 = $link2-> query("SELECT tipoUsuario FROM usuario WHERE nomUsuario='$usuario'");
+$consulta2 = $link-> query("SELECT tipoUsuario FROM usuario WHERE nomUsuario='$usuario'");
 
 //$consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario'");
 

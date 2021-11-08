@@ -5,9 +5,9 @@ require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
-$nomrub=$crud->obtenerActividad($_GET['r']);
+$activid=$crud->obtenerActividad($_GET['r']);
 
-$activid=$crud->ConsultarRegistrar($_GET['id']);
+//$activid=$crud->ConsultarRegistrar($_GET['id']);
 
 ?>
 <!DOCTYPE html>
