@@ -92,12 +92,17 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
                         <h5 id="infoletra">Método de calificación</h5> 
                         <label class="labelestado" id="actasociada"name="metodo"><?php echo $activid->getMedioEv() ?></label>
                     </div>
+                    <form action='../controlador/administrar_actividad.php'<?php echo $activid-> getId()?> method='POST'>
+                    <input type="hidden" name="codAct" value=<?php echo $activid-> getId()?>>
+                    <input type="hidden" name="nombre" value= <?php echo 'Rub'.$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>>
+                    <?php $fechaActual = date('d-m-Y');?>
+                    <input type="hidden" name="fecha" value= <?php $fechaActual ?>>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">Comentarios</h5> 
-                        <textarea class="inputestado" name="comentario" id="coment"placeholder="Escribe los comentarios que desees agregar..."></textarea>
+                        <textarea class="inputestado" name="comentarioen" id="coment"placeholder="Escribe los comentarios que desees agregar..."></textarea>
                     </div>
-                    
+                   
                     <div class=columinfo1>
                         
                         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -106,7 +111,7 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
                         
 
                         <div class="image-upload-wrap">
-                            <input class="file-upload-input" type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this);" />
+                            <input class="file-upload-input" name=archivo type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this);" />
                             <div class="drag-text">
                                 <img id="meu" alt="Imagen no disponible" src="imagenes/subir.png" />
                             <h3>Arrastra el archivo*</h3>
@@ -124,6 +129,8 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
                         
                                
                     </div>
+                    </form>
+
                     
                 
                     </div>

@@ -164,6 +164,80 @@ require_once('conexion.php');
 	}
 
 
+	public function ConsultarAsignatura(){
+		$db=Db::conectar();
+		$listaAsignatura=[];
+		$select=$db->query("SELECT ASIGNATURA.NOMBRE as NombreAsig,ASIGNATURA.codigo as id FROM ASIGNATURA JOIN PROGRAMAACADEMICO \n"
+
+		. "ON ASIGNATURA.COD_programa=PROGRAMAACADEMICO.codigo\n"
+	
+		. "where PROGRAMAACADEMICO.codigo=1;");
+
+		foreach($select->fetchAll() as $AD){
+		$myAD= new Actividad();
+		$myAD->setNomAsig($AD['NombreAsig']);
+		$myAD->setCodAsig($AD['id']);
+		$listaAsignatura[]=$myAD;
+	}
+
+	return $listaAsignatura	;
+}
+
+public function ConsultarAsignaturaEspecifica($id){
+	$db=Db::conectar();
+	$listaAsiganturaE=[];
+	$select=$db->prepare( "SELECT iFNULL(ACTIVIDAD.fechaEntrega,'-') as fechaen,ASIGNATURA.nombre as asig,ASIGNATURA.codigo as codAsig, iFNULL(ACTIVIDAD.estado,'-') as estado,ACTIVIDAD.codigo as idA, \n"
+
+    . "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP,\n"
+
+    . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP,\n"
+
+    . "GRUPO.codigo as codGru,PI.codigo as picod, PI.codigo_SO as socod,actividad.estado FROM USUARIO JOIN DIRECTORPROGRAMA\n"
+
+    . "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO\n"
+
+    . "ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA\n"
+
+    . "ON ASIGNATURA.cod_programa= PROGRAMAACADEMICO.codigo JOIN GRUPO\n"
+
+    . "\n"
+
+    . "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN ACTIVIDAD\n"
+
+    . "\n"
+
+    . "ON ACTIVIDAD.codigoGrupo=GRUPO.codigo JOIN PI\n"
+
+    . "\n"
+
+    . "ON ACTIVIDAD.codPi=PI.codigo  \n"
+
+    . "\n"
+
+    . "WHERE ASIGNATURA.codigo=:id;");
+
+	$select->bindValue('id',$id);
+	$select->execute();
+
+foreach($select->fetchAll() as $obAct){
+	$myAD= new Actividad();
+	$myAD->setid($obAct['idA']);
+	$myAD->setCodAsig($obAct['codAsig']);
+	$myAD->setNomProf($obAct['nombreP']);
+	$myAD->setApeProf($obAct['apellidoP']);
+	$myAD->setFentrega($obAct['fechaen']);
+	$myAD->setNumGrupo($obAct['codGru']);
+	$myAD->setNomAsig($obAct['asig']);
+	$myAD->setEstado($obAct['estado']);
+	$myAD->setPi($obAct[ 'picod']);
+	
+	$listaAsiganturaE[]=$myAD;
+}
+
+return $listaAsiganturaE;
+
+}
+
 
 } //No borrar
     ?>

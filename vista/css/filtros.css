@@ -636,7 +636,7 @@ botones {
     /* vertical-align: text-top; */
 }
 
-#lfiltro2:hover{
+#lfiltro2:hover, .botonesSOfiltro:hover{
     
     color: #BA181B;
        
@@ -650,3 +650,22 @@ botones {
 
 }
 
+
+#botonesSOfiltro {
+
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    
+
+}

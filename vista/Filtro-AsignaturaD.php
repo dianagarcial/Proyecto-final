@@ -7,10 +7,12 @@ $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 
 
-$listarSoEspecifico=$crud->ConsultarSoEspecifico($_GET['id']);
-$listarSO=$crud->ConsultarSO();
+$listarAsignatura=$crud->ConsultarAsignatura();
+$listarAsignaturaEspecifica=$crud->ConsultarAsignaturaEspecifica($_GET['id']);
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,8 +39,8 @@ $listarSO=$crud->ConsultarSO();
        
 
 
-                <h1>Filtro por Student Outcomes</h1>
-                <h2>Seleccionar el S.O</h2>
+                <h1>Filtro por Asignatura</h1>
+                <h2>Seleccionar una Asignatura</h2>
 
                 <div class="limiter" id="contenedor">
                 <div class="container-table100">
@@ -46,8 +48,8 @@ $listarSO=$crud->ConsultarSO();
                         <div class="table100 ver1">
                             <table id=tablefiltro>
                                       
-                                 <?php foreach ($listarSO as $activid) {?>
-                                <td id="lfiltro2"><a id="botonesSOfiltro" href="filtro-SOD.php?id=<?php echo $activid->getSo()?>&accion=SO">SO<?php echo $activid->getSo() ?> </a><br><br>
+                                 <?php foreach ($listarAsignatura as $activid) {?>
+                                <td id="lfiltro2"><a id="botonesSOfiltro" href="Filtro-AsignaturaD.php?id=<?php echo $activid->getCodAsig()?>&accion=Asignatura"> <?php echo $activid->getNomAsig() ?> </a><br><br>
                                 <a style="text-decoration: none;color: #666666;" href="#">Vista Específica  </a></td>
                                     <td id="lineafiltro2"><img  src="imagenes/lineafiltro.png"/></td> 
                                 
@@ -99,7 +101,7 @@ $listarSO=$crud->ConsultarSO();
                                 
                                     <tbody>
                                     <tbody id="cuerpoTabla">
-                                    <?php foreach ($listarSoEspecifico as $activid) {?>
+                                    <?php foreach ($listarAsignaturaEspecifica as $activid) {?>
 		                        	<tr>
                                         <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
 				                        <td><?php echo $activid->getNomAsig() ?></td>

@@ -6,6 +6,7 @@ $crud=new CrudActividad();
 $activid= new Actividad();
 
 $activid=$crud->obtenerActividadDir($_GET['id']);
+
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +84,6 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
                         <h5 class="infoletraw" id=asignaturaRD><?php echo $activid-> getNomAsig()?></h5> 
                         <h5 class="infoletraw" id=grupoRD><?php echo $activid-> getNumGrupo()?></h5> 
                         <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5>  
-                        <h5 class="infoletraw" id=periodoRD><?php echo $activid-> getPeriodo()?></h5> 
                         <h5 class="infoletraw" id=docenteRD><?php echo $activid-> getNomProf()." ".$activid-> getApeProf()?></h5> 
                         <h5 class="infoletraw" id=soRD><?php echo $activid-> getSo() ?></h5> 
                         <h5 class="infoletraw" id=piRD><?php echo $activid-> getPi() ?></h5>
@@ -109,15 +109,24 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
              <label id="labelestado">Estado* </label>
              <label id="labelestado">Comentarios </label>
                 </div>
+               <form action='../controlador/JP-administrar_actividad.php'<?php echo $activid-> getId()?> method='POST'>
+               <input type="hidden" name="id" value=<?php echo $activid-> getId()?>>
                
                 <div class="estado2">
-                            <select id="selectEstado" name="calif">
-                                <option value="enviado">Sin calificación</option>
-                                <option value="aprobado">Aprobado</option>
-                                <option value="rechazado">Rechazado</option>                           
+                            <select id="selectEstado" name="calif" >
+                            <option value='' hidden><?php echo $activid->getCalirubrica()?></option>    
+                            <option value="Sin Calificacion">Sin calificación</option>
+                                <option value="Aprobado">Aprobado</option>
+                                <option value="Rechazado">Rechazado</option>                           
                         </select>
                 
-                <input type= 'textarea' class=estilotextarea2 cols="60" rows="8" name='comentario'>
+                <textarea class=estilotextarea2 cols="60" rows="8" name="comentario"><?php echo $activid->getCalicommentrubrica()?></textarea>
+
+                <input type='hidden' name='actualizar' value='actualizar'>
+	
+	            <input type='submit' class="enviarRevision" value='Guardar'>
+
+                
             </div>
         
             
@@ -125,13 +134,14 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
 
 
         </div>
+        
         <div class=formatorow4>
-            <button class="cancelar" id="cancelarRevi" onclick="window.location.href='/vista/index-direc-asigna.html'">Cancelar</button>
+            <button class="cancelar" id="cancelarRevi" onclick="window.location.href='indexD.php'">Cancelar</button>
 
-            <button class="enviarRevision" onclick="window.location.href='/vista/index-director-a.html'">Enviar revisión</button>
+            <button class="enviarRevision" href="indexD.php?id=<?php echo $activid->getId()?>&accion=ar">Enviar revisión</button>
             
         </div>
-
+        </form>
     </div>
     <br>
     <br>

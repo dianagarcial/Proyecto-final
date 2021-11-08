@@ -38,28 +38,54 @@ $listaActividad = $crud->selectAsigna();
 
         <form action='../controlador/administrar_actividad.php' method='post'>
         <table>
-                <tr>
-                    <td>Programa:</td>
-                    <td> <input type='text' name='prog'></td>
-                </tr>
-                <tr>
-                    <td>Director:</td>
-                    <td><input type='text' name='DIREC' ></td>
-                </tr>
-                <tr>
-                    <td>Periodo:</td>
-                    <td><input type='text' name='codigoP' ></td>
-                </tr>
-                <tr>
-                    <td>Grupo:</td>
-                    <td><input type='text' name='codigoG' ></td>
-                </tr>
+                    <div class=columinfo1>
+                        <h5 id="infoletra">Programa</h5>
+             
+                        <?php foreach ($progDi as $activid) {?>
+                                                      
+                        <label class='labelestado' name='programaInsertar'><?php echo $activid->getNomProgAcademico()?></label>
+                                                    
+                        <?php
+                        }
+                        ?> 
+
+                       
+                    </div>
+                    <div class=columinfo1>
+                        <h5 id="infoletra">Director</h5> 
+                        
+                        <?php foreach ($progDi as $activid) {?>
+                                                      
+                        <label class='labelestado' name='directorInsertar'><?php echo $activid->getNomDi()." ".$activid->getApeDi()?></label>
+                                                    
+                        <?php
+                        }
+                        ?> 
+                    </div>
+                        
+
+                        <div class=columinfo1>
+                            <h5 id="infoletra">Periodo</h5> 
+                             
+                            <select class="labelestado"  name="codigoP">
+                                <option value='2022-01'>2022-01</option>
+                    </select>
+                                                                                     
+                        </div>
+                    
+
+                        <div class=columinfo1>
+                            <h5 id="infoletra">Grupo</h5>  
+                   
+                <input type='text' class="labelestado" name='codigoG' ></td>
+                </div>
                 
-                <tr>
-                
-                    <td>Método de calificación:</td>
-                    <td><input type='text' name='medio' ></td>
-                </tr>
+                <div class=columinfo1>
+                        <h5 id="infoletra">*Método de calificación</h5> 
+                        <input  class="labelestado" type='text' name='medio'> </input>
+                    </div>
+                    
+                       
                 <tr>
                     <td>Student Outcomes:</td>
                     <td><input type='text' name='edicion' ></td>
