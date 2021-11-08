@@ -16,12 +16,12 @@
 
 
     <?php require "headerD.php" ?>
-            
-   
+    <div id="contenido">
+    <div class= formatorow1>
         <h1 class="so">SO1.  PROBLEMAS COMPLEJOS DE INGENIERÍA</h1>
         <h2 class="so" >Los problemas complejos de ingeniería incluyen una o más de las siguientes características: implican problemas técnicos de gran alcance o conflictivos, no tienen una solución obvia, abordan problemas no incluidos en los actuales estándares y códigos, involucran a diversos grupos de interesados, incluyen diferentes partes, componentes o sub-problemas, involucran múltiples disciplinas, o tiene consecuencias significativas en una ámplia variedad de contextos.</h2>
         
-
+        </div>
 
         <div class="limiter" id="contenedor">
             <div class="container-table100">
@@ -107,6 +107,7 @@
         </div>
 
      
+    </div>
     </div>
    
     <?php require "footer.php" ?>
