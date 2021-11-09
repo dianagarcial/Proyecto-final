@@ -55,8 +55,7 @@
 		private $nivelevidencia3;		
 		private $comevidencia3;
 
-		//FALTAN LOS GET Y SET DE TODO ESTO LOS VOY AGREGANDO CUANDO LOS UTILIZO       
-
+		
 		
  
 		function __construct(){}
