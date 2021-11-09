@@ -177,6 +177,7 @@ require_once('conexion.php');
 		$myAD= new Actividad();
 		$myAD->setSO($obAct['codigo']);
 		$myAD->setNomSO($obAct['nombre']);
+		$myAD->setDescSo($obAct['descripcion']);
 		
 		
 		$listaSoE[]=$myAD;

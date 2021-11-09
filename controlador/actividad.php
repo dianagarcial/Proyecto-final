@@ -207,6 +207,14 @@
 		public function setNomSo($nomSo){
 			$this->nomSo = $nomSo;
 		}
+		
+		public function getDescSo(){
+			return $this->descSo;
+		}
+ 
+		public function setDescSo($descSo){
+			$this->descSo = $descSo;
+		}
 
 
 
