@@ -3,7 +3,7 @@
     <div id="imghead">
         <label for="abrir-cerrar">   
                 <img id="menu" alt="Imagen no disponible" src="imagenes/menu.png" /> </label>
-                <a href="#"><img id="logo" alt="Imagen no disponible" src="imagenes/Logos.png" /></a>
+                <a href="indexP.php"><img id="logo" alt="Imagen no disponible" src="imagenes/Logos.png" /></a>
                 <h3 id="hola" class="hola">Hola, Jose Luis</h3>
                 <a href="#"><img id="notif" alt="Imagen no disponible" src="imagenes/notifications.png" /></a>
                 <a href="#"><img id="perfil" alt="Imagen no disponible" src="imagenes/perfilprofe.png" /></a>
