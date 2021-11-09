@@ -193,29 +193,7 @@ $listarG=$crud->obtenerAsi();
                             </select>
                         </div>
 
-                        <div class="columinfo1">
-                        
-                            <h5 id="infoletra">Student Outcomes</h5> 
-                                <select class="labelestado" id= "SOs1" name="SO1">
-                                    <option value=''> </option>
-                                    <option value='RAE-1'>SO-1: Problemas complejos de ingeniería</option>
-                                    <option value='RAE-2'>SO-2: Diseño en Ingeniería</option>
-                                    <option value='RAE-3'>SO-3: Comunicación Efectiva</option>
-                                    <option value='RAE-4'>SO-4: Responsabilidades éticas y profesionales</option>
-                                    <option value='RAE-5'>SO-5: Trabajo en equipo</option>
-                                    <option value='RAE-6'>SO-6: Experimentación</option>
-                                    <option value='RAE-7'>SO-7: Autoaprendizaje</option>
-                                </select>
-                            </div> 
-                            
-                            <div class="columinfo1">
-                                <h5 id="infoletra">Perfomance Indicator</h5> 
-                                <select class="labelestado" id="PIs1" name= "PI1">
-                                    <option value=''> </option>
-                                </select>
-
-                                
-                            </div>
+                       
                     
                 </div>
 

@@ -9,7 +9,7 @@ $lactividad= new Actividad();
 	// si el elemento insertar no viene nulo llama al crud e inserta un libro
 	if (isset($_POST['insertar'])) {
 		
-		$lactividad->setMedioEv($_POST['medio']);
+		$lactividad->setMedioEv(htmlentities($_POST['medio']));
 		$lactividad->setGrupo($_POST['codigoG']);
 		$lactividad->setPeriodo($_POST['codigoP']);
 		$lactividad->setPi($_POST['edicion']);

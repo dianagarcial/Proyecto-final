@@ -119,7 +119,7 @@ if (isset($_POST['insertar'])) {
                         
 
                         <div class="image-upload-wrap">
-                            <input class="file-upload-input" name=archivo type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this);" />
+                            <input class="file-upload-input" name='archivo' type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this);" />
                             <div class="drag-text">
                                 <img id="meu" alt="Imagen no disponible" src="imagenes/subir.png" />
                             <h3>Arrastra el archivo*</h3>
@@ -135,6 +135,7 @@ if (isset($_POST['insertar'])) {
                             <a class="file-upload-btn" href="\Proyecto-final\vista\Recursos\SO<?php echo $activid->getSo()?>.xlsx" download="SO<?php echo $activid->getSo()?>.xlsx">Descargar Plantilla De Rúbrica</a>
                             <label></label>
                         </div>
+                       
 
                         
                         
@@ -152,7 +153,7 @@ if (isset($_POST['insertar'])) {
            
 	</table>
     <a id="vermas1"  value='Guardar' href="indexP.php?r=<?php echo $activid->getId()?>&accion=evi ">Ver más</a>
-	<input class="file-upload-btn" type='submit' value='Guardar' href="indexP.php?r=<?php echo $activid->getId()?>&accion=evi ">
+	<input class="file-upload-btn" type='submit' value='Guardar' >
 	<a href="index.php">Volver</a>
     
 </form>
