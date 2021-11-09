@@ -151,8 +151,8 @@ if (isset($_POST['insertar'])) {
             <input type='hidden' name='insertarRub' value='insertarRub'>
            
 	</table>
-    <a id="vermas1"  value='Guardar' href="subirEvid.php?r=<?php echo $activid->getId()?>&accion=evi ">Ver más</a>
-	<input class="file-upload-btn" type='submit' value='Guardar'>
+    <a id="vermas1"  value='Guardar' href="indexP.php?r=<?php echo $activid->getId()?>&accion=evi ">Ver más</a>
+	<input class="file-upload-btn" type='submit' value='Guardar' href="indexP.php?r=<?php echo $activid->getId()?>&accion=evi ">
 	<a href="index.php">Volver</a>
     
 </form>

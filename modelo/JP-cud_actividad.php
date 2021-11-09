@@ -92,15 +92,18 @@ require_once('conexion.php');
 
 		public function actualizar($activid){
 			$db=Db::conectar();
-			$actualizar=$db->prepare('UPDATE RUBRICA SET calificacion=:calif , comentarioDir=:comentario WHERE codigo_act =:id');
+			$actualizar=$db->prepare('UPDATE ACTIVIDAD SET estado="Entregado" WHERE codigo=:id');
 
 			
 			$actualizar->bindValue('id',$activid->getId());
-			$actualizar->bindValue('calif',$activid->getCalirubrica());
-			$actualizar->bindValue('comentario',$activid->getCalicommentrubrica());
+			
 			$actualizar->execute();
 		}
 
+
+		
+
+		
 	}
 
     ?>

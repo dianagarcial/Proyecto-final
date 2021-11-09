@@ -64,6 +64,15 @@ require_once('conexion.php');
 			
 			
 		}
+		public function actualizarCalificacionPen($activid){
+			$db=Db::conectar();
+			$actualizar=$db->prepare('UPDATE ACTIVIDAD SET estado="Entregado" WHERE codigo=:id');
+
+			
+			$actualizar->bindValue('id',$activid->getId());
+			
+			$actualizar->execute();
+		}
 		
 		public function codRub($rub){
 			$db=Db::conectar();

@@ -45,10 +45,12 @@ $lactividad= new Actividad();
 			$lactividad->setFentrega($_POST['fecha']);
 			$lactividad->setComenrubrica($_POST['comentarioen']);
 			
+			
 			//llama a la función insertar definida en el crud
 			$crud->insertarRub($lactividad);
+			$crud->actualizarCalificacionPen($lactividad);
 			
-			header('Location: ../vista/subirEvid.php');
+			header('Location: ../vista/indexP.php');
 	}elseif(isset($_POST['insertarE'])) {
 		$lactividad->setCodrubrica($_POST['id']);
 		$lactividad->setNomrubrica($_POST['nomRub']);
