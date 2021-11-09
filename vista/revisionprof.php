@@ -48,7 +48,7 @@ $activid=$crud->obtenerActividad($_GET['id']);
                <h4 id="tituloDes"><?php echo "EM ".$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4>
                 <h4 id="tituloDes"><?php echo "EB ".$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4>
                 </div>
-                <button id="descarga">Descargar</button>
+                <a id="descarga" href="\Proyecto-final\vista\Recursos\<?php echo $activid->getArchirubrica()?>" download="<?php echo $activid->getArchirubrica()?>">Descargar </a>
             </div>
 
                 <div class="verticalLine"></div>
