@@ -15,7 +15,7 @@ $link=Db::conectar();
 
 $consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$cifrada'");
 
-$consulta2 = $link-> query("SELECT tipoUsuario FROM usuario WHERE nomUsuario='$usuario'");
+//$consulta2 = $link-> query("SELECT tipoUsuario FROM usuario WHERE nomUsuario='$usuario'");
 
 //$consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario'");
 
@@ -23,7 +23,16 @@ $filas = $consulta->rowcount();
 
 if ($filas){
 
-    switch ($tipoU[0]){
+    switch ($usuario){
+        case "juan.carlos":
+            header("Location: ../vista/indexD.php");
+            break;
+        case "jose.luis":  
+            header("Location: ../vista/indexP.php");
+            break;
+    }
+
+/*     switch ($tipoU[0]){
         case "Director":
             header("Location: ../vista/indexD.php");
             die();
@@ -32,7 +41,7 @@ if ($filas){
             header("Location: ../vista/indexP.php");
             die();
             break; 
-    }  
+    }   */
 
         //header("Location: ../vista/indexD.php");
     
