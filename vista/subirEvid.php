@@ -98,24 +98,25 @@ $activid=$crud->obtenerActividadEvi($_GET['id']);
                 <input type='hidden' name='insertarE' value='insertarE'>
            
            </table>
-           <input type='submit' value='Guardar'>
-           <a href="index.php">Volver</a>
+
+           </div>
+        <div class=formatorow4>
+            <button class="cancelar"onclick="window.location.href='/vista/indexP.php'">Cancelar</button>
+
+            <input class='enviarRevisionEvidencia' type='submit' value='Siguiente >' onclick="window.location.href='/vista/subirEvid-media.html'">
+            
+        </div>
+
+
+           
        </form>
 
             </div>
 
+
+
+        </div>
         
-            
-
-
-
-        </div>
-        <div class=formatorow4>
-            <button class="cancelar"onclick="window.location.href='/vista/subirRubr.html'">Cancelar</button>
-
-            <button class="enviarRevision" onclick="window.location.href='/vista/subirEvid-media.html'">Siguiente ></button>
-            
-        </div>
 
     </div>
     <br>

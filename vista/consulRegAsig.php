@@ -30,10 +30,10 @@ $listaActividadGen = $crud->mostraract();
         <div class="ti">
             <div class="ti1">
                 <h1 class="subv">Actividades registradas</h1>
+                <a href="registroactividad.php?asi=1" class="regis">¡Registrar aqui!</a>
             </div>
-            <div class="ti2">
-            <a href="registroactividad.php?asi=1"id="vermas1">¡Registrar aqui!</a>
-        </div>
+            
+            
             
         </div>
        
@@ -97,7 +97,6 @@ $listaActividadGen = $crud->mostraract();
             </div>
         </div>
         <br>
-        
         
 
     <a href="#" class="btn-flotante"></a>

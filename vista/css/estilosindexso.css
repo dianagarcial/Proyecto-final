@@ -730,6 +730,37 @@ a:hover, .botonesSOfiltro:hover{
 
 }
 
+.ti2{
+
+    width: 90%;
+    text-align: right;
+}
+
+.regis {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background: #BA181B;
+    border: 1px solid #B1A7A6;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    
+
+}
+
+.regis:hover {
+    background-color: white; /* Green */
+    color: #BA181B
+}
+
 .botonesSOfiltro {
 
     box-sizing: border-box;
@@ -748,4 +779,7 @@ a:hover, .botonesSOfiltro:hover{
     
 
 }
+
+
+
 
