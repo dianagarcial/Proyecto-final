@@ -55,10 +55,10 @@ require_once('conexion.php');
 			$db=Db::conectar();
 			$myObAct= new Actividad();
 		
-			$insert=$db->prepare('INSERT INTO actividad values(NULL,:medio,:codigoGrupo,:codPeriodo,:codPi, NULL, NULL)');
+			$insert=$db->prepare('INSERT INTO actividad values(NULL,:medio,:codigoGrupo,"2021-03",:codPi, NULL, NULL)');
 			$insert->bindValue('medio',$actividad->getMedioEv());
 			$insert->bindValue('codigoGrupo',$actividad->getGrupo());
-			$insert->bindValue('codPeriodo',$actividad->getPeriodo());
+			
 			$insert->bindValue('codPi',$actividad->getPi());
 			$insert->execute();
 			

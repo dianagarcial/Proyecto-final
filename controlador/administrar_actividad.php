@@ -23,7 +23,7 @@ $lactividad= new Actividad();
 		
 		$lactividad->setMedioEv($_POST['metodoInsertar']);
 		$lactividad->setGrupo($_POST['grupo']);
-		$lactividad->setPeriodo($_POST['periodo']);
+		$lactividad->setPeriodo('2021-03');
 		$lactividad->setPi($_POST['PI']);
 		$crud->insertar($lactividad);
 		//llama a la función insertar definida en el crud

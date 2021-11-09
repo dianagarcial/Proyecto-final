@@ -57,9 +57,9 @@ $listaActividadGen = $crud->mostraract();
 
                                         <th>Grupo</th>
 
-                                        <th>SO asocido</th>
+                                        <th>PI asocido</th>
 
-                                        <th>PI asociado</th>
+                                        <th>SO asociado</th>
                                         <th>Editar</th>
 
                                         
