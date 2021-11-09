@@ -179,7 +179,7 @@ require_once('conexion.php');
 			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR\n"
 			. "ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
 			. "ACTIVIDAD.fechaEntrega as fechaen, GRUPO.codigo_Grup as codGru,\n"
-			. "ASIGNATURA.nombre as asig,RUBRICA.CALIFICACION as estado, \n"
+			. "ASIGNATURA.nombre as asig,IFNULL(RUBRICA.CALIFICACION,'Sin Calificar') as estado, \n"
 			. "ACTIVIDAD.codPI as codPI FROM USUARIO JOIN DIRECTORPROGRAMA \n"
 			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
 			. "ON DIRECTORPROGRAMA.CODIGO_PROG= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA\n"
