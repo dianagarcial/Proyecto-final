@@ -123,12 +123,11 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
 
                 <input type='hidden' name='actualizar' value='actualizar'>
 	
-	            <input type='submit' class="enviarRevision" value='Guardar'>
+	            
 
                 
             </div>
         
-            
 
 
 
@@ -138,6 +137,7 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
             <button class="cancelar" id="cancelarRevi" onclick="window.location.href='indexD.php'">Cancelar</button>
 
             <button class="enviarRevision" href="indexD.php?id=<?php echo $activid->getId()?>&accion=ar">Enviar revisión</button>
+
             
         </div>
         </form>
