@@ -317,9 +317,47 @@
 
 
 
+		public function getCodEvidencia1(){
+			return $this->codevidencia1;
+		}
+ 
+		public function setCodEvidencia1($codevidencia1){
+			$this->codevidencia1 = $codevidencia1;
+		}
 
+		public function getNomevidencia1(){
+			return $this->nomevidencia1;
+		}
+ 
+		public function setNomevidencia1($nomevidencia1){
+			$this->nomevidencia1 = $nomevidencia1;
+		}
 
+		public function getArchevidencia1(){
+			return $this->archevidencia1;
+		}
+ 
+		public function setArchevidencia1($archevidencia1){
+			$this->archevidencia1 = $archevidencia1;
+		}
+		
 
+		public function getNivelevidencia1(){
+			return $this->nivelevidencia1;
+		}
+ 
+		public function setNivelevidencia1($nivelevidencia1){
+			$this->nivelevidencia1 = $nivelevidencia1;
+		}
+
+		public function getComevidencia1(){
+			return $this->comevidencia1;
+		}
+ 
+		public function setComevidencia1($comevidencia1){
+			$this->comevidencia1 = $comevidencia1;
+		}
+	
 
 	}
 ?>

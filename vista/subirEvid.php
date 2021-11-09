@@ -5,7 +5,7 @@ require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
-$activid=$crud->obtenerActividad($_GET['id']);
+$activid=$crud->obtenerActividadEvi($_GET['id']);
 
 //$activid=$crud->ConsultarRegistrar($_GET['id']);
 
@@ -43,7 +43,9 @@ $activid=$crud->obtenerActividad($_GET['id']);
         <form action='../controlador/administrar_actividad.php' method='POST'>
         <table>
         <div class= formatorow2>
-
+                    <input type="hidden" name="codRub" value=<?php echo $activid-> getCodrubrica()?>></input>
+                    <input type="hidden" name="nombre" value= <?php echo 'EA'.$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>></input>
+                    <?php $now = date ('Y-m-d');?>
                                   
                     <div class=columinfo1>
                         <h5 id="infoletra">Rúbrica asociada</h5>

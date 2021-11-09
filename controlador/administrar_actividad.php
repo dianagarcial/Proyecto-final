@@ -50,19 +50,20 @@ $lactividad= new Actividad();
 			//llama a la función insertar definida en el crud
 			$crud->insertarRub($lactividad);
 			$crud->actualizarCalificacionPen($lactividad);
-			$crud->obtenerActividad($laactividad);
+			$crud->obtenerActividadEvi($id);
 			
 			header('Location: ../vista/subirEvid.php?id='.$lactividad->getid());
 	}elseif(isset($_POST['insertarE'])) {
-		$lactividad->setCodrubrica($_POST['id']);
-		$lactividad->setNomrubrica($_POST['nomRub']);
-		$lactividad->setFentrega($_POST['nivel']);
-		$lactividad->setComenrubrica($_POST['comentario']);
+		$lactividad->setCodrubrica($_POST['codRub']);
+		$lactividad->setNomevidencia1($_POST['nombre']);
+		$lactividad->setArchevidencia1($_POST['arcRALTA']);
+		$lactividad->setNivelevidencia1('Alto');
+		$lactividad->setComevidencia1($_POST['comentario']);
 		
 		//llama a la función insertar definida en el crud
 		$crud->insertarEvid($lactividad);
 		
-		header('Location: subirEvid.php');
+		header('Location: ../vista/indexP.php');
 
 	
 	}elseif($_GET['accion']=='a'){

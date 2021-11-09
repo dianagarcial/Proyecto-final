@@ -43,11 +43,11 @@ require_once('../modelo/conexion.php');
 			$db=Db::conectar();
 			$myObAct= new Actividad();
 		
-			$insert=$db->prepare('INSERT INTO EVIDENCIA values(NULL,:codrub,:nombre,:fecha,NULL, :comentarioE,NULL,NULL)');
-			$insert->bindValue('codact',$actividad->getid());
-			$insert->bindValue('nombre',$actividad->getNomrubrica());
-			$insert->bindValue('fecha',$actividad->getFentrega());
-			$insert->bindValue('comentarioE',$actividad->getComenrubrica());
+			$insert=$db->prepare('INSERT INTO EVIDENCIA values(NULL,:codrub,:nombre,:archivo,"Alto",:comentarioE)');
+			$insert->bindValue('codrub',$actividad->getCodrubrica());
+			$insert->bindValue('nombre',$actividad->getNomevidencia1());
+			$insert->bindValue('archivo',$actividad->getArchevidencia1());
+			$insert->bindValue('comentarioE',$actividad->getComevidencia1());
 			$insert->execute();
 			
 			
@@ -353,6 +353,43 @@ require_once('../modelo/conexion.php');
 			$myObAct->setCodAsig($obAct['codAsig']);
 			$myObAct->setCalirubrica($obAct['caliRub']);
 			$myObAct->setCalicommentrubrica($obAct['comDir']);
+
+			return $myObAct;
+		}
+
+		public function obtenerActividadEvi($id){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT ACTIVIDAD.CODIGO as id, PROGRAMAACADEMICO.nombre as prog ,ASIGNATURA.nombre as asig,GRUPO.codigo_Grup as grupo,\n"
+					. "PERIODO.codigo as periodo,\n"
+					. "SO.codigo as so, PI.codigo as pi, ASIGNATURA.codigo as  codAsig, RUBRICA.codigo as codRub ,RUBRICA.calificacion as caliRub,\n"
+					. "RUBRICA.comentarioDir as comDir FROM ACTIVIDAD JOIN PERIODO\n"
+					. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN PI\n"
+					. "ON PI.codigo=ACTIVIDAD.codPI JOIN SO\n"
+					. "ON SO.codigo=PI.codigo_SO JOIN GRUPO\n"
+					. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"
+					. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN PROGRAMAACADEMICO\n"
+					. "ON PROGRAMAACADEMICO.codigo=ASIGNATURA.COD_programa JOIN PROFESOR\n"
+					. "ON GRUPO.correo_pr=PROFESOR.usuario JOIN USUARIO\n"
+					. "ON USUARIO.nomUsuario=PROFESOR.usuario JOIN RUBRICA\n"
+					. "ON ACTIVIDAD.codigo=RUBRICA.codigo_act \n"
+					. "WHERE PROFESOR.usuario='jose.luis' AND ACTIVIDAD.codigo=:id");
+							
+			$select->bindValue('id',$id);
+			$select->execute();
+			$obAct=$select->fetch();
+			$myObAct= new Actividad();
+			$myObAct->setId($obAct['id']);
+			$myObAct->setNomProgAcademico($obAct['prog']);
+			$myObAct->setNomAsig($obAct['asig']);
+			$myObAct->setNumGrupo($obAct['grupo']);
+			$myObAct->setPeriodo($obAct['periodo']);
+			$myObAct->setSo($obAct['so']);
+			$myObAct->setPi($obAct['pi']);
+			$myObAct->setCodAsig($obAct['codAsig']);
+			$myObAct->setCalirubrica($obAct['caliRub']);
+			$myObAct->setCalicommentrubrica($obAct['comDir']);
+			$myObAct->setCodrubrica($obAct['codRub']);
+			
 
 			return $myObAct;
 		}
