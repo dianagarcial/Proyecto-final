@@ -533,7 +533,32 @@ botones {
         color: #BA181B
     }
 
-
+    a#vermas2 {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background: #BA181B;
+        border: 1px solid #B1A7A6;
+        box-sizing: border-box;
+        border-radius: 10px;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+        
+    
+    }
+    
+    
+    a#vermas2:hover {
+            background-color: white; /* Green */
+            color: #BA181B
+        }
+    
 
     .btn-group button {
         background-color: white; /* Green background */
@@ -712,6 +737,12 @@ h1.subv {
     width: 70%;
     margin-left: 2%;
     margin: 1%;
+}
+.ti2 {
+    margin: 3%;
+    width: 20%;
+    align-content: end;
+    text-align: right;
 }
 a {
     font-weight: bold;
