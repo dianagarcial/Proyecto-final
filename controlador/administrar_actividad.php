@@ -7,6 +7,7 @@ $crud= new CrudActividad();
 $lactividad= new Actividad();
 
 
+
 	if (isset($_POST['insertar'])) {
 		
 		$lactividad->setMedioEv(htmlentities($_POST['medio']));
@@ -45,11 +46,13 @@ $lactividad= new Actividad();
 			$lactividad->setComenrubrica($_POST['comentarioen']);
 			$lactividad->setArchirubrica($_POST['archivo']);
 			$lactividad->setFentrega($_POST['fecha']);
+			$id=$lactividad->setid($_POST['codAct']);
 			//llama a la función insertar definida en el crud
 			$crud->insertarRub($lactividad);
 			$crud->actualizarCalificacionPen($lactividad);
+			$crud->obtenerActividad($laactividad);
 			
-			header('Location: ../vista/indexP.php');
+			header('Location: ../vista/subirEvid.php?id='.$lactividad->getid());
 	}elseif(isset($_POST['insertarE'])) {
 		$lactividad->setCodrubrica($_POST['id']);
 		$lactividad->setNomrubrica($_POST['nomRub']);
