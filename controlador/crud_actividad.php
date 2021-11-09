@@ -76,10 +76,10 @@ require_once('../modelo/conexion.php');
 		}
 		public function actualizarCalificacionPen($activid){
 			$db=Db::conectar();
-			$actualizar=$db->prepare('UPDATE ACTIVIDAD SET estado="Entregado" AND fechaEntrega=:fecha WHERE codigo=:id');
+			$actualizar=$db->prepare('UPDATE ACTIVIDAD SET estado="Entregado", fechaEntrega="2021-11-09" WHERE codigo=:id');
 		
 			$actualizar->bindValue('id',$activid->getId());
-			$actualizar->bindValue('fecha',$activid->getFentrega());
+			
 			$actualizar->execute();
 		}
 		

@@ -32,7 +32,7 @@ $listarG=$crud->obtenerAsi();
 
 </head>
 
-<?php require "headerP.php" ?>
+<?php require "headerD.php" ?>
         
 
 
