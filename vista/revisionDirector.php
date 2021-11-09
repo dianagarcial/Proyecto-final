@@ -41,7 +41,7 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
         <div class=columna1>
             
             <div class="nd">
-                <h4 id="tituloDes" >131313-1.1-1</h4></div>
+                <h4 id="tituloDes" ><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4></div>
                 <img id="archivo" alt="Imagen no disponible" src="imagenes/folder_open.png" />
                 <div id="archcar">
                 <h4 id="tituloDes"><?php echo "RUB ".$activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></h4>
