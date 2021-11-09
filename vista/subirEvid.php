@@ -24,7 +24,7 @@ $activid=$crud->obtenerActividadEvi($_GET['id']);
     <link href="css/subirRubrica.css" rel="stylesheet" />
     <link href="css/header.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
-    <script src="/controlador/funcionarchivo.js"></script>
+    <script src="../controlador/funcionarchivo.js"></script>
 
 </head>
 
@@ -77,7 +77,7 @@ $activid=$crud->obtenerActividadEvi($_GET['id']);
                             <input class="file-upload-input" type='file' name="arcRALTA"onchange="readURL(this);" />
                             <div class="drag-text">
                                 <img id="meu" alt="Imagen no disponible" src="imagenes/subir.png" />
-                            <h3>Arrastra el archivo</h3>
+                            <h3>Click aqui para adjuntar el archivo*</h3>
                             </div>
                         </div>
                         <div class="file-upload-content">
