@@ -375,6 +375,8 @@ h4#tituloDes{
         
         
     }
+
+    
     button.enviarRevision:hover {
             background-color: white; /* Green */
             color: #BA181B
@@ -428,4 +430,6 @@ h4#tituloDes{
                 width: 80%;
                 align-content: center;
                 text-align: center;
-}
+            }
+
+            

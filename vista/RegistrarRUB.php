@@ -131,8 +131,8 @@ if (isset($_POST['insertar'])) {
                             <button type="button" onclick="removeUpload()" class="remove-image">Remover <span class="image-title">Uploaded Image</span></button>
                             </div>
                         </div>
-                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Adjuntar archivo</button>
-                            <a class="file-upload-btn" href="\Proyecto-final\vista\Recursos\SO<?php echo $activid->getSo()?>.xlsx" download="SO<?php echo $activid->getSo()?>.xlsx">Descargar Plantilla De Rúbrica</a>
+                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Adjuntar archivo</button><br><br>
+                            <a class="plantillaDown" href="\Proyecto-final\vista\Recursos\SO<?php echo $activid->getSo()?>.xlsx" download="SO<?php echo $activid->getSo()?>.xlsx">Descargar Plantilla De Rúbrica</a>
                             <label></label>
                         </div>
                        
@@ -152,17 +152,13 @@ if (isset($_POST['insertar'])) {
             <input type='hidden' name='insertarRub' value='insertarRub'>
            
 	</table>
-    <a id="vermas1"  value='Guardar' href="indexP.php?r=<?php echo $activid->getId()?>&accion=evi ">Ver más</a>
-	<input class="file-upload-btn" type='submit' value='Guardar' >
-	<a href="index.php">Volver</a>
-    
+    <div class="botonesFinales">
+	<input class="botonGuardar" type='submit' value='Guardar' >
+	<a class="botonVolver" href="indexP.php">Volver </a>
+    </div>
 </form>
          
 
-
-
-      
-        
     </div>
     <br>
     <br>

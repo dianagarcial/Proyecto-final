@@ -142,7 +142,7 @@ $listarG=$crud->obtenerAsi();
 
         </div>
         <input type='hidden' name='insertarAct' value='insertarAct'>
-            <input type='submit' value='Guardar'>
+        <input class= 'botonGuardar' type='submit' value='Guardar'>
      
         
 
