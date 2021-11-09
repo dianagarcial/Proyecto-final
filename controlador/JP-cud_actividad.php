@@ -50,7 +50,7 @@ require_once('../modelo/conexion.php');
 
             . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorApellido, \n"
 
-            . "SO.codigo as So,PI.codigo as PI,ACTIVIDAD.medioEvaluacion as metodo, RUBRICA.calificacion as calif, RUBRICA.comentarioDir as comen FROM ACTIVIDAD JOIN RUBRICA ON RUBRICA.codigo_act=ACTIVIDAD.codigo JOIN PERIODO\n"
+            . "SO.codigo as So,PI.codigo as PI,ACTIVIDAD.medioEvaluacion as metodo, RUBRICA.archivo as archivo, RUBRICA.calificacion as calif, RUBRICA.comentarioDir as comen FROM ACTIVIDAD JOIN RUBRICA ON RUBRICA.codigo_act=ACTIVIDAD.codigo JOIN PERIODO\n"
 
             . "ON ACTIVIDAD.codPeriodo=Periodo.codigo JOIN PI\n"
 
@@ -87,6 +87,7 @@ require_once('../modelo/conexion.php');
             $myObAct->setMedioEv($obAct['metodo']);
 			$myObAct->setCalirubrica($obAct['calif']);
 			$myObAct->setCalicommentrubrica($obAct['comen']);
+			$myObAct->setArchirubrica($obAct['archivo']);
             return $myObAct;
         }
 

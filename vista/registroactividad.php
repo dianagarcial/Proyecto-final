@@ -106,13 +106,13 @@ $listarG=$crud->obtenerAsi();
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Método de calificación</h5> 
-                        <input  class="labelestado" type='text' name='metodoInsertar'> </input>
+                        <input  class="labelestado" type='text' name='metodoInsertar' required> </input>
                     </div>
 
                     <div class="columinfo1">
                         
                         <h5 id="infoletra">*Student Outcomes</h5> 
-                            <select class="labelestado" id= "SOs0" name="SO">
+                            <select class="labelestado" id= "SOs0" name="SO" required>
                             <?php foreach ($listarSO as $activid) {?>
 		                        	
 				        		                      
@@ -126,7 +126,7 @@ $listarG=$crud->obtenerAsi();
                         
                         <div class="columinfo1">
                             <h5 id="infoletra">*Perfomance Indicator</h5> 
-                            <select class="labelestado" id="PIs0" name= "PI">
+                            <select class="labelestado" id="PIs0" name= "PI" required>
                                 <option value=''> </option>
                             </select>
                         </div>

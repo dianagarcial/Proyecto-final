@@ -1,6 +1,6 @@
 <?php
 
-require_once('../modelo/crud_actividad.php');
+require_once('../controlador/crud_actividad.php');
 require_once('actividad.php');
 
 $crud= new CrudActividad();
@@ -43,8 +43,8 @@ $lactividad= new Actividad();
 			$lactividad->setNomrubrica($_POST['nombre']);
 			$lactividad->setFentrega($_POST['fecha']);
 			$lactividad->setComenrubrica($_POST['comentarioen']);
-			$lactividad->setComenrubrica($_POST['comentarioen']);
-			
+			$lactividad->setArchirubrica($_POST['archivo']);
+			$lactividad->setFentrega($_POST['fecha']);
 			//llama a la función insertar definida en el crud
 			$crud->insertarRub($lactividad);
 			$crud->actualizarCalificacionPen($lactividad);

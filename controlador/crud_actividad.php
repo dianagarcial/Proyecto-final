@@ -28,11 +28,12 @@ require_once('../modelo/conexion.php');
 			$db=Db::conectar();
 			$myObAct= new Actividad();
 		
-			$insert=$db->prepare('INSERT INTO RUBRICA values(NULL,:codact,:nombre,:fecha,NULL, :comentarioE,NULL,NULL)');
+			$insert=$db->prepare('INSERT INTO RUBRICA values(NULL,:codact,:nombre,:fecha,:archivo, :comentarioE,NULL,NULL)');
 			$insert->bindValue('codact',$actividad->getid());
 			$insert->bindValue('nombre',$actividad->getNomrubrica());
 			$insert->bindValue('fecha',$actividad->getFentrega());
 			$insert->bindValue('comentarioE',$actividad->getComenrubrica());
+			$insert->bindValue('archivo',$actividad->getArchirubrica());
 			$insert->execute();
 			
 			
@@ -60,16 +61,25 @@ require_once('../modelo/conexion.php');
 			$insert->bindValue('codigoGrupo',$actividad->getGrupo());
 			
 			$insert->bindValue('codPi',$actividad->getPi());
-			$insert->execute();
+			try {
+				$insert->execute();
+			} catch (\Throwable $th) {
+				echo'<script type="text/javascript">
+        alert("Contraseña incorrecta");
+        window.location.href="../vista/registroactividad.php";
+        </script>';
+				return ;
+			}
+			
 			
 			
 		}
 		public function actualizarCalificacionPen($activid){
 			$db=Db::conectar();
-			$actualizar=$db->prepare('UPDATE ACTIVIDAD SET estado="Entregado" WHERE codigo=:id');
+			$actualizar=$db->prepare('UPDATE ACTIVIDAD SET estado="Entregado" AND fechaEntrega=:fecha WHERE codigo=:id');
 		
 			$actualizar->bindValue('id',$activid->getId());
-			
+			$actualizar->bindValue('fecha',$activid->getFentrega());
 			$actualizar->execute();
 		}
 		

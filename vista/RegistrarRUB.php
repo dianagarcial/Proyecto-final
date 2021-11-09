@@ -28,7 +28,7 @@ if (isset($_POST['insertar'])) {
     <link href="css/subirRubrica.css" rel="stylesheet" />
     <link href="css/header.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
-    <script src="/controlador/funcionarchivo.js"></script>
+    <script src="../controlador/funcionarchivo.js"></script>
 
 
 
@@ -119,10 +119,10 @@ if (isset($_POST['insertar'])) {
                         
 
                         <div class="image-upload-wrap">
-                            <input class="file-upload-input" name='archivo' type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this);" />
+                            <input class="file-upload-input" name='archivo' type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this); requiered" />
                             <div class="drag-text">
                                 <img id="meu" alt="Imagen no disponible" src="imagenes/subir.png" />
-                            <h3>Arrastra el archivo*</h3>
+                            <h3>Click aqui para adjuntar el archivo*</h3>
                             </div>
                         </div>
                         <div class="file-upload-content">
