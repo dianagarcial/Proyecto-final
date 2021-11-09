@@ -67,8 +67,7 @@ require_once('conexion.php');
 		public function actualizarCalificacionPen($activid){
 			$db=Db::conectar();
 			$actualizar=$db->prepare('UPDATE ACTIVIDAD SET estado="Entregado" WHERE codigo=:id');
-
-			
+		
 			$actualizar->bindValue('id',$activid->getId());
 			
 			$actualizar->execute();
@@ -490,7 +489,28 @@ require_once('conexion.php');
 		return $listaSO;
 		}
 
-		/*
+			/*
+		public function soEsp(){
+			$db=Db::conectar();
+			$progDir=[];
+			$select=$db->query("select PI.codigo as piCod, MAX(ACTIVIDAD.fechaEntrega) as fecha,COUNT(*) as total FROM ACTIVIDAD JOIN PI ON PI.codigo=ACTIVIDAD.codPi JOIN SO ON SO.codigo=PI.codigo_SO WHERE SO.codigo=1 GROUP by pi.codigo");
+							
+			
+			foreach($select->fetchAll() as $AD){
+			$myObAct= new Actividad();
+			$myObAct->setPi($AD['piCod']);
+			$myObAct->setFentrega($AD['fecha']);
+			$myObAct->setCodAsig($AD['total']);
+					
+			$progDir[]=$myObAct;
+			}
+			return $progDir;
+		}
+		
+
+		
+
+		
 
 		public function obtenerpiselctabla($pi, $asig){
 			$db=Db::conectar();
