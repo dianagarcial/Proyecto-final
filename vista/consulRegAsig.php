@@ -75,7 +75,7 @@ $listaActividadGen = $crud->mostraract();
                                         
 				                        <td><?php echo $activid->getNomAsig() ?></td>
 				                        <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
-                                        <td><?php echo $activid->getGrupo() ?> </td>
+                                        <td><?php echo $activid->getNumGrupo() ?> </td>
                                         <td><?php echo $activid->getSo() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         
