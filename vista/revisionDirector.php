@@ -113,7 +113,7 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
                <input type="hidden" name="id" value=<?php echo $activid-> getId()?>>
                
                 <div class="estado2">
-                            <select id="selectEstado" name="calif" >
+                            <select id="selectEstado" name="calif" requiered>
                             <option value='' hidden><?php echo $activid->getCalirubrica()?></option>    
                                 <option value="Aprobado">Aprobado</option>
                                 <option value="Rechazado">Rechazado</option>                           

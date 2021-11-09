@@ -8,7 +8,7 @@ $cifrada = md5($contraseña);
 session_start();
 $_SESSION['usuario']=$usuario;
 
-require_once('conexion.php');
+require_once('../modelo/conexion.php');
 $link=Db::conectar();
 //$consulta = "SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$contraseña'";
 //$resultado = mysql_query($consulta, $link);
