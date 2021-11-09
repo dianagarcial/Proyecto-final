@@ -1,6 +1,6 @@
 <?php
 // incluye la clase Db
-require_once('conexion.php');
+require_once('../modelo/conexion.php');
  
 	class CrudActividad{
 		// constructor de la clase

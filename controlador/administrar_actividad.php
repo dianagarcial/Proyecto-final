@@ -44,7 +44,7 @@ $lactividad= new Actividad();
 			$lactividad->setNomrubrica($_POST['nombre']);
 			$lactividad->setFentrega($_POST['fecha']);
 			$lactividad->setComenrubrica($_POST['comentarioen']);
-			
+			$lactividad->setComenrubrica($_POST['comentarioen']);
 			
 			//llama a la función insertar definida en el crud
 			$crud->insertarRub($lactividad);

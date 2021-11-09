@@ -1,10 +1,10 @@
 <?php
-//incluye la clase Libro y CrudLibro
-include("../modelo/Marin-crud_actividad.php");
+
+include("../controlador/Marin-crud_actividad.php");
 require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
-//obtiene todos los libros con el método mostrar de la clase crud
+
 
 $listaActividadDir=$crud->ConsultarAprobado();
 

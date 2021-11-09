@@ -1,6 +1,6 @@
 <?php
 
-include("../modelo/JP-cud_actividad.php");
+include("../controlador/JP-cud_actividad.php");
 require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();

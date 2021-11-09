@@ -22,13 +22,13 @@
                     
                     <li><a href="indexD.php">Inicio</a></li>
                     <li><a href="#">Periodo académico</a></li>
-                    <li><a href="#">Asignaturas</a></li>
+                    <li><a href="Filtro-AsignaturaD.php?id=1">Asignaturas</a></li>
                     <li class="submenuSO">
-                        <a href="#"><span class="icon-rocket"></span>Student Outcomes(SO)<span class="caret icon-arrow-down6"></span></a>
+                        <a href="filtro-SOD.php?id=1"><span class="icon-rocket"></span>Student Outcomes(SO)<span class="caret icon-arrow-down6"></span></a>
                         <ul class="children">
-                            <li><a href="so1.html">SO1<span class="icon-dot"></span></a></li>
-                            <li><a href="so2.html">SO2 <span class="icon-dot"></span></a></li>
-                            <li><a href="so3.html">SO3 <span class="icon-dot"></span></a></li>
+                            <li><a href="#">SO1<span class="icon-dot"></span></a></li>
+                            <li><a href="#">SO2 <span class="icon-dot"></span></a></li>
+                            <li><a href="#">SO3 <span class="icon-dot"></span></a></li>
                             <li><a href="#">SO4 <span class="icon-dot"></span></a></li>
                             <li><a href="#">SO5 <span class="icon-dot"></span></a></li>
                             <li><a href="#">SO6 <span class="icon-dot"></span></a></li>

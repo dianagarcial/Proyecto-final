@@ -1,6 +1,6 @@
 <?php
 // incluye la clase Db
-require_once('conexion.php');
+require_once('../modelo/conexion.php');
  
 	class CrudActividad{
 		// constructor de la clase
@@ -253,7 +253,7 @@ require_once('conexion.php');
 			$db=Db::conectar();
 			$listaActividadPro=[];
 			$select=$db->query("SELECT ASIGNATURA.NOMBRE as asigN, ASIGNATURA.CODIGO as asigC, ACTIVIDAD.codigo as id,\n"
-								. "GRUPO.codigo_Grup as grupo,ACTIVIDAD.CODPI as pi,RUBRICA.CALIFICACION as estado,\n"
+								. "GRUPO.codigo_Grup as grupo,ACTIVIDAD.CODPI as pi,IFNULL(RUBRICA.CALIFICACION,'Sin Calificar') as estado,\n"
 								. "IFNULL(ACTIVIDAD.FECHAENTREGA, '-') as fentrega, PERIODO.fechaFin as fechalim FROM ACTIVIDAD JOIN PERIODO\n"
 								. "ON PERIODO.codigo=ACTIVIDAD.codPeriodo JOIN GRUPO\n"
 								. "ON GRUPO.codigo=ACTIVIDAD.codigoGrupo JOIN ASIGNATURA\n"

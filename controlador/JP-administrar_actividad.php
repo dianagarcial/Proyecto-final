@@ -1,6 +1,6 @@
 <?php
 //incluye la clase Libro y CrudLibro
-require_once('../modelo/JP-cud_actividad.php');
+require_once('../controlador/JP-cud_actividad.php');
 require_once('actividad.php');
 
 $crud= new CrudActividad();

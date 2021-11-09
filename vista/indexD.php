@@ -1,6 +1,6 @@
 <?php
 //incluye la clase Libro y CrudLibro
-include("../modelo/crud_actividad.php");
+include("../controlador/crud_actividad.php");
 require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
