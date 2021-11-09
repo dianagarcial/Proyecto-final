@@ -45,12 +45,14 @@ $lactividad= new Actividad();
 			$lactividad->setFentrega($_POST['fecha']);
 			$lactividad->setComenrubrica($_POST['comentarioen']);
 			
+			
 			//llama a la función insertar definida en el crud
 			$crud->insertarRub($lactividad);
+			$crud->actualizarCalificacionPen($lactividad);
 			
-			header('Location: ../vista/subirEvid.php');
+			header('Location: ../vista/indexP.php');
 	}elseif(isset($_POST['insertarE'])) {
-		
+		$lactividad->setCodrubrica($_POST['id']);
 		$lactividad->setNomrubrica($_POST['nomRub']);
 		$lactividad->setFentrega($_POST['nivel']);
 		$lactividad->setComenrubrica($_POST['comentario']);
@@ -58,7 +60,7 @@ $lactividad= new Actividad();
 		//llama a la función insertar definida en el crud
 		$crud->insertarEvid($lactividad);
 		
-		header('Location: ../vista/subirEvid.php');
+		header('Location: subirEvid.php');
 }
 	elseif(isset($_POST['actualizar'])){
 		//$libro->setId($_POST['id']);
@@ -82,7 +84,9 @@ $lactividad= new Actividad();
 }elseif($_GET['accion']=='ar'){
 	header('Location: registrarRUB.php');
 	
-}
+}elseif($_GET['accion']=='evi'){
+	header('Location: subirEvid.php');
 
+}
 	
 ?>

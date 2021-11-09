@@ -10,31 +10,34 @@ $_SESSION['usuario']=$usuario;
 
 require_once('conexion.php');
 $link=Db::conectar();
-$link2=Db::conectar();
+//$link2=Db::conectar();
 //$consulta = "SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$contraseña'";
 //$resultado = mysql_query($consulta, $link);
 
 $consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario' AND contrasena = '$cifrada'");
 
-$consulta2 = $link2-> query("SELECT tipoUsuario FROM usuario WHERE nomUsuario='$usuario'");
+$consulta2 = $link-> query("SELECT tipoUsuario FROM usuario WHERE nomUsuario='$usuario'");
+
+$tipoU = $consulta2 ->fetch_assoc();
+
+
 
 //$consulta = $link-> query("SELECT * FROM usuario WHERE nomUsuario='$usuario'");
 
 $filas = $consulta->rowcount();
 
 if ($filas){
-   
 
-    
-
-    switch ($consulta2){
+    switch ($tipoU[0]){
         case "Director":
             header("Location: ../vista/indexD.php");
+            die();
             break;
         case "Profesor":
             header("Location: ../vista/indexP.php");
+            die();
             break; 
-    } 
+    }  
 
         //header("Location: ../vista/indexD.php");
     
@@ -63,6 +66,9 @@ if ($filas){
     
 }
 
+//$link -> closeCursor();
+//$link ->db = null;
 mysql_close($link);
-mysql_close($link2);
-?>
+
+//$link->close();
+//mysql_close($link2);

@@ -8,6 +8,11 @@ $activid= new Actividad();
 
 $activid=$crud->ConsultarRegistrar($_GET['id']);
 
+if (isset($_POST['insertar'])) {
+    $r=$activid->getId();
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +56,7 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
 
         <div class= formatorow2>
             
-        <
+        <br>
                     <div class=columinfo1>
                         <h5 id="infoletra">*Nombre del documento</h5>
                         <label class="labelestado" id="nomdoc" name="documento">Rub <?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?>
@@ -146,20 +151,16 @@ $activid=$crud->ConsultarRegistrar($_GET['id']);
             <input type='hidden' name='insertarRub' value='insertarRub'>
            
 	</table>
-	<input type='submit' value='Guardar'>
+    <a id="vermas1"  value='Guardar' href="indexP.php?r=<?php echo $activid->getId()?>&accion=evi ">Ver más</a>
+	<input class="file-upload-btn" type='submit' value='Guardar' href="indexP.php?r=<?php echo $activid->getId()?>&accion=evi ">
 	<a href="index.php">Volver</a>
+    
 </form>
          
 
 
 
-        </div>
-        <div class=formatorow4>
-            <button class="cancelar" onclick="window.location.href='/vista/revisionactividad.html'">Cancelar</button>
-            <button class="enviarRevision" onclick="window.location.href='/vista/subirEvid-alta.html'">Siguiente > </button>
-            
-        </div>
-
+      
         
     </div>
     <br>
