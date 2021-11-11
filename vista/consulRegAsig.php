@@ -72,7 +72,7 @@ $listaActividadGen = $crud->mostraract();
                                     <tbody>
                                     <?php foreach ($listaActividadGen as $activid) {?>
 		                        	<tr>
-                                        
+                                    <input type="hidden" name="codAct" value=<?php echo $activid-> getid()?>></input>
 				                        <td><?php echo $activid->getNomAsig() ?></td>
 				                        <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
                                         <td><?php echo $activid->getNumGrupo() ?> </td>
@@ -80,7 +80,7 @@ $listaActividadGen = $crud->mostraract();
                                         <td><?php echo $activid->getPi() ?> </td>
                                         
                                         
-                                        <td class="cell100 column5"><a id="vermas1"> Editar </a></td>
+                                        <td class="cell100 column5"><a href="editaractividad.php?id=<?php echo $activid->getId()?>&accion=ediAct " id="vermas1" > Editar </a></td>
                                     </tr>
                                     <?php 
                                     }

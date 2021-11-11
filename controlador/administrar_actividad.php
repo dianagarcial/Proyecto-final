@@ -116,6 +116,7 @@ $lactividad= new Actividad();
 }elseif($_GET['accion']=='evi'){
 	header('Location: subirEvid.php');
 
-}
+}elseif($_GET['accion']=='ediAct'){
+	header('Location: editaractividad.php');
 	
 ?>
