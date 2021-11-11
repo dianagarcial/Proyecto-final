@@ -17,6 +17,13 @@ $lactividad= new Actividad();
 		
 		
 		$crud->insertar($lactividad);
+
+		
+    	//echo'<script type="text/javascript">
+        //alert("Contraseña incorrecta");
+        //window.location.href="../vista/login.php";
+        //</script>';
+    
 		
 		header('Location: index.php');
 	
@@ -54,6 +61,35 @@ $lactividad= new Actividad();
 			
 			header('Location: ../vista/subirEvid.php?id='.$lactividad->getid());
 	}elseif(isset($_POST['insertarE'])) {
+		$lactividad->setid($_POST['codAct']);
+		$lactividad->setCodrubrica($_POST['codRub']);
+		$lactividad->setNomevidencia1($_POST['nombre']);
+		$lactividad->setArchevidencia1($_POST['arcRALTA']);
+		$lactividad->setNivelevidencia1('Alto');
+		$lactividad->setComevidencia1($_POST['comentario']);
+		
+		//llama a la función insertar definida en el crud
+		$crud->insertarEvid($lactividad);
+		
+		header('Location: ../vista/subirEvidM.php?id='.$lactividad->getid());
+
+	
+	}elseif(isset($_POST['insertarEM'])) {
+		$lactividad->setid($_POST['codAct']);
+		$lactividad->setCodrubrica($_POST['codRub']);
+		$lactividad->setNomevidencia1($_POST['nombre']);
+		$lactividad->setArchevidencia1($_POST['arcRALTA']);
+		$lactividad->setNivelevidencia1('Alto');
+		$lactividad->setComevidencia1($_POST['comentario']);
+		
+		//llama a la función insertar definida en el crud
+		$crud->insertarEvid($lactividad);
+		
+		header('Location: ../vista/subirEvidB.php?id='.$lactividad->getid());
+
+	
+	}elseif(isset($_POST['insertarEB'])) {
+		$lactividad->setid($_POST['codAct']);
 		$lactividad->setCodrubrica($_POST['codRub']);
 		$lactividad->setNomevidencia1($_POST['nombre']);
 		$lactividad->setArchevidencia1($_POST['arcRALTA']);
@@ -66,7 +102,8 @@ $lactividad= new Actividad();
 		header('Location: ../vista/indexP.php');
 
 	
-	}elseif($_GET['accion']=='a'){
+	}
+	elseif($_GET['accion']=='a'){
 		header('Location: revisionprof.php');
 	}elseif($_GET['accion']=='aN'){
 		header('Location: inicioRegisRub.php');

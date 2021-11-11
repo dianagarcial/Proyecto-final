@@ -36,7 +36,7 @@ $activid=$crud->obtenerActividadEvi($_GET['id']);
 
               
         <div class= formatorow1>
-            <h1 id=titu>Subir evidencias de CALIDAD ALTA</h1>
+            <h1 id=titu>Subir evidencias de CALIDAD MEDIA</h1>
             <h3 id=subtitle>En este espacio se suben la evidencias de la rúbricas</h3>
 
         </div>
@@ -55,7 +55,7 @@ $activid=$crud->obtenerActividadEvi($_GET['id']);
 
                     <div class=columinfo1>
                         <h5 id="infoletra">Calidad de trabajo</h5>
-                        <label class="labelestado" id="nomdoc" name="nivel">Alta<label> 
+                        <label class="labelestado" id="nomdoc" name="nivel">Media<label> 
                          
                         
                     </div>
@@ -96,7 +96,7 @@ $activid=$crud->obtenerActividadEvi($_GET['id']);
                 
                     </div>
                 </div>
-                <input type='hidden' name='insertarE' value='insertarE'>
+                <input type='hidden' name='insertarEM' value='insertarEM'>
            
            </table>
 
