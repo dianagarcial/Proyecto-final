@@ -4,6 +4,9 @@
 		private $medioEvaluacion;
 		private $estado;
 		private $fentrega;
+		private $aprobada;
+		private $rechazada;
+		private $total;
 
 		private $grupo;
 		private $numGrupo;
@@ -91,6 +94,30 @@
 			$this->fentrega = $fentrega;
 		}
 
+
+		public function getAprobada(){
+			return $this->aprobada;
+		}
+ 
+		public function setAprobada($aprobada){
+			$this->aprobada = $aprobada;
+		}
+
+		public function getRechazada(){
+			return $this->rechazada;
+		}
+ 
+		public function setRechazada($rechazada){
+			$this->rechazada = $rechazada;
+		}
+		public function getTotal(){
+			return $this->total;
+		}
+ 
+		public function setTotal($total){
+			$this->total = $total;
+		}
+	
 
 
 
@@ -357,6 +384,8 @@
 		public function setComevidencia1($comevidencia1){
 			$this->comevidencia1 = $comevidencia1;
 		}
+
+
 	
 
 	}

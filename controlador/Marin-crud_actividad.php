@@ -202,6 +202,39 @@ require_once('../modelo/conexion.php');
 
 	}
 
+	public function ConsultarSoE($id){
+		$db=Db::conectar();
+		$listaSoE=[];
+		$select=$db->prepare("SELECT PI.codigo as codpi,MAX(actividad.fechaEntrega) as ultmodi, COUNT(*) as Total, COUNT(ACTIVIDAD.fechaEntrega) as entregadas,\n"
+
+		. "(SELECT COUNT(*) FROM RUBRICA WHERE rubrica.calificacion='Aprobado') as aprobada, \n"
+	
+		. "(SELECT COUNT(*) FROM RUBRICA WHERE rubrica.calificacion='Rechazado') as rechazado FROM SO JOIN PI \n"
+	
+		. "ON PI.codigo_SO=SO.codigo JOIN ACTIVIDAD ON actividad.codPi=pi.codigo  \n"
+	
+		. "WHERE SO.codigo=:id GROUP BY PI.codigo;");
+
+		$select->bindValue('id',$id);
+		$select->execute();
+	
+	foreach($select->fetchAll() as $obAct){
+		$myAD= new Actividad();
+		$myAD->setPi($obAct['codpi']);
+		$myAD->setFentrega($obAct['ultmodi']);
+		$myAD->setAprobada($obAct['entregadas']);
+		$myAD->setRechazada($obAct['rechazado']);
+		$myAD->setTotal($obAct['Total']);
+		
+		
+		$listaSoE[]=$myAD;
+	}
+
+	return $listaSoE;
+
+	}
+
+
 	public function ConsultarSoEspecificoSOLO($id){
 		$db=Db::conectar();
 		$listaSoE=[];

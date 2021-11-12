@@ -7,7 +7,7 @@ $activid= new Actividad();
 //obtiene todos los libros con el método mostrar de la clase crud
 
 $listarSoEspecifico=$crud->ConsultarSoEspecificoSOLO($_GET['id']);
-
+$listarSo=$crud->ConsultarSoE($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,40 +78,58 @@ $listarSoEspecifico=$crud->ConsultarSoEspecificoSOLO($_GET['id']);
 
                                             <th>Actividades registradas</th>
 
+                                            <th>Actividades entregadas</th>
                                             <th>Progreso</th>
 
                                         </tr>
 
                                     
                                     <tbody>
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">PI 1</td>
-                                            <td class="cell100 column3">12-12-2020</td>
-                                            <td class="cell100 column4">30 </td>
-                                            <td class="cell100 column5">
-                                                <div id="myProgress1">
-                                                    <div id="myBar1"></div>
-                                                </div>
-                                            </td>
-                                            <td class="cell100 column6"><a href="so1.html " id="vermas1">Ver más</a></td>
-                                            
+                                    <?php foreach ($listarSo as $activid) {?>
+		                        	<tr>
+                                        <td><?php echo $activid->getPi() ?></td>
+				                        <td><?php echo $activid->getFentrega() ?></td>
+				                        <td><?php echo $activid->getAprobada() ?> </td>
+  
+                                        <td><?php echo $activid->getTotal() ?> </td>
+                                        <?php 
+                                        $total= $activid->getTotal();
+                                        $valor= $activid->getAprobada();
+                                        $percent= round(($valor/$total)*100,0);
+                                        ?>
+                                        <style type="text/CSS">
+                                        .prog {
+                                        position: relative;
+                                        width: 100%;
+                                        height: 30px;
+                                        background-color: white;
+                                        border-radius: 10px;
+                                        border: 1px solid #B1A7A6;
+                                    }
 
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">PI 2</td>
-                                            <td class="cell100 column3">12-12-2020</td>
-                                            <td class="cell100 column4">10</td>
-                                            <td class="cell100 column5">
-                                                <div id="myProgress2">
-                                                    <div id="myBar2"></div>
-                                                </div>
-                                            </td>
-                                            <td class="cell100 column6"><a href="# " id="vermas1">Ver más</a></td>
-
-                                        </tr>
-
+                                        .bar {
+                                        position: absolute;
+                                        border-radius: 10px;
+                                        width: <?php echo $percent?>%;
+                                        height: 100%;
+                                        background-color: #BA181B;
+                                    }
+                                        </style>
                                         
+                                        <td><div class="prog">
+                                                    <div class="bar"></div>
+                                                </div>
+                                        </td>
+                                           
+                                        
+                                        <td><a id="vermas1" href="revisionprof.php?id=<?php echo $activid->getId()?>&accion=a ">Ver más</a> </td>
+				
+                                    </tr>
+                                    <?php 
+                                    }
+                                    ?>
+                                                
+                                            
 
                                     </tbody>
                                 </table>
