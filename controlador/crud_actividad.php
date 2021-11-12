@@ -153,7 +153,7 @@ require_once('../modelo/conexion.php');
 		public function mostraract(){
 			$db=Db::conectar();
 			$listaActividadGen=[];
-			$select=$db->query("SELECT ASIGNATURA.nombre as asig,\n"
+			$select=$db->query("SELECT ASIGNATURA.nombre as asig, ACTIVIDAD.codigo  as id,\n"
 			. "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP, \n"
 			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
 			. "GRUPO.codigo_Grup as codGru,PI.codigo as picod, PI.codigo_SO as socod FROM USUARIO JOIN DIRECTORPROGRAMA \n"
@@ -167,6 +167,7 @@ require_once('../modelo/conexion.php');
  
 			foreach($select->fetchAll() as $AD){
 				$myAD= new Actividad();
+				$myAD->setid($AD['id']);
 				$myAD->setNomAsig($AD['asig']);
 				$myAD->setNomProf($AD['nombreP']);
 				$myAD->setApeProf($AD['apellidoP']);
@@ -177,6 +178,45 @@ require_once('../modelo/conexion.php');
 			}
 
 			return $listaActividadGen;
+		}
+		
+		public function mostraractIn($id){
+			$db=Db::conectar();
+			
+			$select=$db->prepare("SELECT ASIGNATURA.nombre as asig,USUARIO.nombre as dirnom, USUARIO.apellido as dirape, ACTIVIDAD.codigo as id,\n"
+			. "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP, \n"
+			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
+			. "GRUPO.codigo_Grup as codGru,PI.codigo as picod, PI.codigo_SO as socod, SO.nombre as sonom, PROGRAMAACADEMICO.nombre as prog, ACTIVIDAD.medioEvaluacion as med FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
+			. "ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA \n"
+			. "ON ASIGNATURA.cod_programa= PROGRAMAACADEMICO.codigo JOIN GRUPO\n"
+			. "ON ASIGNATURA.codigo=GRUPO.codigo_asgs JOIN ACTIVIDAD \n"
+			. "ON ACTIVIDAD.codigoGrupo=GRUPO.codigo JOIN PI \n"
+			. "ON ACTIVIDAD.codPi=PI.codigo JOIN SO ON SO.codigo=PI.codigo_SO\n"
+			. "WHERE DIRECTORPROGRAMA.usuario='juan.carlos' AND ACTIVIDAD.codigo=:id;");
+			
+			$select->bindValue('id',$id);
+			$select->execute();
+			$AD=$select->fetch();
+			$myAD= new Actividad();
+					
+				$myAD= new Actividad();
+				$myAD->setid($AD['id']);
+				$myAD->setNomProgAcademico($AD['prog']);
+				$myAD->setMedioEv($AD['med']);
+				$myAD->setNomAsig($AD['asig']);
+				$myAD->setNomDi($AD['dirnom']);
+				$myAD->setApeDi($AD['dirape']);
+				$myAD->setNomProf($AD['nombreP']);
+				$myAD->setApeProf($AD['apellidoP']);
+				$myAD->setNumGrupo($AD['codGru']);
+				$myAD->setSo($AD['picod']);
+				$myAD->setNomSo($AD['sonom']);
+				$myAD->setPi($AD['socod']);
+				
+			
+
+			return $myAD;
 		}
 		
 
@@ -535,6 +575,56 @@ require_once('../modelo/conexion.php');
 
 		return $listaSO;
 		}
+
+		public function obtenerActividadDir($id){
+            $db=Db::conectar();
+            $select=$db->prepare("SELECT ACTIVIDAD.codigo as id, PROGRAMAACADEMICO.nombre as Programa,ASIGNATURA.nombre as Asignatura,ASIGNATURA.codigo as codigoAsg, Grupo.Codigo_Grup as grupo,\n"
+
+            . "PERIODO.codigo as Periodo,(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorNomb,\n"
+
+            . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as ProfesorApellido, \n"
+
+            . "SO.codigo as So,PI.codigo as PI,ACTIVIDAD.medioEvaluacion as metodo, RUBRICA.archivo as archivo, RUBRICA.calificacion as calif, RUBRICA.comentarioDir as comen FROM ACTIVIDAD JOIN RUBRICA ON RUBRICA.codigo_act=ACTIVIDAD.codigo JOIN PERIODO\n"
+
+            . "ON ACTIVIDAD.codPeriodo=Periodo.codigo JOIN PI\n"
+
+            . "ON ACTIVIDAD.codPI=PI.codigo join SO\n"
+
+            . "on PI.codigo_SO=SO.codigo join GRUPO\n"
+
+            . "ON ACTIVIDAD.codigoGrupo=grupo.CODIGO join Asignatura\n"
+
+            . "on GRUPO.codigo_asgs=ASIGNATURA.codigo join PROFESOR\n"
+
+            . "on GRUPO.correo_pr=PROFESOR.usuario join USUARIO\n"
+
+            . "ON PROFESOR.usuario=USUARIO.nomUSuario join PROGRAMAACADEMICO\n"
+
+            . "ON ASIGNATURA.COD_programa=PROGRAMAACADEMICO.codigo \n"
+
+            . "where PROFESOR.usuario='jose.luis' AND ACTIVIDAD.codigo=:id;");
+
+			$select->bindValue('id',$id);
+            $select->execute();
+            $obAct=$select->fetch();
+            $myObAct= new Actividad();
+            $myObAct->setId($obAct['id']);
+            $myObAct->setNomProgAcademico($obAct['Programa']);
+            $myObAct->setNomAsig($obAct['Asignatura']);
+            $myObAct->setNumGrupo($obAct['grupo']);
+            $myObAct->setPeriodo($obAct['Periodo']);
+            $myObAct->setNomProf($obAct['ProfesorNomb']);
+            $myObAct->setApeProf($obAct['ProfesorApellido']);
+            $myObAct->setSo($obAct['So']);
+            $myObAct->setPi($obAct['PI']);
+            $myObAct->setCodAsig($obAct['codigoAsg']);
+            $myObAct->setMedioEv($obAct['metodo']);
+			$myObAct->setCalirubrica($obAct['calif']);
+			$myObAct->setCalicommentrubrica($obAct['comen']);
+			$myObAct->setArchirubrica($obAct['archivo']);
+            return $myObAct;
+        }
+
 
 			/*
 		public function soEsp(){

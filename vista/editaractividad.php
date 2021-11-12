@@ -1,14 +1,13 @@
 <?php
 
+
 include("../controlador/crud_actividad.php");
 require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
 
-$progDi = $crud->obtenerProgramaDirec();
-$listaActividad = $crud->selectAsigna();
-$listarSO=$crud->ConsultarSO($_GET['asi']);
-$listarG=$crud->obtenerAsi();
+$activid=$crud->mostraractIn($_GET['id']);
+$listarSO=$crud->ConsultarSO('1');
 
 ?>
 
@@ -56,13 +55,11 @@ $listarG=$crud->obtenerAsi();
                     <div class=columinfo1>
                         <h5 id="infoletra">Programa</h5>
              
-                        <?php foreach ($progDi as $activid) {?>
+                        
                                                       
-                        <label class='labelestado' name='programaInsertar'><?php echo $activid->getNomProgAcademico()?></label>
+                        <label class='labelestado' name='programaInsertar'><?php echo $activid-> getNomProgAcademico()?></label>
                                                     
-                        <?php
-                        }
-                        ?> 
+                        
 
                        
                     </div>
@@ -70,13 +67,12 @@ $listarG=$crud->obtenerAsi();
                     <div class=columinfo1>
                         <h5 id="infoletra">Director</h5> 
                         
-                        <?php foreach ($progDi as $activid) {?>
+       
                                                       
                         <label class='labelestado' name='directorInsertar'><?php echo $activid->getNomDi()." ".$activid->getApeDi()?></label>
                                                     
-                        <?php
-                        }
-                        ?> 
+                        
+                  
 
                  
                     </div>
@@ -85,21 +81,18 @@ $listarG=$crud->obtenerAsi();
                     <div class=columinfo1>
                     
                         <h5 id="infoletra">Periodo</h5> 
-                        <input class="labelestado" name="periodo" type='text' value="2021-3 " disabled></input>
+                        <input class="labelestado" name="periodo" type='text' value="2021-3 " disabled><?php echo $activid-> getPeriodo()?></input>
                     </div>
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Asignatura</h5> 
                         <select class="labelestado" id="asignatu" name="grupo">
 
-                        <?php foreach ($listarG as $activid) {?>
-		                        	
+                                             	
 				        		                      
                         <option value= <?php echo $activid->getGrupo()?>><?php echo $activid->getNomAsig()."-".$activid->getNumGrupo()?></option>
                             
-                        <?php
-                        }
-                        ?> 
+                      
                             
                         </select>
                     </div>
@@ -110,55 +103,33 @@ $listarG=$crud->obtenerAsi();
 
                     <div class=columinfo1>
                         <h5 id="infoletra">*Método de calificación</h5> 
-                        <input  class="labelestado" type='text' name='metodoInsertar'> </input>
+                        <input  class="labelestado" name='metodoInsertar' placeholder=<?php echo $activid->getMedioEv()?>></input>
                     </div>
 
                     <div class="columinfo1">
                         
                         <h5 id="infoletra">*Student Outcomes</h5> 
                             <select class="labelestado" id= "SOs0" name="SO">
+                            <option value='' hidden> <?php echo $activid->getGrupo()?>SO <?php echo $activid->getSo()."-".$activid->getNomSo()?></option> 
                             <?php foreach ($listarSO as $activid) {?>
 		                        	
-				        		                      
+                                  
                                     <option value= <?php echo $activid->getGrupo()?>>SO <?php echo $activid->getSo()."-".$activid->getNomSo()?></option>
-                                        
-                                    <?php
-                                    }
-                                    ?> 
+                            <?php
+                             }?>            
+                                   
                             </select>
                         </div> 
                         
                         <div class="columinfo1">
                             <h5 id="infoletra">*Perfomance Indicator</h5> 
                             <select class="labelestado" id="PIs0" name= "PI">
+                            <option value='' hidden> <?php echo $activid->getPi()?>.<?php echo $activid->getSo()."-".$activid->getNomSo()?></option>
                                 <option value=''> </option>
                             </select>
                         </div>
 
-                        <div class="columinfo1">
                         
-                            <h5 id="infoletra">Student Outcomes</h5> 
-                                <select class="labelestado" id= "SOs1" name="SO1">
-                                    <option value=''> </option>
-                                    <option value='RAE-1'>SO-1: Problemas complejos de ingeniería</option>
-                                    <option value='RAE-2'>SO-2: Diseño en Ingeniería</option>
-                                    <option value='RAE-3'>SO-3: Comunicación Efectiva</option>
-                                    <option value='RAE-4'>SO-4: Responsabilidades éticas y profesionales</option>
-                                    <option value='RAE-5'>SO-5: Trabajo en equipo</option>
-                                    <option value='RAE-6'>SO-6: Experimentación</option>
-                                    <option value='RAE-7'>SO-7: Autoaprendizaje</option>
-                                </select>
-                            </div> 
-                            
-                            <div class="columinfo1">
-                                <h5 id="infoletra">Perfomance Indicator</h5> 
-                                <select class="labelestado" id="PIs1" name= "PI1">
-                                    <option value=''> </option>
-                                </select>
-
-                                
-                            </div>
-                    
                 </div>
 
             </div>

@@ -160,9 +160,9 @@ require_once('../modelo/conexion.php');
 
     . "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP,\n"
 
-    . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP,ACTIVIDAD.fechaEntrega as fechaen,\n"
+    . "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP,IFNULL(ACTIVIDAD.fechaEntrega,'-') as fechaen,\n"
 
-    . "GRUPO.codigo_grup as codGru,PI.codigo as picoD,actividad.estado as estado FROM USUARIO JOIN DIRECTORPROGRAMA\n"
+    . "GRUPO.codigo_grup as codGru,PI.codigo as picoD,IFNULL(actividad.estado,'No Entregado') as estado FROM USUARIO JOIN DIRECTORPROGRAMA\n"
 
     . "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO\n"
 

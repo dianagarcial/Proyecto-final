@@ -109,6 +109,8 @@ $lactividad= new Actividad();
 		header('Location: inicioRegisRub.php');
 	}elseif($_GET['accion']=='aD'){
 		header('Location: consulActividad.php');
+	}elseif($_GET['accion']=='ed'){
+		header('Location: editaractividad.php');
 	
 }elseif($_GET['accion']=='ar'){
 	header('Location: registrarRUB.php');
@@ -118,5 +120,5 @@ $lactividad= new Actividad();
 
 }elseif($_GET['accion']=='ediAct'){
 	header('Location: editaractividad.php');
-	
+}	
 ?>

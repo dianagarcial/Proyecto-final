@@ -107,8 +107,15 @@ $listarSO=$crud->ConsultarSO();
                                         <td><?php echo $activid->getEstado() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
                                         <td><?php echo $activid->getFentrega() ?> </td>
-                                
+                                        <?php if($activid->getEstado()== 'Entregado'){?>
                                         <td><a id="vermas1" href="RevisionDirector.php?id=<?php echo $activid->getId()?>&accion=Revi">Ver más</a> </td>
+                                        <?php 
+                                    }
+                                      else{?>
+                                        <td></td>
+                                        <?php 
+                                    }
+                                    ?>
                                     </tr>
                                     <?php 
                                     }
