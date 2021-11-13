@@ -41,10 +41,10 @@
                     <li class="submenuSO">
                         <a href="#"><span class="icon-rocket"></span>Gestión documental<span class="caret icon-arrow-down6"></span></a>
                         <ul class="children">
-                            <li><a href="#">Recibidos<span class="icon-dot"></span></a></li>
-                            <li><a href="#">Pendientes<span class="icon-dot"></span></a></li>
+                            <li><a href="consultarRecibidos.php">Recibidos<span class="icon-dot"></span></a></li>
+                            <li><a href="consultarnoRecibidos.php">Pendientes<span class="icon-dot"></span></a></li>
                             <li><a href="consultarAprobado.php">Aprobados<span class="icon-dot"></span></a></li>
-                            <li><a href="#">Rechazados<span class="icon-dot"></span></a></li>
+                            <li><a href="consultarRechazado.php">Rechazados<span class="icon-dot"></span></a></li>
                            
                         </ul>
 

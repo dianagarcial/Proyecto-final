@@ -6,7 +6,7 @@ $crud=new CrudActividad();
 $activid= new Actividad();
 
 
-$listaActividadDir=$crud->ConsultarAprobado();
+$listaActividadDir=$crud->ConsultarRechazado();
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ $listaActividadDir=$crud->ConsultarAprobado();
        
   
 
-        <h1 class="MasGrande">Documentos Aprobados</h1>
+        <h1 class="MasGrande">Documentos Rechazados</h1>
 
 
         <div class="limiter" id="contenedor">
@@ -74,7 +74,7 @@ $listaActividadDir=$crud->ConsultarAprobado();
                                     }
                                     ?>
                                      <?php if (is_null($activid->getId())) {?>
-                                        <td colspan="7">No hay actividades aprobadas actualmente</td>
+                                        <td colspan="7">No han actividades rechazadas actualmente</td>
                                     <?php 
                                     }     
                                     ?>

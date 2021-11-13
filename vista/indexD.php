@@ -184,9 +184,10 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
                     <table id=tablefiltro>
                               
                         
-                            <td id="lfiltro2">
-                                <img src="imagenes/recibidos.png"
-                                href="#"/><br><br>Recibidos</td>
+                    <td id="lfiltro">
+                                    <img src="imagenes/recibidos.png"
+                                     href="consultarRecibidos.html"></img><br><br>Recibidos</td>
+                           
                             <td id="lineafiltro2"><img  src="imagenes/linea.png"/></td>
 
                             <td id="lfiltro2">

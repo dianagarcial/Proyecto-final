@@ -6,7 +6,7 @@ $crud=new CrudActividad();
 $activid= new Actividad();
 
 
-$listaActividadDir=$crud->ConsultarAprobado();
+$listaActividadDir=$crud->mostrarDirNEnv();
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ $listaActividadDir=$crud->ConsultarAprobado();
        
   
 
-        <h1 class="MasGrande">Documentos Aprobados</h1>
+        <h1 class="MasGrande">Documentos Pendientes</h1>
 
 
         <div class="limiter" id="contenedor">
@@ -53,7 +53,7 @@ $listaActividadDir=$crud->ConsultarAprobado();
                                         <th>Grupo</th>
                                         <th>Docente</th>
                                         <th>PI</th>
-                                        <th>Fecha entrega</th>
+                                        <th>Fecha limite</th>
 
 
                                     </tr>
@@ -67,14 +67,14 @@ $listaActividadDir=$crud->ConsultarAprobado();
 				                        <td><?php echo $activid->getNumGrupo() ?> </td>
                                         <td><?php echo $activid->getNomProf()." ".$activid->getApeProf() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
-                                        <td><?php echo $activid->getFentrega() ?> </td>
-                                        <td><a id="vermas1" href="revisionDirector.php?id=<?php echo $activid->getId()?>&accion=aprobadoF ">Ver más</a> </td>
+                                        <td><?php echo $activid->getFlimite() ?> </td>
+                                        <td><a id="vermas1">Notificar</a> </td>
                                     </tr>
                                     <?php 
                                     }
                                     ?>
                                      <?php if (is_null($activid->getId())) {?>
-                                        <td colspan="7">No hay actividades aprobadas actualmente</td>
+                                        <td colspan="7">No hay actividades pendientes  actualmente</td>
                                     <?php 
                                     }     
                                     ?>

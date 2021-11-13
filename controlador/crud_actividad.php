@@ -211,7 +211,7 @@ require_once('../modelo/conexion.php');
 				$myAD->setApeProf($AD['apellidoP']);
 				$myAD->setNumGrupo($AD['codGru']);
 				$myAD->setSo($AD['picod']);
-				$myAD->setNomPi($AD['pinom']);
+				$myAD->setGrupo($AD['pinom']);
 				$myAD->setNomSo($AD['sonom']);
 				$myAD->setPi($AD['socod']);
 				
@@ -479,7 +479,7 @@ require_once('../modelo/conexion.php');
 			$obAct=$select->fetch();
 			$myObAct= new Actividad();
 			$myObAct->setPi($obAct['pi']);
-			$myObAct->setNomPi($obAct['nombre']);
+			$myObAct->setGrupo($obAct['nombre']);
 			
 			
 

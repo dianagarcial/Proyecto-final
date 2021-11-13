@@ -28,7 +28,7 @@ $listarPiEspecifico=$crud->obtenerpi($_GET['id']);
     <div id="contenido">
      
 
-        <h1>PI <?php echo $activid-> getPi()?>. <?php echo $activid-> getNomPi()?></h1>
+        <h1>PI <?php echo $activid-> getPi()?>. <?php echo $activid-> getGrupo()?></h1>
         
         
         
@@ -116,7 +116,7 @@ $listarPiEspecifico=$crud->obtenerpi($_GET['id']);
                     </div>
                 </div>
             </div>
-            <button id="descarga">Descargar análisis del SO1</button>
+           
             <br>
             <br>
             <br>
