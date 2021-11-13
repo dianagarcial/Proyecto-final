@@ -31,7 +31,7 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
 
         
         <?php foreach ($listarSoEspecifico as $activid) {?>
-            <h2 class="so">SO-<?php echo $activid->getSo()?>. <?php echo $activid->getNomSo()?></h2>
+            <h2 id="labelpe">SO-<?php echo $activid->getSo()?>. <?php echo $activid->getNomSo()?></h2>
                                        
             <?php 
             }
@@ -118,7 +118,7 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
 <style type="text/CSS">
                                         .prog {
                                         position: relative;
-                                        width: <?php echo $percent?>%;
+                                        width: 100%;
                                         height: 30px;
                                         background-color: white;
                                         border-radius: 10px;

@@ -488,7 +488,7 @@ require_once('../modelo/conexion.php');
 
 		public function obtenerpi($pi){
 			$db=Db::conectar();
-			$select=$db->prepare("SELECT ASIGNATURA.codigo as codAsig,MAX(actividad.fechaEntrega) as ultmodi, COUNT(*) as Total, \n"
+			$select=$db->prepare("SELECT ASIGNATURA.codigo as codAsig, ASIGNATURA.nombre as nomAs, IFNULL(MAX(actividad.fechaEntrega),'-') as ultmodi, COUNT(*) as Total, \n"
 
 			. "COUNT(ACTIVIDAD.fechaEntrega) as entregadas, (SELECT COUNT(*) FROM RUBRICA WHERE rubrica.calificacion='Aprobado') as aprobada,\n"
 		
@@ -505,6 +505,7 @@ require_once('../modelo/conexion.php');
 			foreach($select->fetchAll() as $obAct){
 				$myAD= new Actividad();
 				$myAD->setPi($obAct['codAsig']);
+				$myAD->setNomAsig($obAct['nomAs']);
 				$myAD->setFentrega($obAct['ultmodi']);
 				$myAD->setAprobada($obAct['entregadas']);
 				$myAD->setRechazada($obAct['rechazado']);

@@ -1,8 +1,12 @@
 <?php
 
 require_once('../controlador/crud_actividad.php');
-require_once('actividad.php');
-
+require_once('actividad.php');?>
+<!DOCTYPE html>
+<html>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</html>
+<?php
 $crud= new CrudActividad();
 $lactividad= new Actividad();
 
@@ -39,9 +43,11 @@ $lactividad= new Actividad();
 
 		?>
 		<script type="text/javascript">
-			
+		
+			//alert("Hello world!");			
 			window.location.href="../vista/consulRegAsig.php";
-			alert("La actividad se ha registrado con exito");
+			alert('La actividad se ha registrado con exito');
+			
 			</script>';
 		<?php
 	}elseif(isset($_POST['asi'])) {
@@ -106,7 +112,14 @@ $lactividad= new Actividad();
 		//llama a la función insertar definida en el crud
 		$crud->insertarEvid($lactividad);
 		
-		header('Location: ../vista/indexP.php');
+		?>
+		<script type="text/javascript">
+			
+			window.location.href="../vista/indexP.php";
+			alert("La rubrica y las evdencias se han enviado con exito");
+			</script>';
+		<?php
+		
 
 	
 	}

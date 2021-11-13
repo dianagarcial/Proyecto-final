@@ -44,12 +44,16 @@ $listarPiEspecifico=$crud->obtenerpi($_GET['id']);
                                     
                                         <tr>
 
-                                            <th>PI</th>
+                                            <th>Codigo Asignatura</th>
+                                            <th>Nombre Asignatura</th>
 
                                             <th>Ult. modificación</th>
 
-                                            <th>No. documentos</th>
+                                            <th>Actividades entregadas</th>
 
+                                            <th>Actividades registradas</th>
+
+                                            
                                             <th>Progreso</th>
 
                                         </tr>
@@ -59,6 +63,7 @@ $listarPiEspecifico=$crud->obtenerpi($_GET['id']);
                                         <?php foreach ($listarPiEspecifico as $activid) {?>
 		                        	<tr>
                                         <td><?php echo $activid->getPi() ?></td>
+                                        <td><?php echo $activid->getNomAsig() ?></td>
 				                        <td><?php echo $activid->getFentrega() ?></td>
 				                        <td><?php echo $activid->getAprobada() ?> </td>
   
@@ -70,9 +75,10 @@ $listarPiEspecifico=$crud->obtenerpi($_GET['id']);
                                         $percent= round(($valor/$total)*100,0);
                                         ?>
                                         <td><?php echo $percent?>%</td>
+                                        
                                         <td>
-                                        <div class="prog">
-                                                    <div class="bar"></div>
+                                        <div class="prog<?php echo $activid->getPi()?>">
+                                                    <div class="bar<?php echo $activid->getPi()?>"></div>
                                                 </div>
                                         </td>
                                         
@@ -81,29 +87,85 @@ $listarPiEspecifico=$crud->obtenerpi($_GET['id']);
                                         <td><a id="vermas1" href="filtro-PI.php?id=<?php echo $activid->getPi()?> ">Ver más</a> </td>
 				
                                     </tr>
-                                    <?php 
-                                    }
-                                    ?>
+                                    
 
-<style type="text/CSS">
-                                        .prog {
-                                        position: relative;
-                                        width: <?php echo $percent?>%;
+                                    <style type="text/CSS">
+                                        .prog552203{
+                                            position: relative;
+                                        width: 100%;
                                         height: 30px;
                                         background-color: white;
                                         border-radius: 10px;
                                         border: 1px solid #B1A7A6;
                                     }
 
-                                        .bar {
+                                        .bar552203{
                                         position: absolute;
                                         border-radius: 10px;
-                                        width: <?php echo $percent?>%;
+                                        width: <?php echo $percent?>%;                            
+                                        
+                                       
+                                        height: 100%;
+                                        background-color: #BA181B;
+                                    }
+                                    .prog553002{
+                                            position: relative;
+                                        width: 100%;
+                                        height: 30px;
+                                        background-color: white;
+                                        border-radius: 10px;
+                                        border: 1px solid #B1A7A6;
+                                    }
+
+                                        .bar553002{
+                                        position: absolute;
+                                        border-radius: 10px;
+                                        width: <?php echo $percent?>%;                            
+                                        
+                                       
+                                        height: 100%;
+                                        background-color: #BA181B;
+                                    }
+                                    .prog553003{
+                                            position: relative;
+                                        width: 100%;
+                                        height: 30px;
+                                        background-color: white;
+                                        border-radius: 10px;
+                                        border: 1px solid #B1A7A6;
+                                    }
+
+                                        .bar553003{
+                                        position: absolute;
+                                        border-radius: 10px;
+                                        width: <?php  echo $percent?>%;                            
+                                        
+                                       
+                                        height: 100%;
+                                        background-color: #BA181B;
+                                    }
+                                    .prog553442{
+                                            position: relative;
+                                        width: 100%;
+                                        height: 30px;
+                                        background-color: white;
+                                        border-radius: 10px;
+                                        border: 1px solid #B1A7A6;
+                                    }
+
+                                        .bar553442{
+                                        position: absolute;
+                                        border-radius: 10px;
+                                        width: <?php echo $percent?>%;                            
+                                        
+                                       
                                         height: 100%;
                                         background-color: #BA181B;
                                     }
                                         </style>
-                                                
+                                    <?php 
+                                    }
+                                    ?>         
                                     <?php if (is_null($activid->getPi())) {?>
                                         <td>ffff</td>
                                     <?php 

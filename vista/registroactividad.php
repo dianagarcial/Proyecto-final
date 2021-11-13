@@ -29,7 +29,7 @@ $listarG=$crud->obtenerAsi();
     <script src="/controlador/funcionarchivo.js"></script>
     <script src="/controlador/registroact.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <?php require "headerD.php" ?>

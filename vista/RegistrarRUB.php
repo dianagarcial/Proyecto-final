@@ -119,9 +119,9 @@ if (isset($_POST['insertar'])) {
                         
 
                         <div class="image-upload-wrap">
-                            <input class="file-upload-input" name='archivo' type='file' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this);" requiered />
+                            <input class="file-upload-input" name='archivo' type='file' requiered accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="readURL(this);" />
                             <div class="drag-text">
-                                <img id="meu" alt="Imagen no disponible" src="imagenes/subir.png" requiered/>
+                                <img id="meu" alt="Imagen no disponible" src="imagenes/subir.png" />
                             <h3>Click aqui para adjuntar el archivo*</h3>
                             </div>
                         </div>
@@ -135,7 +135,8 @@ if (isset($_POST['insertar'])) {
                             <a class="plantillaDown" href="\Proyecto-final\vista\Recursos\SO<?php echo $activid->getSo()?>.xlsx" download="SO<?php echo $activid->getSo()?>.xlsx">Descargar Plantilla De Rúbrica</a>
                             <label></label>
                         </div>
-                    
+                       
+
                         
                         
                                
