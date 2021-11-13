@@ -112,7 +112,7 @@ $listarSO=$crud->ConsultarSO();
                                         <?php 
                                     }
                                       else{?>
-                                        <td></td>
+                                        <td><a id="vermasDES">Ver más</a> </td>
                                         <?php 
                                     }
                                     ?>

@@ -214,7 +214,7 @@ require_once('../modelo/conexion.php');
 		. "ON PI.codigo_SO=SO.codigo JOIN ACTIVIDAD ON actividad.codPi=pi.codigo  \n"
 	
 		. "WHERE SO.codigo=:id GROUP BY PI.codigo;");
-
+ 
 		$select->bindValue('id',$id);
 		$select->execute();
 	

@@ -485,6 +485,38 @@ require_once('../modelo/conexion.php');
 			return $myObAct;
 		}
 
+		public function obtenerpi($pi){
+			$db=Db::conectar();
+			$select=$db->prepare("SELECT ASIGNATURA.codigo as codAsig,MAX(actividad.fechaEntrega) as ultmodi, COUNT(*) as Total, \n"
+
+			. "COUNT(ACTIVIDAD.fechaEntrega) as entregadas, (SELECT COUNT(*) FROM RUBRICA WHERE rubrica.calificacion='Aprobado') as aprobada,\n"
+		
+			. "(SELECT COUNT(*) FROM RUBRICA WHERE rubrica.calificacion='Rechazado') as rechazado FROM SO JOIN PI \n"
+		
+			. "ON PI.codigo_SO=SO.codigo JOIN ACTIVIDAD ON actividad.codPi=pi.codigo JOIN grupo \n"
+		
+			. "ON GRUPO.codigo=actividad.codigoGrupo JOIN asignatura ON asignatura.codigo=grupo.codigo_asgs \n"
+		
+			. "WHERE PI.codigo=:pi GROUP BY asignatura.nombre;");
+							
+			$select->bindValue('pi',$pi);
+			$select->execute();
+			foreach($select->fetchAll() as $obAct){
+				$myAD= new Actividad();
+				$myAD->setPi($obAct['codAsig']);
+				$myAD->setFentrega($obAct['ultmodi']);
+				$myAD->setAprobada($obAct['entregadas']);
+				$myAD->setRechazada($obAct['rechazado']);
+				$myAD->setTotal($obAct['Total']);
+				
+				
+				$listaSoE[]=$myAD;
+			}
+		
+			return $listaSoE;
+		
+		}
+
 		public function selectAsigna(){
 			$db=Db::conectar();
 			$listaActividadDir=[];

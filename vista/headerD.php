@@ -26,13 +26,13 @@
                     <li class="submenuSO">
                         <a href="filtro-SOD.php?id=1"><span class="icon-rocket"></span>Student Outcomes(SO)<span class="caret icon-arrow-down6"></span></a>
                         <ul class="children">
-                            <li><a href="#">SO1<span class="icon-dot"></span></a></li>
-                            <li><a href="#">SO2 <span class="icon-dot"></span></a></li>
-                            <li><a href="#">SO3 <span class="icon-dot"></span></a></li>
-                            <li><a href="#">SO4 <span class="icon-dot"></span></a></li>
-                            <li><a href="#">SO5 <span class="icon-dot"></span></a></li>
-                            <li><a href="#">SO6 <span class="icon-dot"></span></a></li>
-                            <li><a href="#">SO7 <span class="icon-dot"></span></a></li>
+                            <li><a href="so-Especifico.php?id=1">SO1<span class="icon-dot"></span></a></li>
+                            <li><a href="so-Especifico.php?id=2">SO2 <span class="icon-dot"></span></a></li>
+                            <li><a href="so-Especifico.php?id=3">SO3 <span class="icon-dot"></span></a></li>
+                            <li><a href="so-Especifico.php?id=4">SO4 <span class="icon-dot"></span></a></li>
+                            <li><a href="so-Especifico.php?id=5">SO5 <span class="icon-dot"></span></a></li>
+                            <li><a href="so-Especifico.php?id=6">SO6 <span class="icon-dot"></span></a></li>
+                            <li><a href="so-Especifico.php?id=7">SO7 <span class="icon-dot"></span></a></li>
                             
                         </ul>
                     </li>

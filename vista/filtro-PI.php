@@ -1,13 +1,13 @@
 <?php
-//incluye la clase Libro y CrudLibro
-include("../controlador/Marin-crud_actividad.php");
+
+include("../controlador/crud_actividad.php");
 require("../controlador/actividad.php");
 $crud=new CrudActividad();
 $activid= new Actividad();
-//obtiene todos los libros con el método mostrar de la clase crud
 
-$listarSoEspecifico=$crud->ConsultarSoEspecificoSOLO($_GET['id']);
-$listarSo=$crud->ConsultarSoE($_GET['id']);
+$activid=$crud->obtenerpiselc($_GET['id']);
+$listarPiEspecifico=$crud->obtenerpi($_GET['id']);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,42 +20,19 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link href="css/estilosindexso.css" rel="stylesheet" />
     <link href="css/estilosSO.css" rel="stylesheet" />
     <link href="css/header.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
-
-
+    <script src="/controlador/main.js"></script>
     <?php require "headerD.php" ?>
     <div id="contenido">
+     
 
+        <h1>PI <?php echo $activid-> getPi()?>. <?php echo $activid-> getNomPi()?></h1>
         
-        <?php foreach ($listarSoEspecifico as $activid) {?>
-            <h2 class="so">SO-<?php echo $activid->getSo()?>. <?php echo $activid->getNomSo()?></h2>
-                                       
-            <?php 
-            }
-            ?>           
+        
+        
       
-
-        <div class="limiter" id="contenedor">
-            <div class="container-table100">
-                <div class="wrap-table100">
-                    <div class="table100 ver1">
-                        
-                        <label id="labelpe">Periodo académico </label>
-                            <select id="selectPeriodo">
-                                <option value="2021-3">2021-3</option>
-                                 <option value="2021-1">2021-1</option>                           
-                        </select>
-                           
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        
-        <h3>Filtrar por PI</h3>
 
         <div class="limiter" id="contenedor">
             <div class="container-table100">
@@ -70,18 +47,16 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
                                             <th>PI</th>
 
                                             <th>Ult. modificación</th>
-                                            <th>Actividades entregadas</th>
 
-                                            <th>Actividades registradas</th>
+                                            <th>No. documentos</th>
 
-                                            
                                             <th>Progreso</th>
 
                                         </tr>
 
                                     
-                                    <tbody>
-                                    <?php foreach ($listarSo as $activid) {?>
+                                        <tbody>
+                                        <?php foreach ($listarPiEspecifico as $activid) {?>
 		                        	<tr>
                                         <td><?php echo $activid->getPi() ?></td>
 				                        <td><?php echo $activid->getFentrega() ?></td>
@@ -109,11 +84,6 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
                                     <?php 
                                     }
                                     ?>
-                                    <?php if (is_null($activid->getPi())) {?>
-                                        <td colspan="6">No se han registrado actividades a este Student Outcome</td>
-                                    <?php 
-                                    }     
-                                    ?>
 
 <style type="text/CSS">
                                         .prog {
@@ -134,8 +104,11 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
                                     }
                                         </style>
                                                 
-                                            
-
+                                    <?php if (is_null($activid->getPi())) {?>
+                                        <td>ffff</td>
+                                    <?php 
+                                    }     
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -151,16 +124,10 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
 
      
     </div>
-    </div>
-   
+    <br>
+    <br>
+    <br>
+    <br>
     <?php require "footer.php" ?>
 
-
- 
-        
-      
-
-
-
-</body>
-</html>
+    
