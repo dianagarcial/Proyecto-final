@@ -20,9 +20,19 @@ $lactividad= new Actividad();
 		$lactividad->setId($_POST['id']);
 		$lactividad->setCalirubrica($_POST['calif']);
 		$lactividad->setCalicommentrubrica($_POST['comentario']);
+		
+		
+
 		//$lactividad->setAnio_edicion($_POST['edicion']);
 		$crud->actualizar($lactividad);
-		header('Location: ../vista/indexD.php');
+		
+		?>
+		<script type="text/javascript">
+			
+			window.location.href="../vista/indexD.php";
+			alert("La revisión se ha registrado con exito");
+			</script>';
+		<?php
 	// si la variable accion enviada por GET es == 'e' llama al crud y elimina un libro
 	}elseif ($_GET['accion']=='e') {
 		//$crud->eliminar($_GET['id']);

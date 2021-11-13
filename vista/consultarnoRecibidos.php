@@ -74,7 +74,7 @@ $listaActividadDir=$crud->mostrarDirNEnv();
                                     }
                                     ?>
                                      <?php if (is_null($activid->getId())) {?>
-                                        <td colspan="7">No hay actividades pendientes  actualmente</td>
+                                        <td colspan="7">No hay actividades pendientes actualmente</td>
                                     <?php 
                                     }     
                                     ?>

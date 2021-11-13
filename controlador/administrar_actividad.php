@@ -29,14 +29,21 @@ $lactividad= new Actividad();
 	
 	}elseif (isset($_POST['insertarAct'])) {
 		
+		
 		$lactividad->setMedioEv($_POST['metodoInsertar']);
 		$lactividad->setGrupo($_POST['grupo']);
 		$lactividad->setPeriodo('2021-03');
 		$lactividad->setPi($_POST['PI']);
-		$crud->insertar($lactividad);
-		
-		header('Location: ../vista/consulRegAsig.php');
-	
+		$crud->insertar($lactividad); 
+		  
+
+		?>
+		<script type="text/javascript">
+			
+			window.location.href="../vista/consulRegAsig.php";
+			alert("La actividad se ha registrado con exito");
+			</script>';
+		<?php
 	}elseif(isset($_POST['asi'])) {
 		
 		$lactividad-> getNomAsig($_POST['asiginsertar']);

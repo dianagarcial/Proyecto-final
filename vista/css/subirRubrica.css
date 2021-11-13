@@ -322,6 +322,24 @@ h4#info{
 
     }
 
+    .labelestado2{
+        background: #F5F3F4;
+        border: none;
+        font-size: 20px; 
+        padding: 10px;
+        margin-top: 12px;
+        border: 3px solid #B1A7A6;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 24px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        width: 55%;
+        height: 20%;
+        padding: 1%;
+        top: 10%;
+        float: left;
+        
+    
+        }
     .inputestado{
         background: #ffffff;
         right: 5%;

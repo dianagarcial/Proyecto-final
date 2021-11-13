@@ -116,14 +116,14 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
                             <select id="selectEstado" name="calif" requiered>
                             
                             <option value='' hidden><?php echo $activid->getCalirubrica()?> </option>   
-
+                            <option value='Sin calificar'>Sin calificar</option>
                                 <option value="Aprobado">Aprobado</option>
                                 <option value="Rechazado">Rechazado</option>                           
                         </select>
                 
                 <textarea class=estilotextarea2 cols="60" rows="8" name="comentario"><?php echo $activid->getCalicommentrubrica()?></textarea>
 
-                <input type='hidden' name='actualizar' value='actualizar'>
+                <input type='hidden' name='actualizar' value='actualizar' onclick=alerta()>
 	
 	            
 
@@ -138,7 +138,7 @@ $activid=$crud->obtenerActividadDir($_GET['id']);
         <div class=formatorow4>
             <button class="cancelar" id="cancelarRevi" onclick="window.location.href='indexD.php'">Cancelar</button>
 
-            <button class="enviarRevision" href="indexD.php?id=<?php echo $activid->getId()?>&accion=ar">Enviar revisión</button>
+            <button class="enviarRevision"  href="indexD.php?id=<?php echo $activid->getId()?>&accion=ar">Enviar revisión</button>
 
             
         </div>
