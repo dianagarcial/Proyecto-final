@@ -21,7 +21,7 @@
 		private $flimite;
 
 		private $pi;
-		private $nompi;
+		private $nomPi;
 		private $so;
 		private $nomSo;
 		private $descSo;
@@ -210,7 +210,7 @@
 		}
 
 		public function getNomPi(){
-			return $this->nomPi;
+			return $this->$nomPi;
 		}
  
 		public function setNomPi($nomPi){

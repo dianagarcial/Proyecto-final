@@ -186,7 +186,7 @@ require_once('../modelo/conexion.php');
 			$select=$db->prepare("SELECT ASIGNATURA.nombre as asig,USUARIO.nombre as dirnom, USUARIO.apellido as dirape, ACTIVIDAD.codigo as id,\n"
 			. "(SELECT USUARIO.nombre FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as nombreP, \n"
 			. "(SELECT USUARIO.apellido FROM USUARIO JOIN PROFESOR ON USUARIO.nomUsuario= PROFESOR.usuario) as apellidoP, \n"
-			. "GRUPO.codigo_Grup as codGru,PI.codigo as picod, PI.codigo_SO as socod, SO.nombre as sonom, PROGRAMAACADEMICO.nombre as prog, ACTIVIDAD.medioEvaluacion as med FROM USUARIO JOIN DIRECTORPROGRAMA \n"
+			. "GRUPO.codigo_Grup as codGru,PI.codigo as picod, PI.codigo_SO as socod, PI.nombre as pinom, SO.nombre as sonom, PROGRAMAACADEMICO.nombre as prog, ACTIVIDAD.medioEvaluacion as med FROM USUARIO JOIN DIRECTORPROGRAMA \n"
 			. "ON USUARIO.nomUsuario= DIRECTORPROGRAMA.usuario JOIN PROGRAMAACADEMICO \n"
 			. "ON DIRECTORPROGRAMA.codigo_prog= PROGRAMAACADEMICO.codigo JOIN ASIGNATURA \n"
 			. "ON ASIGNATURA.cod_programa= PROGRAMAACADEMICO.codigo JOIN GRUPO\n"
@@ -211,6 +211,7 @@ require_once('../modelo/conexion.php');
 				$myAD->setApeProf($AD['apellidoP']);
 				$myAD->setNumGrupo($AD['codGru']);
 				$myAD->setSo($AD['picod']);
+				$myAD->setNomPi($AD['pinom']);
 				$myAD->setNomSo($AD['sonom']);
 				$myAD->setPi($AD['socod']);
 				
