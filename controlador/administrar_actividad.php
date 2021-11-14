@@ -50,7 +50,27 @@ $lactividad= new Actividad();
 			
 			</script>';
 		<?php
-	}elseif(isset($_POST['asi'])) {
+	}/*elseif (isset($_POST['ediAct'])) {
+		
+		
+		$lactividad->setMedioEv($_POST['metodoInsertar']);
+		$lactividad->setGrupo($_POST['grupo']);
+		$lactividad->setPeriodo('2021-03');
+		$lactividad->setPi($_POST['PI']);
+		$crud->actualizarAct($lactividad); 
+		  
+
+		?>
+		<script type="text/javascript">
+		
+			//alert("Hello world!");			
+			window.location.href="../vista/consulRegAsig.php";
+			alert('La actividad se ha registrado con exito');
+			
+			</script>';
+		<?php
+	}*/
+	elseif(isset($_POST['asi'])) {
 		
 		$lactividad-> getNomAsig($_POST['asiginsertar']);
 		

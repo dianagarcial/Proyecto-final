@@ -78,7 +78,7 @@ $listaActividadGen = $crud->mostraract();
                                         <td><?php echo $activid->getNumGrupo() ?> </td>
                                         <td><?php echo $activid->getSo() ?> </td>
                                         <td><?php echo $activid->getPi() ?> </td>
-                                        <td><a id="vermas1" href="editaractividad.php?id=<?php echo $activid->getId()?>&accion=ed ">Editar</a> </td>
+                                        <td><a id="vermas1" href='#'>Editar</a> </td>
                                
                                     </tr>
                                     <?php 
