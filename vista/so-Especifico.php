@@ -30,7 +30,7 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
 
         
         <?php foreach ($listarSoEspecifico as $activid) {?>
-            <h2 id="labelpe">SO-<?php echo $activid->getSo()?>. <?php echo $activid->getNomSo()?></h2>
+            <h1 class="MasGrande" id="labelpe">SO-<?php echo $activid->getSo()?>. <?php echo $activid->getNomSo()?></h1>
                                        
             <?php 
             }
