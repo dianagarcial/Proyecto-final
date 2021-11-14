@@ -54,7 +54,7 @@ $listarSo=$crud->ConsultarSoE($_GET['id']);
         </div>
     
         
-        <h3>Filtrar por PI</h3>
+        <h3 class="hoja">Filtrar por PI</h3>
 
         <div class="limiter" id="contenedor">
             <div class="container-table100">
