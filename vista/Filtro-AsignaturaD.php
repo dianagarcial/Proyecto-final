@@ -48,7 +48,7 @@ $listarAsignaturaEspecifica=$crud->ConsultarAsignaturaEspecifica($_GET['id']);
                                       
                                  <?php foreach ($listarAsignatura as $activid) {?>
                                 <td id="lfiltro2"><a id="botonesSOfiltro" href="Filtro-AsignaturaD.php?id=<?php echo $activid->getCodAsig()?>&accion=Asignatura"> <?php echo $activid->getNomAsig() ?> </a><br><br>
-                                <a style="text-decoration: none;color: #666666;" href="#">Vista Específica  </a></td>
+                                <a style="text-decoration: none;color: #666666;" href="consulActividad.php?asig=<?php echo $activid->getCodAsig()?>">Vista Específica  </a></td>
                                     <td id="lineafiltro2"><img  src="imagenes/lineafiltro.png"/></td> 
                                 
                                 

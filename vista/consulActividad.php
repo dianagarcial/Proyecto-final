@@ -6,6 +6,7 @@ $crud=new CrudActividad();
 $activid= new Actividad();
 
 $listaAsignatura = $crud->mostrarASIG($_GET['asig']);
+$asi=$crud->mostrarA($_GET['asig']);
 
 ?>
 
@@ -34,7 +35,11 @@ $listaAsignatura = $crud->mostrarASIG($_GET['asig']);
 
     <div id="contenido">
 
-    <h1>Asignatura 1</h1>
+  
+		                        	                                   
+    <h1><?php echo $asi->getNomAsig() ?></h1>
+
+   
         
 
 
@@ -50,105 +55,34 @@ $listaAsignatura = $crud->mostrarASIG($_GET['asig']);
                                    
                                     <tr>
 
-                                        <th>Documento</th>
+                                        <th>Actividad</th>
                                         <th>Grupo</th>
                                         <th>Fecha entrega</th>
                                         <th>Estado</th>
-                                        <th>Fecha Aprobación</th>
+                                        
                                          
 
                                     </tr>
 
                                 
                                     <tbody>
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">131313-1.1-1</td>
-                                            <td class="cell100 column4">1</td>
-                                            <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
-                                            <td class="cell100 column6">Aprobada</td>
-                                            <td class="cell100 column7">19-10-2021</td>
-                                            <td class="cell100 column9"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                            
-
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">131313-3.1-1</td>
-                                            <td class="cell100 column4">1</td>
-                                            <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
-                                            <td class="cell100 column6">Rechazada</td>
-                                            <td class="cell100 column8">15-10-2021</td>
-                                            <td class="cell100 column9"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                            
-
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">131313-1.1-52</td>
-                                            <td class="cell100 column4">52</td>
-                                            <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
-                                            <td class="cell100 column5">Aprobada</td>
-                                            <td class="cell100 column6">13-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                        </tr>
-
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">131313-3.1-52</td>
-                                            <td class="cell100 column4">1</td>
-                                            <td class="cell100 column6">Jose Luis Hernandez Zambrano</td>
-                                            <td class="cell100 column6">Recibida</td>
-                                            <td class="cell100 column8">13-10-2021</td>
-                                            <td class="cell100 column9"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                            
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">121212-2.1-2</td>
-                                            <td class="cell100 column4">52</td>
-                                            <td class="cell100 column6">Luz Estela Martinez Florez</td>
-                                            <td class="cell100 column5">Aprobada</td>
-                                            <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">121212-2.1-2</td>
-                                            <td class="cell100 column4">2</td>
-                                            <td class="cell100 column6">Hernando Aguilar Montaño</td>
-                                            <td class="cell100 column5">Aprobada</td>
-                                            <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">121212-2.1-2</td>
-                                            <td class="cell100 column4">52</td>
-                                            <td class="cell100 column6">Luz Estela Martinez Florez</td>
-                                            <td class="cell100 column5">Aprobada</td>
-                                            <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">121212-2.1-51</td>
-                                            <td class="cell100 column4">2</td>
-                                            <td class="cell100 column6">Hernando Aguilar Montaño</td>
-                                            <td class="cell100 column5">Aprobada</td>
-                                            <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column2">121212-3.1-52</td>
-                                            <td class="cell100 column4">52</td>
-                                            <td class="cell100 column6">Luz Estela Martinez Florez</td>
-                                            <td class="cell100 column5">Rechazada</td>
-                                            <td class="cell100 column6">09-10-2021</td>
-                                            <td class="cell100 column7"><a href="revisionprof.php" id="vermas1">Ver más</a></td>
-                                        </tr>
-
-                                         
+                                    <?php foreach ($listaAsignatura as $activid) {?>
+		                        	<tr>
+                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
+                                        <td><?php echo $activid->getNumGrupo()?></td>
+				                        <td><?php echo $activid->getFentrega() ?></td>
+				                        <td><?php echo $activid->getEstado() ?> </td>
+                                        <?php if($activid->getEstado()== 'Entregado'){?>
+                                        <td><a id="vermas1" href="RevisionDirector.php?id=<?php echo $activid->getId()?>&accion=Revi">Ver más</a> </td>
+                                        <?php 
+                                    }
+                                      else{?>
+                                        <td><a id="vermasDES">Ver más</a> </td>
+                                        <?php 
+                                    }
+                                }
+                                     
+                                    ?>    
 
                                     </tbody>
                                 </table>

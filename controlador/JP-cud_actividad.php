@@ -6,21 +6,37 @@ require_once('../modelo/conexion.php');
 		// constructor de la clase
 		public function __construct(){}
 
+		public function mostrarA($asig){
+			$db=Db::conectar();
+			$listaAsignatura=[];
+			$select=$db->prepare("SELECT  ASIGNATURA.nombre as nomAS from ASIGNATURA WHERE ASIGNATURA.codigo =:asig;");
+								
+
+			$select->bindValue('asig',$asig);
+			$select->execute();
+			$myAD= new Actividad();
+			$AD=$select->fetch();
+			$myAD->setNomAsig($AD['nomAS']);
+		
+
+			return $myAD;
+		}
+
 
 		public function mostrarASIG($asig){
 			$db=Db::conectar();
 			$listaAsignatura=[];
-			$select=$db->prepare("SELECT GRUPO.codigo_asgs as asignatura, RUBRICA.codigo_act as documento, \n"
+			$select=$db->prepare("SELECT GRUPO.codigo_asgs as asignatura, ASIGNATURA.nombre as nomAS, RUBRICA.codigo_act as documento, GRUPO.codigo_Grup as grup, PI.codigo as pi, \n"
 
-									. "ACTIVIDAD.codigoGrupo as grupo, IFNULL(ACTIVIDAD.fechaEntrega,\'-\') as fechaEntrega, \n"
+									. "ACTIVIDAD.codigoGrupo as grupo, IFNULL(ACTIVIDAD.fechaEntrega,'-') as fechaEntrega, \n"
 								
-									. "IFNULL(ACTIVIDAD.estado,\'No Aprobado\') as estado, RUBRICA.fecha as fechaAprob \n"
+									. "IFNULL(ACTIVIDAD.estado,'No Entregado') as estado, RUBRICA.fecha as fechaAprob \n"
 								
 									. "FROM GRUPO JOIN ACTIVIDAD\n"
 								
-									. "ON GRUPO.codigo = ACTIVIDAD.codigoGrupo JOIN \n"
+									. "ON GRUPO.codigo = ACTIVIDAD.codigoGrupo JOIN PI ON PI.codigo=ACTIVIDAD.codPi JOIN RUBRICA\n"
 								
-									. "RUBRICA ON ACTIVIDAD.codigo = RUBRICA.codigo_act\n"
+									. "RUBRICA ON ACTIVIDAD.codigo = RUBRICA.codigo_act JOIN ASIGNATURA ON ASIGNATURA.codigo=GRUPO.codigo_asgs\n"
 								
 									. "WHERE GRUPO.codigo_asgs =:asig;");
 								
@@ -28,13 +44,15 @@ require_once('../modelo/conexion.php');
 			$select->bindValue('asig',$asig);
 			$select->execute();
 			foreach($select->fetchAll() as $AD){
-				$myAD= new Asignatura();
+				$myAD= new Actividad();
 				$myAD->setCodAsig($AD['asignatura']);
-				$myAD->setDoc($AD['documento']);
-				$myAD->setGrup($AD['grupo']);
-				$myAD->setEntrega($AD['fechaEntrega']);
+				$myAD->setNomAsig($AD['nomAS']);
+				$myAD->setNumGrupo($AD['grup']);
+				$myAD->setPi($AD['pi']);
+				$myAD->setid($AD['documento']);
+				$myAD->setGrupo($AD['grupo']);
+				$myAD->setFentrega($AD['fechaEntrega']);
 				$myAD->setEstado($AD['estado']);
-				$myAD->setFechaAprob($AD['fechaAprob']);
 				$listaAsignatura[]=$myAD;
 			}
 

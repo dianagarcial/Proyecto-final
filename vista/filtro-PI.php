@@ -84,7 +84,7 @@ $listarPiEspecifico=$crud->obtenerpi($_GET['id']);
                                         
                                            
                                         
-                                        <td><a id="vermas1" href="filtro-PI.php?id=<?php echo $activid->getPi()?> ">Ver más</a> </td>
+                                        <td><a id="vermas1" href="consulActividad.php?asig=<?php echo $activid->getPi()?> ">Ver más</a> </td>
 				
                                     </tr>
                                     
