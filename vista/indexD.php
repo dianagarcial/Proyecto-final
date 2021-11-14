@@ -30,7 +30,7 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
     <div id="contenido">
        
 
-        <h1>Vista general de la documentación</h1>
+        <h1> Vista general de la documentación</h1>
         <h1>Actividades entregadas</h1>
         
 
@@ -165,7 +165,7 @@ $listaActividadNEDir= $crud->mostrarDirNEnv();
                                         <td id="lineafiltro"><img  src="imagenes/linea.png"/></td>
                                         <td id="lfiltro">
                                             <img src="imagenes/AS.png">
-                                            <a href="Filtro-AsignaturaD.php?id=1&accion=Asig"> <br><br>Filtro por <br>Asignatura</a></td>
+                                            <a href="Filtro-AsignaturaD.php?id=1&accion=Asig"> <br><br>Filtro por <br>Asignatura (AS)</a></td>
                             
                         </table>
                     </div>

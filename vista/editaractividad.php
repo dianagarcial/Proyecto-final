@@ -32,14 +32,9 @@ $listarSO=$crud->ConsultarSO('1');
 </head>
 
 <?php require "headerD.php" ?>
+
 <div id="contenido">
-       
 
-        
-        
-
-     
-    
 
     
         <div class= formatorow1>
@@ -139,7 +134,7 @@ $listarSO=$crud->ConsultarSO('1');
 
         </div>
         <input type='hidden' name='insertarAct' value='insertarAct'>
-            <input type='submit' value='Guardar'>
+            <input class="botonGuardarRegistroAct" type='submit' value='Guardar'>
      
         
 

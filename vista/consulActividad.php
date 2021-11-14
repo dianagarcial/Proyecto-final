@@ -37,7 +37,7 @@ $asi=$crud->mostrarA($_GET['asig']);
 
   
 		                        	                                   
-    <h1><?php echo $asi->getNomAsig() ?></h1>
+    <h1 class="MasGrande"> <?php echo $asi->getNomAsig()?> </h1>
 
    
         
