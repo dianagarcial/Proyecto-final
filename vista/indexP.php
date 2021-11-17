@@ -29,6 +29,64 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
        
 
         <h1>Vista general de la documentación</h1>
+
+        
+        <h1>Actividades Asignadas</h1>
+
+<div class="limiter" id="contenedor">
+    <div class="container-table100" id="tablaboton">
+        <div class="wrap-table100">
+            <div class="table100 ver1">
+
+
+                <div class="wrap-table100-nextcols js-pscroll">
+                    <div class="table100-nextcols">
+                        <table id="tablaini">
+                           
+                            <tr>
+
+                                <th>Actividades</th>
+                                <th>Asignatura</th>
+                                <th>Grupo</th>
+                                <th>PI</th>
+                                <th>Estado</th>
+                                
+                                <th>Fecha límite</th>
+
+                            </tr>
+
+                        
+                            </thead>
+
+                            <tbody id="cuerpoTabla">
+                            <?php foreach ($listaActividadNEPro as $activid) {?>
+                            <tr>
+                                <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
+                                <td><?php echo $activid->getNomAsig() ?></td>
+                                <td><?php echo $activid->getNumGrupo() ?> </td>
+                                <td><?php echo $activid->getPi() ?> </td>
+                                <td><?php echo $activid->getEstado() ?> </td>
+                                
+                                <td><?php echo $activid->getFlimite() ?> </td>
+                                <td><a id="vermas1" href="inicioRegisRub.php?id=<?php echo $activid->getId()?>&accion=aN ">Subir</a> </td>
+        
+                            </tr>
+                            <?php 
+                            }
+                            ?>
+                       
+                                
+                                
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
         <h1>Actividades entregadas</h1>
         
 
@@ -88,62 +146,12 @@ $listaActividadNEPro = $crud->mostrarProNEnv();
         </div>
         
 
-        <h1>Actividades no entregadas</h1>
-
-        <div class="limiter" id="contenedor">
-            <div class="container-table100" id="tablaboton">
-                <div class="wrap-table100">
-                    <div class="table100 ver1">
-
-
-                        <div class="wrap-table100-nextcols js-pscroll">
-                            <div class="table100-nextcols">
-                                <table id="tablaini">
-                                   
-                                    <tr>
-
-                                        <th>Actividades</th>
-                                        <th>Asignatura</th>
-                                        <th>Grupo</th>
-                                        <th>PI</th>
-                                        <th>Estado</th>
-                                        
-                                        <th>Fecha límite</th>
-
-                                    </tr>
-
-                                
-                                    </thead>
-
-                                    <tbody id="cuerpoTabla">
-                                    <?php foreach ($listaActividadNEPro as $activid) {?>
-		                        	<tr>
-                                        <td><?php echo $activid->getCodAsig()."-".$activid->getPi()."-".$activid->getNumGrupo() ?></td>
-				                        <td><?php echo $activid->getNomAsig() ?></td>
-				                        <td><?php echo $activid->getNumGrupo() ?> </td>
-                                        <td><?php echo $activid->getPi() ?> </td>
-                                        <td><?php echo $activid->getEstado() ?> </td>
-                                        
-                                        <td><?php echo $activid->getFlimite() ?> </td>
-                                        <td><a id="vermas1" href="inicioRegisRub.php?id=<?php echo $activid->getId()?>&accion=aN ">Ver más</a> </td>
-				
-                                    </tr>
-                                    <?php 
-                                    }
-                                    ?>
-                               
-                                        
-                                        
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         <br>
+
+
+
+     
         
         <h2>Todos los filtros</h2>
         <div class="limiter" id="contenedor">

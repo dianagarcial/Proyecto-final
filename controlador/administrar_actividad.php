@@ -136,7 +136,7 @@ $lactividad= new Actividad();
 		<script type="text/javascript">
 			
 			window.location.href="../vista/indexP.php";
-			alert("La rubrica y las evdencias se han enviado con exito");
+			alert("La rubrica y las evidencias se han enviado con exito");
 			</script>';
 		<?php
 		
