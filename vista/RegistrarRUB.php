@@ -94,7 +94,7 @@ if (isset($_POST['insertar'])) {
                     </div>
 
                     <div class=columinfo1>
-                        <h5 id="infoletra">Método de calificación</h5> 
+                        <h5 id="infoletra">*Método de calificación</h5> 
                         <label class="labelestado" id="actasociada"name="metodo"><?php echo $activid->getMedioEv() ?></label>
                     </div>
 
